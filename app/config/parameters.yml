@@ -12,4 +12,4 @@ parameters:
     mailer_password: ringwood
     locale: en
     secret: 6cc5af7038d9b2ac3fae549231bc3b821221071c
-    nms_version: 1.0.0
+    nms_version: 0.1.0
