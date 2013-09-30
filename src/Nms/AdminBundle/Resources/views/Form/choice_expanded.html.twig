@@ -1,0 +1,13 @@
+{# src/Nms/AdminBundle/Resources/views/Form/choice_expanded.html.twig #}
+{% block choice_widget_expanded %}
+{% spaceless %}
+    <div {{ block('widget_container_attributes') }}>
+    {% for child in form %}
+        <span class="checkbox inline">
+        {{ form_widget(child) }}
+        {{ form_label(child) }}
+        </span >
+    {% endfor %}
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_expanded %}

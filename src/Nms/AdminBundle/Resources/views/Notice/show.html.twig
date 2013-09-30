@@ -1,0 +1,138 @@
+{# src/Nms/AdminBundle/Resources/views/Notice/view.html.twig #}
+{% extends 'NmsAdminBundle::layout.html.twig' %}
+
+{% set page_title = 'Notice View' %}
+
+{% block title %}
+{{ parent() }} {{page_title }}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block pagetitle %} {{page_title}} <small>display a notice or news item</small>{% endblock %}
+{% block breadcrumb %}
+        <li>
+            <a href="{{ path('notice_list') }}">Notices</a>
+            <i class="icon-angle-right"></i>
+        </li>
+        <li>
+            <a href="{{ path('notice_show', { 'id': entity.id }) }}">View</a>
+        </li>
+{% endblock %}
+
+{% block body -%}
+<!-- main content -->
+<div class="portlet box blue">
+    <div class="portlet-title">
+        <div class="caption"><i class="icon-group"></i>{{page_title}}</div>
+        <div class="actions">
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        <div class="form-horizontal form-view">
+            <h3>Notice Info</h3>
+            <div class="row-fluid">
+                <div class="span6 ">
+                    <div class="control-group">
+                        <label class="control-label" for="id">Id:</label>
+                        <div class="controls">
+                            <span class="text">{{ entity.id }}</span>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+            <div class="row-fluid">
+                <div class="span6 ">
+                    <div class="control-group">
+                        <label class="control-label">Title:</label>
+                        <div class="controls">
+                            <span class="text bold">{{ entity.title }}</span>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+            <div class="row-fluid">
+                <div class="span6 ">
+                    <div class="control-group">
+                        <label class="control-label">Content:</label>
+                        <div class="controls">
+                            <span class="text">{{ entity.content|raw }}</span>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+            <div class="row-fluid">
+                <div class="span6 ">
+                    <div class="control-group">
+                        <label class="control-label">Publish date:</label>
+                        <div class="controls">
+                            <span class="text">{{ entity.publish|date('d-m-Y') }}</span>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+            <div class="row-fluid">
+                <div class="span6 ">
+                    <div class="control-group">
+                        <label class="control-label">Expiry date:</label>
+                        <div class="controls">
+                            <span class="text">{{ entity.expire|date('d-m-Y') }}</span>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+            <div class="row-fluid">
+                <div class="span6 ">
+                    <div class="control-group">
+                        <label class="control-label">Created by:</label>
+                        <div class="controls">
+                            <span class="text">{{ entity.createdBy }} at {{ entity.created|date('d-m-Y H:i:s') }}</span>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+            <div class="row-fluid">
+                <div class="span6 ">
+                    <div class="control-group">
+                        <label class="control-label">Updated by:</label>
+                        <div class="controls">
+                            <span class="text">{{ entity.updatedBy }} at {{ entity.updated|date('d-m-Y H:i:s') }}</span>
+                        </div>
+                    </div>
+                </div>
+                <!--/span-->
+            </div>
+            <!--/row-->
+            <div class="row-fluid">
+                <div class="space20"></div>
+            </div>
+            <div class="form-actions">
+                <a class="btn blue" href="{{ path('notice_edit', { 'id': entity.id }) }}"><i class="icon-pencil"></i> Edit</a>
+                <a class="btn black" href="{{ path('notice_list') }}">Back</a>
+                <span class="pull-right">
+                    <form action="{{ path('notice_delete', { 'id': entity.id }) }}" method="post">
+                        <input type="hidden" name="_method" value="DELETE" />
+                            {{ form_widget(delete_form) }}
+                        <button class="btn red" type="submit"><i class="icon-trash"></i> Delete</button>
+                    </form>
+                </span>
+            </div>
+        </div>
+        <!-- END FORM-->
+    </div>
+</div>
+{% endblock %}

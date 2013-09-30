@@ -1,0 +1,11 @@
+{# src/Nms/AdminBundle/Resources/views/Form/checkbox.html.twig #}
+{% block choice_widget %}
+{% spaceless %}
+    {% for choice, label in choices %}
+        <label class="checkbox inline">
+            <input type="checkbox" {{ block('widget_attributes') }}{% if value is defined %} value="{{ value }}"{% endif %}{% if checked %} checked="checked"{% endif %} />
+            {{ label|trans }}
+        </label>
+    {% endfor %}
+{% endspaceless %}
+{% endblock choice_widget %}

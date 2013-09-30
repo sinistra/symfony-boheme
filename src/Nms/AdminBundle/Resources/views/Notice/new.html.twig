@@ -1,0 +1,126 @@
+{# src/Nms/AdminBundle/Resources/views/Notice/new.html.twig #}
+{% extends 'NmsAdminBundle::layout.html.twig' %}
+
+{% set page_title = 'Notice add' %}
+
+{% block title %}
+{{ parent() }} {{page_title }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="/theme/plugins/bootstrap-datepicker/css/datepicker.css" />
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript" src="/theme/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/theme/scripts/form-components.js"></script>
+<script type="text/javascript" src="/js/tinymce/tinymce.min.js"></script>
+<script type="text/javascript">
+tinymce.init({
+    selector: "textarea",
+    plugins: [
+        "advlist autolink lists link image charmap print preview anchor",
+        "searchreplace visualblocks code fullscreen",
+        "insertdatetime media table contextmenu paste "
+    ],
+    toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image"
+});
+FormComponents.init();
+</script>
+{% endblock %}
+
+{% block pagetitle %} {{page_title}} <small>add a notice or news item</small>{% endblock %}
+
+{% block breadcrumb %}
+<li>
+    <a href="{{ path('notice_list') }}">Notices</a>
+    <i class="icon-angle-right"></i>
+</li>
+<li>
+    <a href="{{ path('notice_new', { 'id': entity.id }) }}">Add</a>
+</li>
+{% endblock %}
+
+{% block body %}
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption"><i class="icon-bullhorn"></i>{{page_title}}</div>
+        <div class="actions">
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        {{ form_errors(form) }}
+        <form action="{{ path('notice_create', { 'id': entity.id }) }}" class="form-horizontal"  method="post" {{ form_enctype(form) }}>
+            <fieldset>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.title, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                            {{ form_errors(form.title) }}
+                            {{ form_widget(form.title, {'attr':{'class':'span8'} }) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12 ">
+                        <div class="control-group">
+                            {{ form_label(form.content, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.content) }}
+                                {{ form_widget(form.content) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.publish, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.publish)}}
+                                <div class="input-append date date-picker" data-date="" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+                                    {{ form_widget(form.publish)}}
+                                    <span class="add-on"><i class="icon-calendar"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+               <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.expire, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.expire)}}
+                                <div class="input-append date date-picker" data-date="" data-date-format="dd-mm-yyyy" data-date-viewmode="years">
+                                    {{ form_widget(form.expire)}}
+                                    <span class="add-on"><i class="icon-calendar"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+            <!--/row-->
+            </fieldset>
+
+            {{ form_rest(form) }}
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue" ><i class="icon-ok"></i> Create</button>
+                <a href="{{ path('notice_list') }}" class="btn black" >Back</a>
+            </div>
+        </form>
+        <!-- END FORM-->
+    </div>
+</div>
+{% endblock %}
+

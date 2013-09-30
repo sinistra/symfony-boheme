@@ -1,0 +1,139 @@
+{# src/Nms/AdminBundle/Resources/views/Menu/new.html.twig #}
+{% extends 'NmsAdminBundle::layout.html.twig' %}
+
+{% set page_title = 'Menu add' %}
+
+{% block title %}
+{{ parent() }} {{page_title }}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block pagetitle %} {{page_title}} <small>add a notice or news item</small>{% endblock %}
+
+{% block breadcrumb %}
+<li>
+    <a href="{{ path('notice_list') }}">Notices</a>
+    <i class="icon-angle-right"></i>
+</li>
+<li>
+    <a href="{{ path('notice_new', { 'id': entity.id }) }}">Add</a>
+</li>
+{% endblock %}
+
+{% block body %}
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption"><i class="icon-list"></i>{{page_title}}</div>
+        <div class="actions">
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        {{ form_errors(form) }}
+        <form action="{{ path('menu_create', { 'id': entity.id }) }}" class="form-horizontal"  method="post" {{ form_enctype(form) }}>
+            <fieldset>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.title, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                            {{ form_errors(form.title) }}
+                            {{ form_widget(form.title) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12 ">
+                        <div class="control-group">
+                            {{ form_label(form.icon, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.icon) }}
+                                {{ form_widget(form.icon) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12 ">
+                        <div class="control-group">
+                            {{ form_label(form.url, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.url) }}
+                                {{ form_widget(form.url) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.parent, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.parent)}}
+                                {{ form_widget(form.parent)}}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+               <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.seq, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.seq)}}
+                                {{ form_widget(form.seq)}}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+            <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.secured, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.secured)}}
+                                {{ form_widget(form.secured)}}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+            <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.external, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.external)}}
+                                {{ form_widget(form.external)}}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+            <!--/row-->
+            </fieldset>
+            {{ form_rest(form) }}
+            <div class="form-actions">
+                <button type="submit" class="btn blue" ><i class="icon-ok"></i> Create</button>
+                <a href="{{ path('menu_list') }}" class="btn black" >Back</a>
+            </div>
+        </form>
+        <!-- END FORM-->
+    </div>
+</div>
+{% endblock %}

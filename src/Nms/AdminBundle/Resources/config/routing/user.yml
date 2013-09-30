@@ -1,0 +1,44 @@
+
+user_list:
+    pattern:  /
+    defaults: { _controller: "NmsAdminBundle:User:index" }
+
+user_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "NmsAdminBundle:User:show" }
+
+user_new:
+    pattern:  /new
+    defaults: { _controller: "NmsAdminBundle:User:new" }
+
+user_create:
+    pattern:  /create
+    defaults: { _controller: "NmsAdminBundle:User:create" }
+    requirements: { _method: post }
+
+user_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "NmsAdminBundle:User:edit" }
+
+user_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "NmsAdminBundle:User:update" }
+    requirements: { _method: post|put }
+
+user_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "NmsAdminBundle:User:delete" }
+    requirements: { _method: post|delete }
+
+user_password:
+    pattern:  /password
+    defaults: { _controller: "NmsAdminBundle:User:password" }
+
+user_request:
+    pattern:  /request
+    defaults: { _controller: NmsAdminBundle:User:request }
+
+user_reset:
+    path:  /reset/{token}
+    defaults: { _controller: NmsAdminBundle:User:reset }
+

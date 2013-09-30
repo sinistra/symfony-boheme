@@ -1,0 +1,41 @@
+# Nms/AdminBundle/Resources/config/validation.yml
+Nms\AdminBundle\Entity\Notice:
+    properties:
+        title:
+            - NotBlank: {message: "Please enter a title for this notice."}
+            - Length:
+                min: 2
+        publish:
+            - NotBlank: {message: "Please enter the first day this notice will be displayed."}
+            - Type: \DateTime
+        expire:
+            - NotBlank: {message: "Please enter the last day this notice will be displayed."}
+            - Type: \DateTime
+    constraints:
+        - Callback:
+            methods:   [isExpireValid]
+#    getters:
+#        expireValid:
+#            - "True": { message: "The publish date must be before the expiry date" }
+
+Nms\AdminBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: username
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+    properties:
+        username:
+            - NotBlank: {message: "Please enter a username for this user."}
+            - Length:
+                min: 4
+        name:
+            - NotBlank: {message: "Please enter the full name of this user."}
+            - Length:
+                min: 4
+        email:
+            - Email:
+                message: "Please enter a valid email."
+                checkMX: false
+        club:
+            - NotNull: {message: "Please select a club for this user."}
+        groups:
+            - NotNull: {message: "Please select at least one group for this user."}

@@ -1,0 +1,10 @@
+<form method="get" action="{{ action }}" class="form-horizontal" enctype="application/x-www-form-urlencoded">
+Filter by
+    <select name="{{ filterFieldName }}">
+        {% for field, label in fields %}
+            <option value="{{ field }}"{% if selectedField == field %} selected="selected"{% endif %}>{{ label }}</option>
+        {% endfor %}
+    </select>
+    <input type="text" value="{{ selectedValue }}" name="{{ filterValueName }}" />
+    <button class="btn black"><i class="icon-filter"></i> {{ options.button }}</button>
+</form>

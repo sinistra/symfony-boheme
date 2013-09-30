@@ -1,0 +1,65 @@
+{# src/Nms/AdminBundle/Resources/views/User/reset.html.twig #}
+{% extends 'NmsAdminBundle::layout.html.twig' %}
+
+{% set page_title = 'Reset Password' %}
+
+{% block title %}
+{{ parent() }} {{page_title }}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block pagetitle %} {{page_title}} <small>reset your password</small>{% endblock %}
+
+{% block breadcrumb %}
+<li>
+    <a href="{{ path('user_list') }}">Users</a>
+    <i class="icon-angle-right"></i>
+</li>
+<li>
+    <a href="{{ path('user_reset', { 'token': token }) }}">Reset Password</a>
+</li>
+{% endblock %}
+
+{% block body -%}
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption"><i class="icon-key"></i>{{page_title}}</div>
+        <div class="actions">
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        {{ form_errors(form) }}
+        <form action="{{ path('user_reset', {'token': token}) }}" class="form"  method="post" {{ form_enctype(form) }}>
+            <fieldset>
+                <div class="row-fluid">
+                    <div class="span1"></div>
+                    <div class="span4">
+                        <div class="control-group">
+                            <div class="controls">
+                                {{ form_errors(form.new) }}
+                                {{ form_widget(form.new) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+            </fieldset>
+
+            {{ form_rest(form) }}
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue" ><i class="icon-ok"></i> Reset</button>
+            </div>
+        </form>
+        <!-- END FORM-->
+    </div>
+</div>
+{% endblock %}
+

@@ -1,0 +1,34 @@
+notice_list:
+    pattern:  /
+    defaults: { _controller: "NmsAdminBundle:Notice:index" }
+
+notice_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "NmsAdminBundle:Notice:show" }
+
+notice_new:
+    pattern:  /new
+    defaults: { _controller: "NmsAdminBundle:Notice:new" }
+
+notice_create:
+    pattern:  /create
+    defaults: { _controller: "NmsAdminBundle:Notice:create" }
+    requirements: { _method: post }
+
+notice_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "NmsAdminBundle:Notice:edit" }
+
+notice_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "NmsAdminBundle:Notice:update" }
+    requirements: { _method: post|put }
+
+notice_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "NmsAdminBundle:Notice:delete" }
+    requirements: { _method: post|delete }
+
+notice_publish:
+    pattern:  /published
+    defaults: { _controller: "NmsAdminBundle:Notice:published" }

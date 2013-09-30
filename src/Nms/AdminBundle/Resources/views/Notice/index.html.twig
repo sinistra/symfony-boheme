@@ -1,0 +1,83 @@
+{# src/Nms/AdminBundle/Resources/views/Notice/index.html.twig #}
+{% extends 'NmsAdminBundle::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }} Notice list
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/theme/plugins/data-tables/DT_bootstrap.css">
+{% endblock %}
+
+{% block pagetitle %} Notices <small>news & notices</small>{% endblock %}
+
+{% block breadcrumb %}
+        <li><a href="{{ path('notice_list') }}">Notices</a></li>
+{% endblock %}
+
+{% block body -%}
+<div class="row-fluid">
+    <div class="span12">
+        <!-- BEGIN TABLE PORTLET-->
+        <div class="portlet box purple">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-group"></i>Notice Table
+                </div>
+                <div class="actions">
+                    <a href="{{ path('notice_new') }}" class="btn green"><i class="icon-plus"></i> Add</a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row-fluid">
+                    <div class="span12">
+                    {{ knp_pagination_filter(pagination, fields) }}
+                    </div>
+                </div>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                        {# sorting of properties based on query components #}
+                            <th class="text-center">{{ knp_pagination_sortable(pagination, 'Id', 'n.id') }}</th>
+                            <th{% if pagination.isSorted('n.title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'n.title') }}</th>
+                            <th>Published</th>
+                            <th>Expired</th>
+                            <th>Updated</th>
+                            <th>Updated By</th>
+                            <th style="width:100px">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for notice in pagination %}
+                        <tr class="gradeA {{ loop.index is odd ? 'odd' : 'even'}}">
+                            <td class="text-center">
+                                <a href="{{ path('notice_show', { 'id': notice.id }) }}">{{ notice.id }}</a>
+                            </td>
+                            <td>{{ notice.title }}</td>
+                            <td>{% if notice.publish %}{{ notice.publish|date('d-m-Y') }}{% endif %}</td>
+                            <td>{% if notice.expire %}{{ notice.expire|date('d-m-Y') }}{% endif %}</td>
+                            <td>{% if notice.updated %}{{ notice.updated|date('d-m-Y H:i:s') }}{% endif %}</td>
+                            <td>{{ notice.updatedBy }}</td>
+                            <td class="text-right">
+                                <a href="{{ path('notice_show', { 'id': notice.id }) }}" class="btn blue-stripe mini">view</a>
+                                <a href="{{ path('notice_edit', { 'id': notice.id }) }}" class="btn red-stripe mini">edit</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+
+                    </tbody>
+                </table>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="dataTables_info" id="record_info">{{pagination.TotalItemCount}} records in total.</div>
+                    </div>
+                    <div class="span6">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END SAMPLE TABLE PORTLET-->
+    </div>
+</div>
+{% endblock %}

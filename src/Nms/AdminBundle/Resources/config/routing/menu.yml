@@ -1,0 +1,30 @@
+menu_list:
+    pattern:  /
+    defaults: { _controller: "NmsAdminBundle:Menu:index" }
+
+menu_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "NmsAdminBundle:Menu:show" }
+
+menu_new:
+    pattern:  /new
+    defaults: { _controller: "NmsAdminBundle:Menu:new" }
+
+menu_create:
+    pattern:  /create
+    defaults: { _controller: "NmsAdminBundle:Menu:create" }
+    requirements: { _method: post }
+
+menu_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "NmsAdminBundle:Menu:edit" }
+
+menu_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "NmsAdminBundle:Menu:update" }
+    requirements: { _method: post|put }
+
+menu_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "NmsAdminBundle:Menu:delete" }
+    requirements: { _method: post|delete }

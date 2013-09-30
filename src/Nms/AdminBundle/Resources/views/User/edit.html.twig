@@ -1,0 +1,140 @@
+{# src/Nms/AdminBundle/Resources/views/User/edit.html.twig #}
+{% extends 'NmsAdminBundle::layout.html.twig' %}
+{% form_theme edit_form 'NmsAdminBundle:Form:choice_expanded.html.twig' %}
+
+{% set page_title = 'User edit' %}
+
+{% block title %}
+{{ parent() }} {{page_title }}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block pagetitle %} {{page_title}} <small>edit a user role</small>{% endblock %}
+
+{% block breadcrumb %}
+<li>
+    <a href="{{ path('user_list') }}">Users</a>
+    <i class="icon-angle-right"></i>
+</li>
+<li>
+    <a href="{{ path('user_edit', { 'id': entity.id }) }}">User</a>
+</li>
+{% endblock %}
+
+{% block body -%}
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption"><i class="icon-list-alt"></i>{{page_title}}</div>
+        <div class="actions">
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        {{ form_errors(edit_form) }}
+        <form action="{{ path('user_update', { 'id': entity.id }) }}" class="form-horizontal"  method="post" {{ form_enctype(edit_form) }}>
+            <fieldset>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(edit_form.username, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(edit_form.username) }}
+                                {{ form_widget(edit_form.username) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12 ">
+                        <div class="control-group">
+                            {{ form_label(edit_form.name, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(edit_form.name) }}
+                                {{ form_widget(edit_form.name) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(edit_form.email, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(edit_form.email) }}
+                                {{ form_widget(edit_form.email) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+               <!--/row-->
+               <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(edit_form.isActive, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(edit_form.isActive) }}
+                                {{ form_widget(edit_form.isActive) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(edit_form.club, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(edit_form.club) }}
+                                {{ form_widget(edit_form.club) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+            <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(edit_form.groups, label|default(null), { 'label_attr': { 'class': 'checkbox inline' } }) }}
+                            <div class="controls">
+                                {{ form_errors(edit_form.groups) }}
+                                {{ form_widget(edit_form.groups) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+            <!--/row-->
+            </fieldset>
+
+            {{ form_rest(edit_form) }}
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue" ><i class="icon-ok"></i> Update</button>
+                <a href="{{ path('user_list') }}" class="btn black" >Back</a>
+        </form>
+            <!-- This is ugly but it works. The original form is closed
+            and another inserted so that they both appear on the form-actions line-->
+                <span class="pull-right">
+                    <form action="{{ path('user_delete', { 'id': entity.id }) }}" method="post">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        {{ form_widget(delete_form) }}
+                        <button class="btn red" type="submit"><i class="icon-trash"></i> Delete</button>
+                    </form>
+                </span>
+            </div>
+            <!-- END FORM-->
+    </div>
+</div>
+{% endblock %}
+

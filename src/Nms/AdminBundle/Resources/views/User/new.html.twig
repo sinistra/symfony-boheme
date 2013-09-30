@@ -1,0 +1,130 @@
+{# src/Nms/AdminBundle/Resources/views/User/new.html.twig #}
+{% extends 'NmsAdminBundle::layout.html.twig' %}
+{% form_theme form 'NmsAdminBundle:Form:choice_expanded.html.twig' %}
+
+
+{% set page_title = 'User add' %}
+
+{% block title %}
+{{ parent() }} {{page_title }}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block pagetitle %} {{page_title}} <small>add a user</small>{% endblock %}
+
+{% block breadcrumb %}
+<li>
+    <a href="{{ path('user_list') }}">Users</a>
+    <i class="icon-angle-right"></i>
+</li>
+<li>
+    <a href="{{ path('user_new') }}">Add</a>
+</li>
+{% endblock %}
+
+{% block body %}
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption"><i class="icon-list"></i>{{page_title}}</div>
+        <div class="actions">
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        {{ form_errors(form) }}
+        <form action="{{ path('user_create', { 'id': entity.id }) }}" class="form-horizontal"  method="post" {{ form_enctype(form) }}>
+            <fieldset>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.username, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.username) }}
+                                {{ form_widget(form.username) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12 ">
+                        <div class="control-group">
+                            {{ form_label(form.name, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.name) }}
+                                {{ form_widget(form.name) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.email, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.email) }}
+                                {{ form_widget(form.email) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+               <!--/row-->
+               <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.isActive, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.isActive) }}
+                                {{ form_widget(form.isActive) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.club, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.club) }}
+                                {{ form_widget(form.club) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+            <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(form.groups, label|default(null), { 'label_attr': { 'class': 'checkbox inline' } }) }}
+                            <div class="controls">
+                                {{ form_errors(form.groups) }}
+                                {{ form_widget(form.groups) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+            <!--/row-->
+            </fieldset>
+
+            {{ form_rest(form) }}
+            <div class="form-actions">
+                <button type="submit" class="btn blue" ><i class="icon-ok"></i> Create</button>
+                <a href="{{ path('user_list') }}" class="btn black" >Back</a>
+            </div>
+        </form>
+        <!-- END FORM-->
+    </div>
+</div>
+{% endblock %}

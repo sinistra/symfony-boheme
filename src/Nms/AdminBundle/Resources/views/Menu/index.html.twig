@@ -1,0 +1,104 @@
+{# src/Nms/AdminBundle/Resources/views/Menu/index.html.twig #}
+{% extends 'NmsAdminBundle::layout.html.twig' %}
+
+{% set page_title = 'Menu list' %}
+
+{% block title %}
+{{ parent() }} {{ page_title }}
+{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/theme/plugins/data-tables/DT_bootstrap.css">
+{% endblock %}
+
+{% block pagetitle %} Menus <small>navigation lists</small>{% endblock %}
+
+{% block breadcrumb %}
+        <li><a href="{{ path('menu_list') }}">Menus</a></li>
+{% endblock %}
+
+{% block body -%}
+<div class="row-fluid">
+    <div class="span12">
+        <!-- BEGIN TABLE PORTLET-->
+        <div class="portlet box purple">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="icon-list-alt"></i>Menu Table
+                </div>
+                <div class="actions">
+                    <a href="{{ path('menu_new') }}" class="btn green"><i class="icon-plus"></i> Add</a>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div class="row-fluid">
+                    <div class="span12">
+                    {{ knp_pagination_filter(pagination, fields) }}
+                    </div>
+                </div>
+                <table class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                        {# sorting of properties based on query components #}
+                            <th class="text-center">{{ knp_pagination_sortable(pagination, 'Id', 'm.id') }}</th>
+                            <th{% if pagination.isSorted('m.title') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(pagination, 'Title', 'm.title') }}
+                            </th>
+                            <th>Icon</th>
+                            <th{% if pagination.isSorted('m.seq') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(pagination, 'Seq', 'm.seq') }}
+                            </th>
+                            <th{% if pagination.isSorted('m.parent') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(pagination, 'Parent', 'm.parent') }}
+                            </th>
+                            <th{% if pagination.isSorted('m.url') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(pagination, 'URL', 'm.url') }}
+                            </th>
+                            <th{% if pagination.isSorted('m.secured') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(pagination, 'Secured', 'm.secured') }}
+                            </th>
+                            <th{% if pagination.isSorted('m.external') %} class="sorted"{% endif %}>
+                                {{ knp_pagination_sortable(pagination, 'External', 'm.external') }}
+                            </th>
+                            <th>Updated</th>
+                            <th>Updated By</th>
+                            <th style="width:100px">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for menu in pagination %}
+                        <tr class="gradeA {{ loop.index is odd ? 'odd' : 'even'}}">
+                            <td class="text-center">
+                                <a href="{{ path('menu_show', { 'id': menu.id }) }}">{{ menu.id }}</a>
+                            </td>
+                            <td>{{ menu.title }}</td>
+                            <td>{{ menu.icon}}</td>
+                            <td>{{ menu.seq }}</td>
+                            <td>{{ menu.parent }}</td>
+                            <td>{{ menu.url }}</td>
+                            <td>{% if menu.secured %} Yes {% else %} No {% endif %}</td>
+                            <td>{% if menu.external %} Yes {% else %} No {% endif %}</td>
+                            <td>{% if menu.updated %}{{ menu.updated|date('d-m-Y H:i:s') }}{% endif %}</td>
+                            <td>{{ menu.updatedBy}}</td>
+                            <td style="align:right">
+                                <a href="{{ path('menu_show', { 'id': menu.id }) }}" class="btn blue-stripe mini">view</a>
+                                <a href="{{ path('menu_edit', { 'id': menu.id }) }}" class="btn red-stripe mini">edit</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                <div class="row-fluid">
+                    <div class="span6">
+                        <div class="dataTables_info" id="record_info">{{pagination.TotalItemCount}} records in total.</div>
+                    </div>
+                    <div class="span6">
+                        {{ knp_pagination_render(pagination) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END SAMPLE TABLE PORTLET-->
+    </div>
+</div>
+{% endblock %}

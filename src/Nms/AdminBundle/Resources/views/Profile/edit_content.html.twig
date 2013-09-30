@@ -1,0 +1,16 @@
+    <div>
+    </div>
+</form>
+
+<div class="inner-spacer">
+    <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+        <fieldset>
+            {{ form_widget(form) }}
+        </fieldset>
+        <div class="form-actions">
+            <button type="submit" class="btn medium btn-primary" id="_submit" name="_submit">{{ 'profile.edit.submit'|trans({}, 'FOSUserBundle') }}</button>
+            <button type="reset" class="btn medium btn-danger">Cancel</button>
+        </div>
+    </form>
+</div>
+

@@ -1,0 +1,7 @@
+parameters:
+#    nms_admin.example.class: Nms\AdminBundle\Example
+
+services:
+#    nms_admin.example:
+#        class: %nms_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

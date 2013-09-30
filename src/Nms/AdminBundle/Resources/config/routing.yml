@@ -1,0 +1,39 @@
+nms_admin_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: NmsAdminBundle:Default:index }
+
+nms_demo_posts:
+    pattern:  /demo/posts
+    defaults: { _controller: NmsAdminBundle:Demo:posts }
+
+nms_demo_update:
+    pattern:  /demo/update
+    defaults: { _controller: NmsAdminBundle:Demo:update }
+
+NmsAdminBundle_homepage:
+    pattern:  /
+    defaults: { _controller: NmsAdminBundle:Notice:published}
+    requirements:
+        _method:  GET
+
+NmsAdminBundle_about:
+    pattern:  /about
+    defaults: { _controller: NmsAdminBundle:Default:about}
+    requirements:
+        _method:  GET
+
+NmsAdminBundle_user:
+    resource: "@NmsAdminBundle/Resources/config/routing/user.yml"
+    prefix:   /user
+
+NmsAdminBundle_group:
+    resource: "@NmsAdminBundle/Resources/config/routing/group.yml"
+    prefix:   /group
+
+NmsAdminBundle_menu:
+    resource: "@NmsAdminBundle/Resources/config/routing/menu.yml"
+    prefix:   /menu
+
+NmsAdminBundle_notice:
+    resource: "@NmsAdminBundle/Resources/config/routing/notice.yml"
+    prefix:   /notice

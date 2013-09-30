@@ -1,0 +1,15 @@
+{% block body_text %}
+{% autoescape false %}
+Welcome to Buddha!
+
+Congratulations {{ user.name }}.
+You are now registered to use Buddha.
+
+Your user id is : `{{ user.username }}`.
+The next step in the registration process is to set your password.
+This can be done by visiting this web page {{ url('user_password') }}.
+
+You can access Buddha at this web page: {{ url('NmsAdminBundle_homepage') }}
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}

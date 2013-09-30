@@ -1,0 +1,13 @@
+{% block body_text %}
+{% autoescape false %}
+Dear {{ user.name }},
+
+You, or someone on behalf of you, has requested tp reset your password.
+
+If you did not make this request, just ignore this email.
+
+If you do wish to reset your password click on this link {{ url('user_reset', {'token': user.token}) }}.
+
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}

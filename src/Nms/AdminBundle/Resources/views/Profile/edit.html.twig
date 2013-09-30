@@ -1,0 +1,61 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+<!-- main content -->
+<div id="page-content">
+    <!-- page header -->
+    <h1 id="page-header">Edit User Profile</h1>
+
+    <div class="fluid-container">
+
+        <!-- widget grid -->
+        <section id="widget-grid" class="center">
+
+            <!-- row-fluid -->
+
+            <div class="row-fluid">
+                <article class="span8">
+                    <!-- new widget -->
+                    <div class="jarviswidget yellow" id="widget-id-0" data-widget-deletebutton="false">
+                        <header>
+                            <h2>  </h2>
+                        </header>
+                        <!-- wrap div -->
+                        <div>
+
+                             <div class="jarviswidget-editbox">
+                                <div>
+                                    <label>Title:</label>
+                                    <input type="text" />
+                                </div>
+                                <div>
+                                    <label>Styles:</label>
+                                    <span data-widget-setstyle="purple" class="purple-btn"></span>
+                                    <span data-widget-setstyle="navyblue" class="navyblue-btn"></span>
+                                    <span data-widget-setstyle="green" class="green-btn"></span>
+                                    <span data-widget-setstyle="yellow" class="yellow-btn"></span>
+                                    <span data-widget-setstyle="orange" class="orange-btn"></span>
+                                    <span data-widget-setstyle="pink" class="pink-btn"></span>
+                                    <span data-widget-setstyle="red" class="red-btn"></span>
+                                    <span data-widget-setstyle="darkgrey" class="darkgrey-btn"></span>
+                                    <span data-widget-setstyle="black" class="black-btn"></span>
+                                </div>
+                            </div>
+
+                            <div class="inner-spacer widget-content-padding">
+                                <!-- content goes here -->
+                            {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+                                <!-- end content-->
+                            </div>
+                        </div>
+                        <!-- end wrap div -->
+                    </div>
+                    <!-- end widget -->
+                </article>
+            </div>
+            <!-- end row-fluid -->
+        </section>
+        <!-- end widget grid -->
+    </div>
+</div>
+{% endblock fos_user_content %}

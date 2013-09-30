@@ -1,0 +1,150 @@
+{# src/Nms/AdminBundle/Resources/views/Menu/edit.html.twig #}
+{% extends 'NmsAdminBundle::layout.html.twig' %}
+
+{% set page_title = 'Menu edit' %}
+
+{% block title %}
+{{ parent() }} {{page_title }}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block pagetitle %} {{page_title}} <small>edit a user role</small>{% endblock %}
+
+{% block breadcrumb %}
+<li>
+    <a href="{{ path('menu_list') }}">Menus</a>
+    <i class="icon-angle-right"></i>
+</li>
+<li>
+    <a href="{{ path('menu_edit', { 'id': entity.id }) }}">Edit</a>
+</li>
+{% endblock %}
+
+{% block body -%}
+<div class="portlet box green">
+    <div class="portlet-title">
+        <div class="caption"><i class="icon-list-alt"></i>{{page_title}}</div>
+        <div class="actions">
+        </div>
+    </div>
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        {{ form_errors(edit_form) }}
+        <form action="{{ path('menu_update', { 'id': entity.id }) }}" class="form-horizontal"  method="post" {{ form_enctype(edit_form) }}>
+            <fieldset>
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(edit_form.title, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                            {{ form_errors(edit_form.title) }}
+                            {{ form_widget(edit_form.title) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(edit_form.icon, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                            {{ form_errors(edit_form.icon) }}
+                            {{ form_widget(edit_form.icon) }}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12 ">
+                        <div class="control-group">
+                            {{ form_label(edit_form.url, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(edit_form.url) }}
+                                {{ form_widget(edit_form.url) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(edit_form.parent, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(edit_form.parent)}}
+                                {{ form_widget(edit_form.parent)}}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+               <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(edit_form.seq, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(edit_form.seq)}}
+                                {{ form_widget(edit_form.seq)}}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+            <!--/row-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(edit_form.secured, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(edit_form.secured)}}
+                                {{ form_widget(edit_form.secured)}}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                <div class="row-fluid">
+                    <div class="span12">
+                        <div class="control-group">
+                            {{ form_label(edit_form.external, label|default(null), { 'label_attr': { 'class': 'control-label' } }) }}
+                            <div class="controls">
+                                {{ form_errors(edit_form.external)}}
+                                {{ form_widget(edit_form.external)}}
+                            </div>
+                        </div>
+                    </div>
+                    <!--/span-->
+                </div>
+            <!--/row-->
+            </fieldset>
+
+            {{ form_rest(edit_form) }}
+
+            <div class="form-actions">
+                <button type="submit" class="btn blue" ><i class="icon-ok"></i> Update</button>
+                <a href="{{ path('menu_list') }}" class="btn black" >Back</a>
+        </form>
+            <!-- This is ugly but it works. The original form is closed
+            and another inserted so that they both appear on the form-actions line-->
+                <span class="pull-right">
+                    <form action="{{ path('menu_delete', { 'id': entity.id }) }}" method="post">
+                        <input type="hidden" name="_method" value="DELETE" />
+                        {{ form_widget(delete_form) }}
+                        <button class="btn red" type="submit"><i class="icon-trash"></i> Delete</button>
+                    </form>
+                </span>
+            </div>
+            <!-- END FORM-->
+    </div>
+</div>
+{% endblock %}
+
