@@ -1,0 +1,15 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: b3
+    database_user: root
+    database_password: root
+    mailer_transport: gmail
+    mailer_host: smtp.gmail.com
+    mailer_user: paul.taylor@nms.com.au
+    mailer_password: ringwood
+    locale: en
+    secret: 6cc5af7038d9b2ac3fae549231bc3b821221071c
+    app_version: 1.0-277-g1b56100

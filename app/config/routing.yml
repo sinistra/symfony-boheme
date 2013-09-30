@@ -1,0 +1,15 @@
+# app/config/routing.yml
+nms_admin:
+    resource: "@NmsAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
+login:
+    pattern: /login
+    defaults: { _controller: NmsAdminBundle:Security:login }
+
+login_check:
+    pattern: /login_check
+
+logout:
+    pattern: /logout
+    defaults: { _controller: NmsAdminBundle:Security:logout }

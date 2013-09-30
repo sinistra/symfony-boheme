@@ -1,0 +1,6 @@
+services:
+    login_listener:
+        class: 'Nms\AdminBundle\Listener\LoginListener'
+        arguments: ['@security.context', @service_container, '@doctrine']
+        tags:
+            - { name: 'kernel.event_listener', event: 'security.interactive_login' }
