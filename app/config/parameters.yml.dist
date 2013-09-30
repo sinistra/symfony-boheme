@@ -14,4 +14,4 @@ parameters:
     locale:            en
     secret:            ThisTokenIsNotSoSecretChangeIt
 
-    buddha_version:    0.0.0
+    nms_version:    0.0.0
