@@ -3,3 +3,4 @@
 /app/cache/
 /composer.phar
 /nbproject/
+composer.lock
