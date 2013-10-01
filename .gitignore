@@ -1,3 +1,6 @@
 /vendor/
 /app/logs/
+/app/cache/
 /composer.phar
+/nbproject/
+composer.lock
