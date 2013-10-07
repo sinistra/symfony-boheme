@@ -1,0 +1,30 @@
+meal:
+    pattern:  /
+    defaults: { _controller: "BohemeCafeBundle:Meal:index" }
+
+meal_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BohemeCafeBundle:Meal:show" }
+
+meal_new:
+    pattern:  /new
+    defaults: { _controller: "BohemeCafeBundle:Meal:new" }
+
+meal_create:
+    pattern:  /create
+    defaults: { _controller: "BohemeCafeBundle:Meal:create" }
+    requirements: { _method: post }
+
+meal_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BohemeCafeBundle:Meal:edit" }
+
+meal_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BohemeCafeBundle:Meal:update" }
+    requirements: { _method: post|put }
+
+meal_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BohemeCafeBundle:Meal:delete" }
+    requirements: { _method: post|delete }

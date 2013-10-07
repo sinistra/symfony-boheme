@@ -1,0 +1,30 @@
+wine:
+    pattern:  /
+    defaults: { _controller: "BohemeCafeBundle:Wine:index" }
+
+wine_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "BohemeCafeBundle:Wine:show" }
+
+wine_new:
+    pattern:  /new
+    defaults: { _controller: "BohemeCafeBundle:Wine:new" }
+
+wine_create:
+    pattern:  /create
+    defaults: { _controller: "BohemeCafeBundle:Wine:create" }
+    requirements: { _method: post }
+
+wine_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "BohemeCafeBundle:Wine:edit" }
+
+wine_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "BohemeCafeBundle:Wine:update" }
+    requirements: { _method: post|put }
+
+wine_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "BohemeCafeBundle:Wine:delete" }
+    requirements: { _method: post|delete }

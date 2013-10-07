@@ -1,3 +1,11 @@
 boheme_cafe_homepage:
     pattern:  /hello/{name}
     defaults: { _controller: BohemeCafeBundle:Default:index }
+
+BohemeCafeBundle_meal:
+    resource: "@BohemeCafeBundle/Resources/config/routing/meal.yml"
+    prefix:   /meal
+
+BohemeCafeBundle_wine:
+    resource: "@BohemeCafeBundle/Resources/config/routing/wine.yml"
+    prefix:   /wine
