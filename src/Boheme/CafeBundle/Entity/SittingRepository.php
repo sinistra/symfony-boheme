@@ -1,6 +1,6 @@
 <?php
 
-namespace Nms\CafeBundle\Entity;
+namespace Boheme\CafeBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 

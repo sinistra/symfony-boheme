@@ -1,14 +1,14 @@
 <?php
-// file: src/Nms/CafeBundle/Entity/Winevariety.php
+// file: src/Boheme/CafeBundle/Entity/Winevariety.php
 
-namespace Nms\CafeBundle\Entity;
+namespace Boheme\CafeBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 use Doctrine\ORM\Mapping as ORM; // doctrine orm annotations
 use Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
- * @ORM\Entity(repositoryClass="Nms\CafeBundle\Entity\WinevarietyRepository")
+ * @ORM\Entity(repositoryClass="Boheme\CafeBundle\Entity\WinevarietyRepository")
  * @ORM\Table(name="winevarieties")
  */
 
@@ -372,14 +372,14 @@ class Winevariety {
     public function setContent($content)
     {
         $this->content = $content;
-    
+
         return $this;
     }
 
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -395,7 +395,7 @@ class Winevariety {
     public function addWine(\Nms\CafeBundle\Entity\Wine $wines)
     {
         $this->wines[] = $wines;
-    
+
         return $this;
     }
 
@@ -412,7 +412,7 @@ class Winevariety {
     /**
      * Get wines
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getWines()
     {

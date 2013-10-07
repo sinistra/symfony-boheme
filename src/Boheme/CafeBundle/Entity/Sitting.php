@@ -1,14 +1,14 @@
 <?php
-// file: src/Nms/CafeBundle/Entity/Sitting.php
+// file: src/Boheme/CafeBundle/Entity/Sitting.php
 
-namespace Nms\CafeBundle\Entity;
+namespace Boheme\CafeBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 use Doctrine\ORM\Mapping as ORM; // doctrine orm annotations
 use Symfony\Component\Validator\ExecutionContextInterface;
 
 /**
- * @ORM\Entity(repositoryClass="Nms\CafeBundle\Entity\SittingRepository")
+ * @ORM\Entity(repositoryClass="Boheme\CafeBundle\Entity\SittingRepository")
  * @ORM\Table(name="sittings")
  */
 
@@ -372,14 +372,14 @@ class Sitting {
     public function setContent($content)
     {
         $this->content = $content;
-    
+
         return $this;
     }
 
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -395,7 +395,7 @@ class Sitting {
     public function addMeal(\Nms\CafeBundle\Entity\Meal $meals)
     {
         $this->meals[] = $meals;
-    
+
         return $this;
     }
 
@@ -412,7 +412,7 @@ class Sitting {
     /**
      * Get meals
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getMeals()
     {

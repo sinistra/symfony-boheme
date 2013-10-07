@@ -1,8 +1,8 @@
 <?php
 
-// file: src/Nms/CafeBundle/Entity/Wine.php
+// file: src/Boheme/CafeBundle/Entity/Wine.php
 
-namespace Nms\CafeBundle\Entity;
+namespace Boheme\CafeBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 use Doctrine\ORM\Mapping as ORM; // doctrine orm annotations
@@ -11,7 +11,7 @@ use Symfony\Component\Validator\ExecutionContextInterface;
 /**
  * @ORM\Entity
  * @ORM\Table(name="wines")
- * @ORM\Entity(repositoryClass="Nms\CafeBundle\Entity\WineRepository")
+ * @ORM\Entity(repositoryClass="Boheme\CafeBundle\Entity\WineRepository")
 
  */
 
@@ -115,7 +115,7 @@ class Wine {
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -131,14 +131,14 @@ class Wine {
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -154,14 +154,14 @@ class Wine {
     public function setNote($note)
     {
         $this->note = $note;
-    
+
         return $this;
     }
 
     /**
      * Get note
      *
-     * @return string 
+     * @return string
      */
     public function getNote()
     {
@@ -177,14 +177,14 @@ class Wine {
     public function setGlassvolume($glassvolume)
     {
         $this->glassvolume = $glassvolume;
-    
+
         return $this;
     }
 
     /**
      * Get glassvolume
      *
-     * @return integer 
+     * @return integer
      */
     public function getGlassvolume()
     {
@@ -200,14 +200,14 @@ class Wine {
     public function setGlassprice($glassprice)
     {
         $this->glassprice = $glassprice;
-    
+
         return $this;
     }
 
     /**
      * Get glassprice
      *
-     * @return float 
+     * @return float
      */
     public function getGlassprice()
     {
@@ -223,14 +223,14 @@ class Wine {
     public function setCarafevolume($carafevolume)
     {
         $this->carafevolume = $carafevolume;
-    
+
         return $this;
     }
 
     /**
      * Get carafevolume
      *
-     * @return integer 
+     * @return integer
      */
     public function getCarafevolume()
     {
@@ -246,14 +246,14 @@ class Wine {
     public function setCarafeprice($carafeprice)
     {
         $this->carafeprice = $carafeprice;
-    
+
         return $this;
     }
 
     /**
      * Get carafeprice
      *
-     * @return float 
+     * @return float
      */
     public function getCarafeprice()
     {
@@ -269,14 +269,14 @@ class Wine {
     public function setBottlevolume($bottlevolume)
     {
         $this->bottlevolume = $bottlevolume;
-    
+
         return $this;
     }
 
     /**
      * Get bottlevolume
      *
-     * @return integer 
+     * @return integer
      */
     public function getBottlevolume()
     {
@@ -292,14 +292,14 @@ class Wine {
     public function setBottleprice($bottleprice)
     {
         $this->bottleprice = $bottleprice;
-    
+
         return $this;
     }
 
     /**
      * Get bottleprice
      *
-     * @return float 
+     * @return float
      */
     public function getBottleprice()
     {
@@ -315,14 +315,14 @@ class Wine {
     public function setCreated($created)
     {
         $this->created = $created;
-    
+
         return $this;
     }
 
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -338,14 +338,14 @@ class Wine {
     public function setCreatedby($createdby)
     {
         $this->createdby = $createdby;
-    
+
         return $this;
     }
 
     /**
      * Get createdby
      *
-     * @return string 
+     * @return string
      */
     public function getCreatedby()
     {
@@ -361,14 +361,14 @@ class Wine {
     public function setUpdated($updated)
     {
         $this->updated = $updated;
-    
+
         return $this;
     }
 
     /**
      * Get updated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -384,14 +384,14 @@ class Wine {
     public function setUpdatedby($updatedby)
     {
         $this->updatedby = $updatedby;
-    
+
         return $this;
     }
 
     /**
      * Get updatedby
      *
-     * @return string 
+     * @return string
      */
     public function getUpdatedby()
     {
@@ -407,14 +407,14 @@ class Wine {
     public function setVariety(\Nms\CafeBundle\Entity\Winevariety $variety = null)
     {
         $this->variety = $variety;
-    
+
         return $this;
     }
 
     /**
      * Get variety
      *
-     * @return \Nms\CafeBundle\Entity\Winevariety 
+     * @return \Nms\CafeBundle\Entity\Winevariety
      */
     public function getVariety()
     {
@@ -430,14 +430,14 @@ class Wine {
     public function setRegion(\Nms\CafeBundle\Entity\Wineregion $region = null)
     {
         $this->region = $region;
-    
+
         return $this;
     }
 
     /**
      * Get region
      *
-     * @return \Nms\CafeBundle\Entity\Wineregion 
+     * @return \Nms\CafeBundle\Entity\Wineregion
      */
     public function getRegion()
     {

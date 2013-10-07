@@ -2,7 +2,7 @@
 
 // file: src/Nms/CafeBundle/Entity/Meal.php
 
-namespace Nms\CafeBundle\Entity;
+namespace Boheme\CafeBundle\Entity;
 
 use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
 use Doctrine\ORM\Mapping as ORM; // doctrine orm annotations
@@ -11,7 +11,7 @@ use Symfony\Component\Validator\ExecutionContextInterface;
 /**
  * @ORM\Entity
  * @ORM\Table(name="meals")
- * @ORM\Entity(repositoryClass="Nms\CafeBundle\Entity\MealRepository")
+ * @ORM\Entity(repositoryClass="Boheme\CafeBundle\Entity\MealRepository")
 
  */
 
@@ -100,7 +100,7 @@ class Meal {
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -116,14 +116,14 @@ class Meal {
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -139,14 +139,14 @@ class Meal {
     public function setContent($content)
     {
         $this->content = $content;
-    
+
         return $this;
     }
 
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -162,14 +162,14 @@ class Meal {
     public function setPublish($publish)
     {
         $this->publish = $publish;
-    
+
         return $this;
     }
 
     /**
      * Get publish
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getPublish()
     {
@@ -185,14 +185,14 @@ class Meal {
     public function setExpire($expire)
     {
         $this->expire = $expire;
-    
+
         return $this;
     }
 
     /**
      * Get expire
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getExpire()
     {
@@ -208,14 +208,14 @@ class Meal {
     public function setPrice($price)
     {
         $this->price = $price;
-    
+
         return $this;
     }
 
     /**
      * Get price
      *
-     * @return float 
+     * @return float
      */
     public function getPrice()
     {
@@ -231,14 +231,14 @@ class Meal {
     public function setCreated($created)
     {
         $this->created = $created;
-    
+
         return $this;
     }
 
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -254,14 +254,14 @@ class Meal {
     public function setCreatedby($createdby)
     {
         $this->createdby = $createdby;
-    
+
         return $this;
     }
 
     /**
      * Get createdby
      *
-     * @return string 
+     * @return string
      */
     public function getCreatedby()
     {
@@ -277,14 +277,14 @@ class Meal {
     public function setUpdated($updated)
     {
         $this->updated = $updated;
-    
+
         return $this;
     }
 
     /**
      * Get updated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -300,14 +300,14 @@ class Meal {
     public function setUpdatedby($updatedby)
     {
         $this->updatedby = $updatedby;
-    
+
         return $this;
     }
 
     /**
      * Get updatedby
      *
-     * @return string 
+     * @return string
      */
     public function getUpdatedby()
     {
@@ -323,14 +323,14 @@ class Meal {
     public function setSitting(\Nms\CafeBundle\Entity\Sitting $sitting = null)
     {
         $this->sitting = $sitting;
-    
+
         return $this;
     }
 
     /**
      * Get sitting
      *
-     * @return \Nms\CafeBundle\Entity\Sitting 
+     * @return \Nms\CafeBundle\Entity\Sitting
      */
     public function getSitting()
     {
@@ -346,14 +346,14 @@ class Meal {
     public function setMenugroup(\Nms\CafeBundle\Entity\Menugroup $menugroup = null)
     {
         $this->menugroup = $menugroup;
-    
+
         return $this;
     }
 
     /**
      * Get menugroup
      *
-     * @return \Nms\CafeBundle\Entity\Menugroup 
+     * @return \Nms\CafeBundle\Entity\Menugroup
      */
     public function getMenugroup()
     {
