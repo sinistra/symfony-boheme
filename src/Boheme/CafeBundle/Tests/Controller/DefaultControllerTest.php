@@ -1,6 +1,6 @@
 <?php
 
-namespace Nms\CafeBundle\Tests\Controller;
+namespace Boheme\CafeBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

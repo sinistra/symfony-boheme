@@ -1,5 +1,5 @@
-nms_cafe:
-    resource: "@NmsCafeBundle/Resources/config/routing.yml"
+boheme_cafe:
+    resource: "@BohemeCafeBundle/Resources/config/routing.yml"
     prefix:   /
 
 # app/config/routing.yml

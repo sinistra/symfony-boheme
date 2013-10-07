@@ -1,0 +1,7 @@
+parameters:
+#    boheme_cafe.example.class: Boheme\CafeBundle\Example
+
+services:
+#    boheme_cafe.example:
+#        class: %boheme_cafe.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

@@ -1,6 +1,6 @@
 <?php
 
-namespace Nms\CafeBundle\Controller;
+namespace Boheme\CafeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -8,6 +8,6 @@ class DefaultController extends Controller
 {
     public function indexAction($name)
     {
-        return $this->render('NmsCafeBundle:Default:index.html.twig', array('name' => $name));
+        return $this->render('BohemeCafeBundle:Default:index.html.twig', array('name' => $name));
     }
 }
