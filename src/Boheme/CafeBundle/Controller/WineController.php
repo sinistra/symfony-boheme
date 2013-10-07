@@ -54,12 +54,12 @@ class WineController extends Controller
     }
 
     /**
-    * Creates a form to create a Wine entity.
-    *
-    * @param Wine $entity The entity
-    *
-    * @return \Symfony\Component\Form\Form The form
-    */
+     * Creates a form to create a Wine entity.
+     *
+     * @param Wine $entity The entity
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
     private function createCreateForm(Wine $entity)
     {
         $form = $this->createForm(new WineType(), $entity, array(
@@ -67,7 +67,7 @@ class WineController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+//        $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
@@ -105,7 +105,8 @@ class WineController extends Controller
 
         return $this->render('BohemeCafeBundle:Wine:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'delete_form' => $deleteForm->createView(),
+            ));
     }
 
     /**
@@ -146,7 +147,7 @@ class WineController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+//        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -216,7 +217,7 @@ class WineController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('wine_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+//            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }
