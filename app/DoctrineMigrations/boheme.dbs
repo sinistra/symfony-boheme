@@ -2,27 +2,27 @@
 <project name="boheme" id="Project1200642" database="MySql" >
 	<schema name="boheme" catalogname="boheme" defo="y" >
 		<table name="blogs" >
-			<column name="id" type="varchar" length="32" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="title" type="varchar" length="64" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="created" type="datetime" length="19" jt="93" mandatory="y" regexp_nulls="0" />
-			<column name="updated" type="datetime" length="19" jt="93" mandatory="y" regexp_nulls="0" />
-			<column name="createdBy" type="varchar" length="255" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="updatedBy" type="varchar" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="id" type="VARCHAR" length="32" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="title" type="VARCHAR" length="64" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="created" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="updated" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="createdBy" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="updatedBy" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
 			<index name="pk_blogs" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
 		</table>
 		<table name="ext_log_entries" >
-			<column name="id" type="int" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
-			<column name="action" type="varchar" length="8" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="logged_at" type="datetime" length="19" jt="93" mandatory="y" regexp_nulls="0" />
-			<column name="object_id" type="varchar" length="64" jt="12" />
-			<column name="object_class" type="varchar" length="255" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="version" type="int" length="10" jt="4" mandatory="y" regexp_nulls="0" />
-			<column name="data" type="longtext" length="2147483647" jt="-1" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
+			<column name="action" type="VARCHAR" length="8" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="logged_at" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="object_id" type="VARCHAR" length="64" jt="12" />
+			<column name="object_class" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="version" type="INT" length="10" jt="4" mandatory="y" regexp_nulls="0" />
+			<column name="data" type="LONGTEXT" length="2147483647" jt="-1" >
 				<comment><![CDATA[(DC2Type:array)]]></comment>
 			</column>
-			<column name="username" type="varchar" length="255" jt="12" />
+			<column name="username" type="VARCHAR" length="255" jt="12" />
 			<index name="pk_ext_log_entries" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -42,12 +42,12 @@
 			</index>
 		</table>
 		<table name="ext_translations" >
-			<column name="id" type="int" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
-			<column name="locale" type="varchar" length="8" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="object_class" type="varchar" length="255" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="field" type="varchar" length="32" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="foreign_key" type="varchar" length="64" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="content" type="longtext" length="2147483647" jt="-1" />
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
+			<column name="locale" type="VARCHAR" length="8" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="object_class" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="field" type="VARCHAR" length="32" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="foreign_key" type="VARCHAR" length="64" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="content" type="LONGTEXT" length="2147483647" jt="-1" />
 			<index name="pk_ext_translations" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -64,11 +64,11 @@
 			</index>
 		</table>
 		<table name="groups" >
-			<column name="id" type="int" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
-			<column name="name" type="varchar" length="30" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="role" type="varchar" length="20" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="created" type="datetime" length="19" jt="93" mandatory="y" regexp_nulls="0" />
-			<column name="updated" type="datetime" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
+			<column name="name" type="VARCHAR" length="30" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="role" type="VARCHAR" length="20" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="created" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="updated" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
 			<index name="pk_groups" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -76,20 +76,61 @@
 				<column name="role" />
 			</index>
 		</table>
+		<table name="meals" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
+			<column name="sitting_id" type="INT" length="10" jt="4" />
+			<column name="menugroup_id" type="INT" length="10" jt="4" />
+			<column name="title" type="VARCHAR" length="64" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="content" type="LONGTEXT" length="2147483647" jt="-1" mandatory="y" regexp_nulls="0" />
+			<column name="publish" type="DATE" length="10" jt="91" mandatory="y" regexp_nulls="0" />
+			<column name="expire" type="DATE" length="10" jt="91" mandatory="y" regexp_nulls="0" />
+			<column name="price" type="DECIMAL" length="10" decimal="2" jt="3" mandatory="y" regexp_nulls="0" />
+			<column name="created" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="createdby" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="updated" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="updatedby" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<index name="pk_meals" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="IDX_E229E6EA8014E66" unique="NORMAL" >
+				<column name="sitting_id" />
+			</index>
+			<index name="IDX_E229E6EA2C72584" unique="NORMAL" >
+				<column name="menugroup_id" />
+			</index>
+			<fk name="FK_E229E6EA2C72584" to_schema="boheme" to_table="menugroups" >
+				<fk_column name="menugroup_id" pk="id" />
+			</fk>
+			<fk name="FK_E229E6EA8014E66" to_schema="boheme" to_table="sittings" >
+				<fk_column name="sitting_id" pk="id" />
+			</fk>
+		</table>
+		<table name="menugroups" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
+			<column name="title" type="VARCHAR" length="64" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="content" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="created" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="createdBy" type="VARCHAR" length="25" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="updated" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="updatedBy" type="VARCHAR" length="25" jt="12" mandatory="y" regexp_nulls="0" />
+			<index name="pk_menugroups" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
 		<table name="menus" >
-			<column name="id" type="int" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
-			<column name="parent" type="int" length="10" jt="4" mandatory="y" regexp_nulls="0" />
-			<column name="seq" type="int" length="10" jt="4" mandatory="y" regexp_nulls="0" />
-			<column name="title" type="varchar" length="30" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="icon" type="varchar" length="20" jt="12" />
-			<column name="url" type="varchar" length="50" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="secured" type="bit" jt="-7" mandatory="y" regexp_nulls="0" />
-			<column name="external" type="bit" jt="-7" mandatory="y" regexp_nulls="0" />
-			<column name="created" type="datetime" length="19" jt="93" mandatory="y" regexp_nulls="0" />
-			<column name="createdBy" type="varchar" length="30" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="updated" type="datetime" length="19" jt="93" mandatory="y" regexp_nulls="0" />
-			<column name="updatedBy" type="varchar" length="30" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="role" type="varchar" length="30" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
+			<column name="parent" type="INT" length="10" jt="4" mandatory="y" regexp_nulls="0" />
+			<column name="seq" type="INT" length="10" jt="4" mandatory="y" regexp_nulls="0" />
+			<column name="title" type="VARCHAR" length="30" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="icon" type="VARCHAR" length="20" jt="12" />
+			<column name="url" type="VARCHAR" length="50" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="secured" type="BIT" jt="-7" mandatory="y" regexp_nulls="0" />
+			<column name="external" type="BIT" jt="-7" mandatory="y" regexp_nulls="0" />
+			<column name="created" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="createdBy" type="VARCHAR" length="30" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="updated" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="updatedBy" type="VARCHAR" length="30" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="role" type="VARCHAR" length="30" jt="12" mandatory="y" regexp_nulls="0" />
 			<index name="pk_menus" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -98,28 +139,40 @@
 			</index>
 		</table>
 		<table name="migration_versions" >
-			<column name="version" type="varchar" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="version" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
 			<index name="pk_migration_versions" unique="PRIMARY_KEY" >
 				<column name="version" />
 			</index>
 		</table>
 		<table name="notices" >
-			<column name="id" type="int" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
-			<column name="title" type="varchar" length="64" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="content" type="longtext" length="2147483647" jt="-1" mandatory="y" regexp_nulls="0" />
-			<column name="publish" type="date" length="10" jt="91" mandatory="y" regexp_nulls="0" />
-			<column name="expire" type="date" length="10" jt="91" mandatory="y" regexp_nulls="0" />
-			<column name="created" type="datetime" length="19" jt="93" mandatory="y" regexp_nulls="0" />
-			<column name="createdBy" type="varchar" length="255" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="updated" type="datetime" length="19" jt="93" mandatory="y" regexp_nulls="0" />
-			<column name="updatedBy" type="varchar" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
+			<column name="title" type="VARCHAR" length="64" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="content" type="LONGTEXT" length="2147483647" jt="-1" mandatory="y" regexp_nulls="0" />
+			<column name="publish" type="DATE" length="10" jt="91" mandatory="y" regexp_nulls="0" />
+			<column name="expire" type="DATE" length="10" jt="91" mandatory="y" regexp_nulls="0" />
+			<column name="created" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="createdBy" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="updated" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="updatedBy" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
 			<index name="pk_notices" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
 		</table>
+		<table name="sittings" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
+			<column name="title" type="VARCHAR" length="64" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="content" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="created" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="createdBy" type="VARCHAR" length="25" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="updated" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="updatedBy" type="VARCHAR" length="25" jt="12" mandatory="y" regexp_nulls="0" />
+			<index name="pk_sittings" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
 		<table name="user_group" >
-			<column name="user_id" type="int" length="10" jt="4" mandatory="y" regexp_nulls="0" />
-			<column name="group_id" type="int" length="10" jt="4" mandatory="y" regexp_nulls="0" />
+			<column name="user_id" type="INT" length="10" jt="4" mandatory="y" regexp_nulls="0" />
+			<column name="group_id" type="INT" length="10" jt="4" mandatory="y" regexp_nulls="0" />
 			<index name="pk_user_group" unique="PRIMARY_KEY" >
 				<column name="user_id" />
 				<column name="group_id" />
@@ -138,21 +191,21 @@
 			</fk>
 		</table>
 		<table name="users" >
-			<column name="id" type="int" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
-			<column name="username" type="varchar" length="25" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="name" type="varchar" length="50" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="salt" type="varchar" length="32" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="password" type="varchar" length="40" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="email" type="varchar" length="60" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="token" type="varchar" length="20" jt="12" />
-			<column name="is_active" type="bit" jt="-7" mandatory="y" regexp_nulls="0" />
-			<column name="logins" type="int" length="10" jt="4" mandatory="y" regexp_nulls="0" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
+			<column name="username" type="VARCHAR" length="25" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="name" type="VARCHAR" length="50" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="salt" type="VARCHAR" length="32" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="password" type="VARCHAR" length="40" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="email" type="VARCHAR" length="60" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="token" type="VARCHAR" length="20" jt="12" />
+			<column name="is_active" type="BIT" jt="-7" mandatory="y" regexp_nulls="0" />
+			<column name="logins" type="INT" length="10" jt="4" mandatory="y" regexp_nulls="0" >
 				<defo>0</defo>
 			</column>
-			<column name="created" type="datetime" length="19" jt="93" mandatory="y" regexp_nulls="0" />
-			<column name="createdBy" type="varchar" length="255" jt="12" mandatory="y" regexp_nulls="0" />
-			<column name="updated" type="datetime" length="19" jt="93" mandatory="y" regexp_nulls="0" />
-			<column name="updatedBy" type="varchar" length="255" jt="12" />
+			<column name="created" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="createdBy" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="updated" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="updatedBy" type="VARCHAR" length="255" jt="12" />
 			<index name="pk_users" unique="PRIMARY_KEY" >
 				<column name="id" />
 			</index>
@@ -166,32 +219,104 @@
 				<column name="token" />
 			</index>
 		</table>
+		<table name="wineregions" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
+			<column name="title" type="VARCHAR" length="64" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="content" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="created" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="createdBy" type="VARCHAR" length="25" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="updated" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="updatedBy" type="VARCHAR" length="25" jt="12" mandatory="y" regexp_nulls="0" />
+			<index name="pk_wineregions" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
+		<table name="wines" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
+			<column name="variety_id" type="INT" length="10" jt="4" />
+			<column name="region_id" type="INT" length="10" jt="4" />
+			<column name="title" type="VARCHAR" length="64" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="note" type="LONGTEXT" length="2147483647" jt="-1" mandatory="y" regexp_nulls="0" />
+			<column name="glassvolume" type="INT" length="10" jt="4" mandatory="y" regexp_nulls="0" />
+			<column name="glassprice" type="DECIMAL" length="10" decimal="2" jt="3" mandatory="y" regexp_nulls="0" />
+			<column name="carafevolume" type="INT" length="10" jt="4" mandatory="y" regexp_nulls="0" />
+			<column name="carafeprice" type="DECIMAL" length="10" decimal="2" jt="3" mandatory="y" regexp_nulls="0" />
+			<column name="bottlevolume" type="INT" length="10" jt="4" mandatory="y" regexp_nulls="0" />
+			<column name="bottleprice" type="DECIMAL" length="10" decimal="2" jt="3" mandatory="y" regexp_nulls="0" />
+			<column name="created" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="createdby" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="updated" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="updatedby" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<index name="pk_wines" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+			<index name="IDX_58312A0578C2BC47" unique="NORMAL" >
+				<column name="variety_id" />
+			</index>
+			<index name="IDX_58312A0598260155" unique="NORMAL" >
+				<column name="region_id" />
+			</index>
+			<fk name="FK_58312A0598260155" to_schema="boheme" to_table="wineregions" >
+				<fk_column name="region_id" pk="id" />
+			</fk>
+			<fk name="FK_58312A0578C2BC47" to_schema="boheme" to_table="winevarieties" >
+				<fk_column name="variety_id" pk="id" />
+			</fk>
+		</table>
+		<table name="winevarieties" >
+			<column name="id" type="INT" length="10" jt="4" mandatory="y" autoincrement="y" regexp_nulls="0" />
+			<column name="title" type="VARCHAR" length="64" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="content" type="VARCHAR" length="255" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="created" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="createdBy" type="VARCHAR" length="25" jt="12" mandatory="y" regexp_nulls="0" />
+			<column name="updated" type="DATETIME" length="19" jt="93" mandatory="y" regexp_nulls="0" />
+			<column name="updatedBy" type="VARCHAR" length="25" jt="12" mandatory="y" regexp_nulls="0" />
+			<index name="pk_winevarieties" unique="PRIMARY_KEY" >
+				<column name="id" />
+			</index>
+		</table>
 	</schema>
-	<connector name="boheme" database="MySql" driver_class="com.mysql.jdbc.Driver" driver_jar="mysql-connector-java-5.1.25-bin.jar" host="localhost" port="3306" instance="boheme" user="root" passwd="cm9vdA==" schema_mapping="" />
+	<connector name="boheme" database="MySql" driver_class="com.mysql.jdbc.Driver" driver_jar="mysql-connector-java-5.1.12-bin.jar" host="localhost" port="3306" instance="boheme" user="root" passwd="cm9vdA==" schema_mapping="" />
 	<layout id="Layout1234367" name="boheme" joined_routing="y" show_relation_columns="y" >
-		<entity schema="boheme" name="blogs" color="f7e2c6" x="855" y="75" />
-		<entity schema="boheme" name="ext_log_entries" color="f7e2c6" x="675" y="45" />
-		<entity schema="boheme" name="ext_translations" color="f7e2c6" x="855" y="270" />
-		<entity schema="boheme" name="menus" color="f7e2c6" x="525" y="270" />
-		<entity schema="boheme" name="migration_versions" color="f7e2c6" x="675" y="270" />
-		<entity schema="boheme" name="notices" color="cef7c6" x="45" y="45" />
-		<entity schema="boheme" name="users" color="cef7c6" x="180" y="45" />
-		<entity schema="boheme" name="user_group" color="cef7c6" x="330" y="45" />
-		<entity schema="boheme" name="groups" color="f7e2c6" x="345" y="210" />
+		<entity schema="boheme" name="blogs" color="f7e2c6" x="825" y="480" />
+		<entity schema="boheme" name="ext_log_entries" color="f7e2c6" x="660" y="450" />
+		<entity schema="boheme" name="ext_translations" color="f7e2c6" x="825" y="675" />
+		<entity schema="boheme" name="migration_versions" color="f7e2c6" x="660" y="675" />
+		<entity schema="boheme" name="users" color="cef7c6" x="330" y="675" />
+		<entity schema="boheme" name="user_group" color="cef7c6" x="195" y="675" />
+		<entity schema="boheme" name="groups" color="f7e2c6" x="195" y="495" />
+		<entity schema="boheme" name="menus" color="f7e2c6" x="480" y="510" />
+		<entity schema="boheme" name="notices" color="cef7c6" x="45" y="495" />
+		<entity schema="boheme" name="meals" color="c6d9f6" x="45" y="75" />
+		<entity schema="boheme" name="sittings" color="c6d9f6" x="270" y="60" />
+		<entity schema="boheme" name="menugroups" color="c6d9f6" x="270" y="225" />
+		<entity schema="boheme" name="winevarieties" color="c6d9f6" x="765" y="60" />
+		<entity schema="boheme" name="wines" color="c6d9f6" x="480" y="75" />
+		<entity schema="boheme" name="wineregions" color="c6d9f6" x="765" y="240" />
 		<group name="migration_versions" color="faf6f0" >
 			<comment>Used by : 
    user_group</comment>
 			<entity schema="boheme" name="migration_versions" />
-			<entity schema="boheme" name="menus" />
 			<entity schema="boheme" name="ext_translations" />
 			<entity schema="boheme" name="ext_log_entries" />
 			<entity schema="boheme" name="blogs" />
 		</group>
-		<group name="user_group" color="f2faf0" >
+		<group name="users" color="f2faf0" >
 			<entity schema="boheme" name="user_group" />
 			<entity schema="boheme" name="notices" />
 			<entity schema="boheme" name="users" />
 			<entity schema="boheme" name="groups" />
+			<entity schema="boheme" name="menus" />
+		</group>
+		<group name="Menu" color="c4e0f9" >
+			<entity schema="boheme" name="meals" />
+			<entity schema="boheme" name="sittings" />
+			<entity schema="boheme" name="menugroups" />
+		</group>
+		<group name="Wines" color="c4e0f9" >
+			<entity schema="boheme" name="wines" />
+			<entity schema="boheme" name="winevarieties" />
+			<entity schema="boheme" name="wineregions" />
 		</group>
 	</layout>
 </project>

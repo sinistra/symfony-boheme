@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.32, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.27, for osx10.6 (i386)
 --
 -- Host: localhost    Database: boheme
 -- ------------------------------------------------------
--- Server version	5.5.32-0ubuntu0.13.04.1
+-- Server version	5.5.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -132,6 +132,71 @@ LOCK TABLES `groups` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `meals`
+--
+
+DROP TABLE IF EXISTS `meals`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `meals` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sitting_id` int(11) DEFAULT NULL,
+  `menugroup_id` int(11) DEFAULT NULL,
+  `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `publish` date NOT NULL,
+  `expire` date NOT NULL,
+  `price` decimal(10,2) NOT NULL,
+  `created` datetime NOT NULL,
+  `createdby` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `updated` datetime NOT NULL,
+  `updatedby` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_E229E6EA8014E66` (`sitting_id`),
+  KEY `IDX_E229E6EA2C72584` (`menugroup_id`),
+  CONSTRAINT `FK_E229E6EA2C72584` FOREIGN KEY (`menugroup_id`) REFERENCES `menugroups` (`id`),
+  CONSTRAINT `FK_E229E6EA8014E66` FOREIGN KEY (`sitting_id`) REFERENCES `sittings` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `meals`
+--
+
+LOCK TABLES `meals` WRITE;
+/*!40000 ALTER TABLE `meals` DISABLE KEYS */;
+/*!40000 ALTER TABLE `meals` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `menugroups`
+--
+
+DROP TABLE IF EXISTS `menugroups`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `menugroups` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `createdBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `updated` datetime NOT NULL,
+  `updatedBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `menugroups`
+--
+
+LOCK TABLES `menugroups` WRITE;
+/*!40000 ALTER TABLE `menugroups` DISABLE KEYS */;
+/*!40000 ALTER TABLE `menugroups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `menus`
 --
 
@@ -185,7 +250,7 @@ CREATE TABLE `migration_versions` (
 
 LOCK TABLES `migration_versions` WRITE;
 /*!40000 ALTER TABLE `migration_versions` DISABLE KEYS */;
-INSERT INTO `migration_versions` VALUES ('20131001090506');
+INSERT INTO `migration_versions` VALUES ('20131001090506'),('20131007163247'),('20131007165101');
 /*!40000 ALTER TABLE `migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -220,6 +285,34 @@ LOCK TABLES `notices` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `sittings`
+--
+
+DROP TABLE IF EXISTS `sittings`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `sittings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `createdBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `updated` datetime NOT NULL,
+  `updatedBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `sittings`
+--
+
+LOCK TABLES `sittings` WRITE;
+/*!40000 ALTER TABLE `sittings` DISABLE KEYS */;
+/*!40000 ALTER TABLE `sittings` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `user_group`
 --
 
@@ -232,8 +325,8 @@ CREATE TABLE `user_group` (
   PRIMARY KEY (`user_id`,`group_id`),
   KEY `IDX_8F02BF9DA76ED395` (`user_id`),
   KEY `IDX_8F02BF9DFE54D947` (`group_id`),
-  CONSTRAINT `FK_8F02BF9DFE54D947` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `FK_8F02BF9DA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+  CONSTRAINT `FK_8F02BF9DA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_8F02BF9DFE54D947` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -282,6 +375,102 @@ LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `wineregions`
+--
+
+DROP TABLE IF EXISTS `wineregions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wineregions` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `createdBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `updated` datetime NOT NULL,
+  `updatedBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wineregions`
+--
+
+LOCK TABLES `wineregions` WRITE;
+/*!40000 ALTER TABLE `wineregions` DISABLE KEYS */;
+/*!40000 ALTER TABLE `wineregions` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `wines`
+--
+
+DROP TABLE IF EXISTS `wines`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `wines` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `variety_id` int(11) DEFAULT NULL,
+  `region_id` int(11) DEFAULT NULL,
+  `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `note` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `glassvolume` int(11) NOT NULL,
+  `glassprice` decimal(10,2) NOT NULL,
+  `carafevolume` int(11) NOT NULL,
+  `carafeprice` decimal(10,2) NOT NULL,
+  `bottlevolume` int(11) NOT NULL,
+  `bottleprice` decimal(10,2) NOT NULL,
+  `created` datetime NOT NULL,
+  `createdby` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `updated` datetime NOT NULL,
+  `updatedby` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_58312A0578C2BC47` (`variety_id`),
+  KEY `IDX_58312A0598260155` (`region_id`),
+  CONSTRAINT `FK_58312A0598260155` FOREIGN KEY (`region_id`) REFERENCES `wineregions` (`id`),
+  CONSTRAINT `FK_58312A0578C2BC47` FOREIGN KEY (`variety_id`) REFERENCES `winevarieties` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `wines`
+--
+
+LOCK TABLES `wines` WRITE;
+/*!40000 ALTER TABLE `wines` DISABLE KEYS */;
+/*!40000 ALTER TABLE `wines` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `winevarieties`
+--
+
+DROP TABLE IF EXISTS `winevarieties`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `winevarieties` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `content` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `createdBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `updated` datetime NOT NULL,
+  `updatedBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `winevarieties`
+--
+
+LOCK TABLES `winevarieties` WRITE;
+/*!40000 ALTER TABLE `winevarieties` DISABLE KEYS */;
+/*!40000 ALTER TABLE `winevarieties` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -292,4 +481,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-01 12:08:58
+-- Dump completed on 2013-10-07 17:02:45
