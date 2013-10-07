@@ -17,18 +17,14 @@ class MealType extends AbstractType
         $builder
             ->add('title')
             ->add('content')
-            ->add('publish')
-            ->add('expire')
-            ->add('price')
-            ->add('created')
-            ->add('createdby')
-            ->add('updated')
-            ->add('updatedby')
             ->add('sitting')
             ->add('menugroup')
+            ->add('price')
+            ->add('publish')
+            ->add('expire')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */
