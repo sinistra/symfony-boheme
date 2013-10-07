@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.27, for osx10.6 (i386)
+-- MySQL dump 10.13  Distrib 5.5.32, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: boheme
 -- ------------------------------------------------------
--- Server version	5.5.27
+-- Server version	5.5.32-0ubuntu0.13.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -205,21 +205,21 @@ DROP TABLE IF EXISTS `menus`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `menus` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `parent` int(11) NOT NULL,
-  `seq` int(11) NOT NULL,
   `title` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `icon` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `parent` int(11) NOT NULL,
+  `seq` int(11) NOT NULL,
   `url` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
   `secured` tinyint(1) NOT NULL,
   `external` tinyint(1) NOT NULL,
+  `role` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `created` datetime NOT NULL,
   `createdBy` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   `updated` datetime NOT NULL,
   `updatedBy` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
-  `role` varchar(30) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_727508CFF47645AE` (`url`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -228,6 +228,7 @@ CREATE TABLE `menus` (
 
 LOCK TABLES `menus` WRITE;
 /*!40000 ALTER TABLE `menus` DISABLE KEYS */;
+INSERT INTO `menus` VALUES (1,'Group',NULL,4,2,'group_list',1,0,'','2013-06-02 20:53:05','','2013-07-19 19:52:16','paul'),(2,'Users',NULL,6,4,'user_list',1,0,'','2013-06-02 22:24:19','','2013-08-12 20:23:50','paul'),(3,'Menus',NULL,4,2,'menu_list',1,0,'','2013-06-05 22:27:02','','2013-08-12 20:24:51','paul'),(6,'Admin','cogs',0,3,'#admin',1,1,'ROLE_USER','2013-07-19 20:38:38','paul','2013-07-19 20:38:38','paul'),(7,'Notices',NULL,6,1,'notice_list',1,0,'ROLE_USER','2013-07-19 20:41:12','paul','2013-07-19 20:41:33','paul'),(8,'About Me','bookmark',0,9,'#about',1,1,'ROLE_USER','2013-07-19 20:53:13','paul','2013-07-19 20:53:13','paul');
 /*!40000 ALTER TABLE `menus` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -481,4 +482,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-07 17:02:45
+-- Dump completed on 2013-10-08 10:43:07
