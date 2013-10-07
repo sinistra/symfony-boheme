@@ -10,11 +10,11 @@ nms_demo_update:
     pattern:  /demo/update
     defaults: { _controller: NmsAdminBundle:Demo:update }
 
-NmsAdminBundle_homepage:
-    pattern:  /
-    defaults: { _controller: NmsAdminBundle:Notice:published}
-    requirements:
-        _method:  GET
+#NmsAdminBundle_homepage:
+#    pattern:  /
+#    defaults: { _controller: NmsAdminBundle:Notice:published}
+#    requirements:
+#        _method:  GET
 
 NmsAdminBundle_about:
     pattern:  /about

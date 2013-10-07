@@ -1,5 +1,5 @@
 boheme_cafe_homepage:
-    pattern:  /hello/{name}
+    pattern:  /
     defaults: { _controller: BohemeCafeBundle:Default:index }
 
 BohemeCafeBundle_meal:
