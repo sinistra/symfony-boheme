@@ -2,6 +2,18 @@ boheme_cafe_homepage:
     pattern:  /
     defaults: { _controller: BohemeCafeBundle:Default:index }
 
+boheme_cafe_mealpage:
+    pattern:  /meals
+    defaults: { _controller: BohemeCafeBundle:Default:meal }
+
+boheme_cafe_winepage:
+    pattern:  /wines
+    defaults: { _controller: BohemeCafeBundle:Default:wine }
+
+boheme_cafe_contact:
+    pattern:  /contact
+    defaults: { _controller: BohemeCafeBundle:Default:contact }
+
 BohemeCafeBundle_meal:
     resource: "@BohemeCafeBundle/Resources/config/routing/meal.yml"
     prefix:   /meal
