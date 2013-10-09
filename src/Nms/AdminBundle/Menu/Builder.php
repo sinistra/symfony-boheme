@@ -12,7 +12,7 @@ class Builder extends ContainerAware {
 
     public function mainMenu(FactoryInterface $factory, array $options) {
         $this->menu = $factory->createItem('root');
-        $this->menu->setChildrenAttribute('class', 'page-sidebar-menu');
+//        $this->menu->setChildrenAttribute('class', 'page-sidebar-menu');
 //        $menu->setAttribute('safe_label', true);
 
 //        $this->menu->addChild('Dashboard', array(
