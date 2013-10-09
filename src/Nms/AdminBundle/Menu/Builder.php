@@ -85,7 +85,7 @@ class Builder extends ContainerAware {
             $menu->addChild($element, array(
                 'route' => $record['url'],
                 'extras' => array('safe_label' => true),
-                    )
+                )
             );
         }
         $label = '';
