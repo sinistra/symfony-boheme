@@ -1,22 +1,21 @@
-var Contact = function () {
+var Contact = function() {
 
     return {
-        
         //Map
-        initMap: function () {
-			var map;
-			$(document).ready(function(){
-			  map = new GMaps({
-				div: '#map',
-				lat: -13.004333,
-				lng: -38.494333
-			  });
-			   var marker = map.addMarker({
-		            lat: -13.004333,
-					lng: -38.494333,
-		            title: 'Loop, Inc.'
-		        });
-			});
+        initMap: function() {
+            var map;
+            $(document).ready(function() {
+                map = new GMaps({
+                    div: '#map',
+                    lat: -33.874237,
+                    lng: 151.224015
+                });
+                var marker = map.addMarker({
+                    lat: -33.874237,
+                    lng: 151.224015,
+                    title: 'Cafe Boheme.'
+                });
+            });
         }
 
     };
