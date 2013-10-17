@@ -23,12 +23,30 @@ class MealController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('BohemeCafeBundle:Meal')->findAll();
+        $meals = $em->getRepository('BohemeCafeBundle:Meal')
+                ->filteredFind(
+                $this->get('request')->query->get('sort', 'm.id'),
+                $this->get('request')->query->get('direction', 'ASC'),
+                $this->get('request')->query->get('filterField', null),
+                $this->get('request')->query->get('filterValue', null)
+        );
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+                $meals, $this->get('request')->query->get('page', 1)/* page number */, 10/* limit per page */, array()
+        );
+
+        $fields = array(
+            'm.title' => 'Title',
+            'm.content' => 'Content',
+        );
 
         return $this->render('BohemeCafeBundle:Meal:index.html.twig', array(
-            'entities' => $entities,
+                    'pagination' => $pagination,
+                    'fields' => $fields,
         ));
     }
+
     /**
      * Creates a new Meal entity.
      *
