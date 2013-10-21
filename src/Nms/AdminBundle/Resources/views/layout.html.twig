@@ -3,19 +3,18 @@
 
 {% block block_content %}
 <div>
-        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'NmsAdminBundle') }} |
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'NmsAdminBundle') }} |
         <a href="{{ path('logout') }}">{{ 'layout.logout'|trans({}, 'NmsAdminBundle') }}</a>
-        {% else %}
+    {% else %}
         <a href="{{ path('login') }}">{{ 'layout.login'|trans({}, 'NmsAdminBundle') }}</a>
-        {% endif %}
-    </div>
+    {% endif %}
+</div>
 
-    {% for key, message in app.session.getFlashes() %}
-    <div class="{{ key }}">
-            {{ message|trans({}, 'NmsAdminBundle') }}
-        </div>
-    {% endfor %}
+{% for key, message in app.session.getFlashes() %}
+<div class="{{ key }}">
+    {{ message|trans({}, 'NmsAdminBundle') }}
+</div>
+{% endfor %}
 
-        <div></div>
 {% endblock block_content %}
