@@ -1,15 +1,68 @@
-{% extends '::base.html.twig' %}
+{# src/Boheme/CafeBundle/Resources/views/Meal/new.html.twig #}
+{% extends 'NmsAdminBundle::layout.html.twig' %}
+{#{% form_theme form 'NmsAdminBundle:Form:choice_expanded.html.twig' %}#}
 
-{% block body -%}
-    <h1>Meal creation</h1>
+{% set page_title = 'new Meal' %}
 
-    {{ form(form) }}
+{% block title %}
+{{ parent() }} {{page_title }}
+{% endblock %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('meal') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block pagetitle %} {% endblock %}
+
+{% block breadcrumb %}
+<li>
+    <a href="{{ path('meal') }}">Meal</a>
+    <i class="icon-angle-right"></i>
+</li>
+<li>
+    <a href="{{ path('meal_new', { 'id': entity.id }) }}">Add</a>
+</li>
+{% endblock %}
+
+{% block body %}
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row">
+        <div class="panel panel-grey margin-bottom-40">
+            <div class="panel-heading">
+                <h3 class="panel-title"><i class="icon-tasks"></i> {{page_title}}</h3>
+            </div>
+            <div class="panel-body">
+                {{ form_errors(form) }}
+                <form action="{{ path('meal_create', { 'id': entity.id }) }}" class="form-horizontal" role="form" method="post" {{ form_enctype(form) }}>
+                    <div class="form-group">
+                        {{ form_label(form.title, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                        <div class="col-lg-10">
+                            {{ form_errors(form.title) }}
+                            {{ form_widget(form.title, {'attr':{'class':'form-control'} }) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_label(form.content, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                        <div class="col-lg-10">
+                            {{ form_errors(form.content) }}
+                            {{ form_widget(form.content, {'attr':{'class':'form-control'} }) }}
+                        </div>
+                    </div>
+
+                    {{ form_rest(form) }}
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button type="submit" class="btn-u btn-u-green"><i class="icon-ok"></i> Create</button>
+                            <a href="{{ path('meal') }}" class="btn black" >Back</a>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
