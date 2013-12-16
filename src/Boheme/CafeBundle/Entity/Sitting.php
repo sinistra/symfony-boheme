@@ -418,4 +418,16 @@ class Sitting {
     {
         return $this->meals;
     }
+
+    /**
+     * Name as string
+     *
+     * @return String
+     */
+    public function __toString()
+    {
+        return $this->title;
+    }
+
+
 }
