@@ -30,17 +30,17 @@
 <!--=== Content Part ===-->
 <div class="container">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="panel panel-green margin-bottom-40">
                 <div class="panel-heading">
                     <h3 class="panel-title"><i class="icon-tasks"></i> {{page_title}}</h3>
                 </div>
                 <div class="panel-body">
                 {{ form_errors(form) }}
-                    <form action="{{ path('meal_create', { 'id': entity.id }) }}" class="form-horizontal" role="form" method="post" {{ form_enctype(form) }}>
+                    <form action="{{ path('meal_create', { 'id': entity.id }) }}" class="form-horizontal" method="post" {{ form_enctype(form) }}>
                         <div class="form-group">
-                        {{ form_label(form.title, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
-                            <div class="col-lg-10">
+                        {{ form_label(form.title, label|default(null), { 'label_attr': { 'class': 'col-lg-3 control-label' } }) }}
+                            <div class="col-lg-9">
                             {{ form_errors(form.title) }}
                             {{ form_widget(form.title, {'attr':{'class':'form-control'} }) }}
                             </div>
@@ -49,7 +49,7 @@
                         {{ form_label(form.content, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
                             <div class="col-lg-10">
                             {{ form_errors(form.content) }}
-                            {{ form_widget(form.content, {'attr':{'class':'form-control col-lg-10'} }) }}
+                            {{ form_widget(form.content, {'attr':{'class':'form-control'} }) }}
                             </div>
                         </div>
                         <div class="form-group">
