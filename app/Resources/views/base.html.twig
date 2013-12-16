@@ -13,21 +13,22 @@
         <meta name="author" content="Paul Taylor">
 
         <!-- CSS Global Compulsory-->
-        <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap.min.css">
-        <link rel="stylesheet" href="/assets/css/style.css">
-        <link rel="stylesheet" href="/assets/css/headers/header1.css">
+        <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/headers/header1.css')}}">
 {#        <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap-responsive.min.css">#}
-        <link rel="stylesheet" href="/assets/css/responsive.css">
-        <link rel="stylesheet" href="/assets/css/style_responsive.css">
+        <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
+        <link rel="stylesheet" href="{{asset('assets/css/style_responsive.css')}}">
+
         <link rel="shortcut icon" href="{{ asset('/images/favicons/favicon.ico')}}">
 
         <!-- CSS Implementing Plugins -->
-        <link rel="stylesheet" href="/assets/plugins/font-awesome/css/font-awesome.css">
+        <link rel="stylesheet" href="{{asset('assets/plugins/font-awesome/css/font-awesome.css')}}">
         <link rel="stylesheet" href="/assets/plugins/flexslider/flexslider.css" type="text/css" media="screen">
         <link rel="stylesheet" href="/assets/plugins/parallax-slider/css/parallax-slider.css" type="text/css">
         <!-- CSS Theme -->
-        <link rel="stylesheet" href="/assets/css/themes/default.css" id="style_color">
-        <link rel="stylesheet" href="/assets/css/themes/headers/default.css" id="style_color-header-1">
+        <link rel="stylesheet" href="{{asset('assets/css/themes/default.css')}}" id="style_color">
+        <link rel="stylesheet" href="{{asset('assets/css/themes/headers/default.css')}}" id="style_color-header-1">
         <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 {% block stylesheets %}{% stylesheets 'css/*' %}{% endstylesheets %}{% endblock %}
     </head>
