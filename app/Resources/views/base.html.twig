@@ -1,262 +1,266 @@
 <!DOCTYPE html>
-<!--[if IE 7]> <html lang="en" class="ie7"> <![endif]-->
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
-    <head>
-        <title>Cafe Boheme</title>
+<head>
+    <title>Cafe Boheme</title>
 
-        <!-- Meta -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="">
-        <meta name="author" content="Paul Taylor">
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Paul Taylor">
 
-        <!-- CSS Global Compulsory-->
-        <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}">
-        <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-        <link rel="stylesheet" href="{{asset('assets/css/headers/header1.css')}}">
-{#        <link rel="stylesheet" href="/assets/plugins/bootstrap/css/bootstrap-responsive.min.css">#}
-        <link rel="stylesheet" href="{{asset('assets/css/responsive.css')}}">
-        <link rel="stylesheet" href="{{asset('assets/css/style_responsive.css')}}">
+    <!-- CSS Global Compulsory-->
+    <link rel="stylesheet" href="{{asset('theme/assets/plugins/bootstrap/css/bootstrap.css')}}">
+    <link rel="stylesheet" href="{{asset('theme/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('theme/assets/css/headers/header1.css')}}">
+    <link rel="stylesheet" href="{{asset('theme/assets/css/responsive.css')}}">
 
-        <link rel="shortcut icon" href="{{ asset('/images/favicons/favicon.ico')}}">
+    <link rel="shortcut icon" href="{{ asset('images/favicons/favicon.ico')}}">
 
-        <!-- CSS Implementing Plugins -->
-        <link rel="stylesheet" href="{{asset('assets/plugins/font-awesome/css/font-awesome.css')}}">
-        <link rel="stylesheet" href="/assets/plugins/flexslider/flexslider.css" type="text/css" media="screen">
-        <link rel="stylesheet" href="/assets/plugins/parallax-slider/css/parallax-slider.css" type="text/css">
-        <!-- CSS Theme -->
-        <link rel="stylesheet" href="{{asset('assets/css/themes/default.css')}}" id="style_color">
-        <link rel="stylesheet" href="{{asset('assets/css/themes/headers/default.css')}}" id="style_color-header-1">
-        <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+    <!-- CSS Implementing Plugins -->
+    <link rel="stylesheet" href="{{asset('theme/assets/plugins/font-awesome/css/font-awesome.css')}}">
+    <link rel="stylesheet" href="{{asset('theme/assets/plugins/flexslider/flexslider.css')}}">
+    <link rel="stylesheet" href="{{asset('theme/assets/plugins/parallax-slider/css/parallax-slider.css')}}">
+
+    <!-- CSS Theme -->
+    <link rel="stylesheet" href="{{asset('theme/assets/css/themes/default.css')}}" id="style_color">
+    <link rel="stylesheet" href="{{asset('theme/assets/css/themes/headers/default.css')}}" id="style_color-header-1">
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 {% block stylesheets %}{% stylesheets 'css/*' %}{% endstylesheets %}{% endblock %}
-    </head>
+</head>
 
-    <body>
-        {% set version = constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION')%}
-        <!--=== Style Switcher ===-->
-        <!--=== End Style Switcher ===-->
+<body>
+    {% set version = constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION')%}
+<!--=== Style Switcher ===-->
+<!--=== End Style Switcher ===-->
 
-        <!--=== Top ===-->
-        <div class="top">
-            <div class="container">
-                <ul class="loginbar pull-right">
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                    <li class="dropdown user">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="username">{{ app.user.name }}</span>
-                            <i class="icon-angle-down"></i>
-                        </a>
+<!--=== Top ===-->
+<div class="top">
+    <div class="container">
+        <ul class="loginbar pull-right">
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li class="dropdown user">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <span class="username">{{ app.user.name }}</span>
+                    <i class="icon-angle-down"></i>
+                </a>
 {#                          {{dump(app.user)}}#}
 {#                          path('user_list', { 'id': user.id })#}
+                <ul class="dropdown-menu">
+                    <li><a href="{{ path('user_show', { 'id': app.user.id }) }}"><i class="icon-user"></i> My Profile</a></li>
+                    <li><a href="{{ path('user_password') }}"><i class="icon-lock"></i> Change password</a></li>
+                    {% if is_granted("ROLE_ADMIN") %}
+                    <li><a href="{{ path('user_list') }}"><i class="icon-tasks"></i> User List</a></li>
+                    <li><a href="{{ path('user_new') }}"><i class="icon-envelope"></i> Register new user</a></li>
+                    {% endif %}
+                    <li class="divider"></li>
+                    <li><a href="{{ path('logout') }}"><i class="icon-key"></i> Log Out</a></li>
+                </ul>
+            </li>
+            {% else %}
+            <a href="{{ path('login') }}" class="login-btn">Login</a>
+            {% endif %}
+
+        </ul>
+    </div>
+</div><!--/top-->
+<!--=== End Top ===-->
+
+
+<!--=== Header ===-->
+<div class="header">
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="{{ path('boheme_cafe_homepage') }}" class="navbar-brand" >
+                    <img id="logo-header" src="/image/bohemeLogo.png" alt="Logo">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-responsive-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active">
+                        <a href="{{ path('boheme_cafe_homepage') }}" >Home</a>
+                    </li>
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">
+                            Menu
+                            <i class="icon-angle-down"></i>
+                        </a>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ path('user_show', { 'id': app.user.id }) }}"><i class="icon-user"></i> My Profile</a></li>
-                            <li><a href="{{ path('user_password') }}"><i class="icon-lock"></i> Change password</a></li>
-                            {% if is_granted("ROLE_ADMIN") %}
-                            <li><a href="{{ path('user_list') }}"><i class="icon-tasks"></i> User List</a></li>
-                            <li><a href="{{ path('user_new') }}"><i class="icon-envelope"></i> Register new user</a></li>
-                            {% endif %}
-                            <li class="divider"></li>
-                            <li><a href="{{ path('logout') }}"><i class="icon-key"></i> Log Out</a></li>
+                            <li><a href="{{ path('boheme_cafe_mealpage') }}">Meals</a></li>
+                            <li><a href="{{ path('boheme_cafe_winepage') }}">Wine List</a></li>
                         </ul>
                     </li>
-                    {% else %}
-                    <a href="{{ path('login') }}" class="login-btn">Login</a>
-                    {% endif %}
+                    <li>
+                        <a href="{{ path('boheme_cafe_contact') }}" >Contact</a>
+                    </li>
 
+                    <li class="hidden-sm"><a class="search"><i class="icon-search search-btn"></i></a></li>
                 </ul>
+                <div class="search-open">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button class="btn-u" type="button">Go</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div>
+            </div><!-- /navbar-collapse -->
+        </div>
+    </div>
+</div><!--/header-->
+<!--=== End Header ===-->
+
+<!--page content starts here-->
+<h3 class="page-title">
+    {% block pagetitle %}
+    Dashboard <small>statistics and more</small>
+    {% endblock %}
+</h3>
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        <button class="close" data-dismiss="alert"></button>
+        <i class="icon-ok-sign"></i>
+        <strong>Success</strong> {{ flashMessage }}
+    </div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('info') %}
+    <div class="alert alert-info">
+        <button class="close" data-dismiss="alert"></button>
+        <i class="icon-info-sign"></i>
+        <strong>Info</strong> {{ flashMessage }}
+    </div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('error') %}
+    <div class="alert alert-error">
+        <button class="close" data-dismiss="alert"></button>
+        <i class=" icon-exclamation-sign"></i>
+        <strong>Error</strong> {{ flashMessage }}
+    </div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('warning') %}
+    <div class="alert">
+        <button class="close" data-dismiss="alert"></button>
+        <i class="icon-warning-sign"></i>
+        <strong>Warning</strong> {{ flashMessage }}
+    </div>
+{% endfor %}
+<!-- END PAGE HEADER-->
+{% block body %}{% endblock %}
+
+<!--=== Footer ===-->
+<div class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 md-margin-bottom-40">
+                <!-- About -->
+                <div class="headline"><h2>About</h2></div>
+                <p class="margin-bottom-25 md-margin-bottom-40">Who is Cafe Boheme.</p>
+
+                <!-- Monthly Newsletter -->
+                <div class="headline"><h2>Monthly Newsletter</h2></div>
+                <p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
+                <form class="footer-subsribe">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Email Address">
+                        <span class="input-group-btn">
+                            <button class="btn-u" type="button">Subscribe</button>
+                        </span>
+                    </div><!-- /input-group -->
+                </form>
+            </div><!--/col-md-4-->
+
+            <div class="col-md-4 md-margin-bottom-40">
+                <div class="posts">
+                </div>
+            </div><!--/col-md-4-->
+
+            <div class="col-md-4">
+                <!-- Contact Us-->
+                <div class="headline"><h2>Contact Us</h2></div>
+                <address class="md-margin-bottom-40">
+                    5 Kellet Street <br />
+                    Potts Point, NSW  <br />
+                    Phone: 800 123 3456 <br />
+                    Fax: 800 123 3456 <br />
+                    Email: <a href="mailto:info@cafeboheme.com.au" class="">info@cafeboheme.com.au</a>
+                </address>
+
+                <!-- Stay Connected -->
+                <div class="headline"><h2>Stay Connected</h2></div>
+                <ul class="social-icons">
+                    <li><a href="#" data-original-title="Facebook" class="social_facebook"></a></li>
+                    <li><a href="#" data-original-title="Twitter" class="social_twitter"></a></li>
+                    <li><a href="#" data-original-title="Goole Plus" class="social_googleplus"></a></li>
+                </ul>
+            </div><!--/col-md-4-->
+        </div><!--/row-->
+    </div><!--/container-->
+</div><!--/footer-->
+<!--=== End Footer ===-->
+
+<!--=== Copyright ===-->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <p class="copyright-space">
+                    2013 &copy; Network IMS Pty Ltd. All Rights Reserved. Version {{ app_version }} (SF{{ version }})
+                    <a href="#">Privacy Policy</a>
+                </p>
             </div>
-        </div><!--/top-->
-        <!--=== End Top ===-->
-
-        <!--=== Header ===-->
-        <div class="header">
-            <div class="container">
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="{{ path('boheme_cafe_homepage') }}"><img id="logo-header" src="/image/bohemeLogo.png" alt="Logo"></a>
-                </div><!-- /logo -->
-
-                <!-- Menu -->
-                <div class="navbar">
-                    <div class="navbar-inner">
-                        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </a><!-- /nav-collapse -->
-                        <div class="nav-collapse collapse">
-                            <ul class="nav top-2">
-                                <li class="active">
-                                    <a href="{{ path('boheme_cafe_homepage') }}" >Home</a>
-                                </li>
-                                <li>
-                                    <a href="" class="dropdown-toggle" data-toggle="dropdown">Menu
-                                        <b class="caret"></b>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{ path('boheme_cafe_mealpage') }}">Meals</a></li>
-                                        <li><a href="{{ path('boheme_cafe_winepage') }}">Wine List</a></li>
-                                    </ul>
-                                    <b class="caret-out"></b>
-                                </li>
-                                <li>
-                                    <a href="{{ path('boheme_cafe_contact') }}" >Contact</a>
-                                </li>
-                                <li><a class="search"><i class="icon-search search-btn"></i></a></li>
-                            </ul>
-
-                            <div class="search-open">
-                                <div class="input-append">
-                                    <form>
-                                        <input type="text" class="span3" placeholder="Search" />
-                                        <button type="submit" class="btn-u">Go</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div><!-- /nav-collapse -->
-                    </div><!-- /navbar-inner -->
-                </div><!-- /navbar -->
-            </div><!-- /container -->
-        </div><!--/header -->
-        <!--=== End Header ===-->
-
-        <!--page content starts here-->
-        <h3 class="page-title">
-            {% block pagetitle %}
-            Dashboard <small>statistics and more</small>
-            {% endblock %}
-        </h3>
-        {% for flashMessage in app.session.flashbag.get('success') %}
-            <div class="alert alert-success">
-                <button class="close" data-dismiss="alert"></button>
-                <i class="icon-ok-sign"></i>
-                <strong>Success</strong> {{ flashMessage }}
+            <div class="col-md-6">
+                <a href="{{ path('boheme_cafe_homepage') }}">
+                    <img id="logo-footer" src="/image/bohemeLogo2.png" class="pull-right" alt="" />
+                </a>
             </div>
-        {% endfor %}
+        </div><!--/row-->
+    </div><!--/container-->
+</div><!--/copyright-->
+<!--=== End Copyright ===-->
 
-        {% for flashMessage in app.session.flashbag.get('info') %}
-            <div class="alert alert-info">
-                <button class="close" data-dismiss="alert"></button>
-                <i class="icon-info-sign"></i>
-                <strong>Info</strong> {{ flashMessage }}
-            </div>
-        {% endfor %}
-
-        {% for flashMessage in app.session.flashbag.get('error') %}
-            <div class="alert alert-error">
-                <button class="close" data-dismiss="alert"></button>
-                <i class=" icon-exclamation-sign"></i>
-                <strong>Error</strong> {{ flashMessage }}
-            </div>
-        {% endfor %}
-
-        {% for flashMessage in app.session.flashbag.get('warning') %}
-            <div class="alert">
-                <button class="close" data-dismiss="alert"></button>
-                <i class="icon-warning-sign"></i>
-                <strong>Warning</strong> {{ flashMessage }}
-            </div>
-        {% endfor %}
-        <!-- END PAGE HEADER-->
-        {% block body %}{% endblock %}
-
-        <!--page content ends here-->
-
-        <!--=== Footer ===-->
-        <div class="footer">
-            <div class="container">
-                <div class="row-fluid">
-                    <div class="span4">
-                        <!-- About -->
-                        <div class="headline"><h3>About</h3></div>
-                        <p class="margin-bottom-25">Who is Cafe Boheme.</p>
-
-                        <!-- Monthly Newsletter -->
-                        <div class="headline"><h3>Monthly Newsletter</h3></div>
-                        <p>Subscribe to our newsletter and stay up to date with the latest news and meals!</p>
-                        <form class="form-inline">
-                            <div class="input-append">
-                                <input type="text" placeholder="Email Address" class="input-medium">
-                                <button class="btn-u">Subscribe</button>
-                            </div>
-                        </form>
-                    </div><!--/span4-->
-
-                    <div class="span4">
-                        <div class="posts">
-                        </div>
-                    </div><!--/span4-->
-
-                    <div class="span4">
-                        <!-- Monthly Newsletter -->
-                        <div class="headline"><h3>Contact Us</h3></div>
-                        <address>
-                            5 Kellet Street <br />
-                            Potts Point, NSW  <br />
-                            Phone: 800 123 3456 <br />
-                            Fax: 800 123 3456 <br />
-                            Email: <a href="mailto:info@cafeboheme.com.au" class="">info@cafeboheme.com.au</a>
-                        </address>
-
-                        <!-- Stay Connected -->
-                        <div class="headline"><h3>Stay Connected</h3></div>
-                        <ul class="social-icons">
-                            <li><a href="#" data-original-title="Feed" class="social_rss"></a></li>
-                            <li><a href="#" data-original-title="Facebook" class="social_facebook"></a></li>
-                            <li><a href="#" data-original-title="Twitter" class="social_twitter"></a></li>
-                            <li><a href="#" data-original-title="Goole Plus" class="social_googleplus"></a></li>
-                            <li><a href="#" data-original-title="Pinterest" class="social_pintrest"></a></li>
-                            <li><a href="#" data-original-title="Linkedin" class="social_linkedin"></a></li>
-                            <li><a href="#" data-original-title="Vimeo" class="social_vimeo"></a></li>
-                        </ul>
-                    </div><!--/span4-->
-                </div><!--/row-fluid-->
-            </div><!--/container-->
-        </div><!--/footer-->
-        <!--=== End Footer ===-->
-
-        <!--=== Copyright ===-->
-        <div class="copyright">
-            <div class="container">
-                <div class="row-fluid">
-                    <div class="span8">
-                        <p>2013 &copy; Network IMS Pty Ltd. All Rights Reserved. Version {{ app_version }} (SF{{ version }})
-                            <a href="#">Privacy Policy</a>
-                        </p>
-                    </div>
-                    <div class="span4">
-                        <a href="{{ path('boheme_cafe_homepage') }}"><img id="logo-footer" src="/image/bohemeLogo2.png" class="pull-right" alt="" /></a>
-                    </div>
-                </div><!--/row-fluid-->
-            </div><!--/container-->
-        </div><!--/copyright-->
-        <!--=== End Copyright ===-->
-
-        <!-- JS Global Compulsory -->
-        <script type="text/javascript" src="/assets/js/jquery-1.8.2.min.js"></script>
-        <script type="text/javascript" src="/assets/js/modernizr.custom.js"></script>
-        <script type="text/javascript" src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-        <!-- JS Implementing Plugins -->
-        <script type="text/javascript" src="/assets/plugins/flexslider/jquery.flexslider-min.js"></script>
-        <script type="text/javascript" src="/assets/plugins/parallax-slider/js/modernizr.js"></script>
-        <script type="text/javascript" src="/assets/plugins/parallax-slider/js/jquery.cslider.js"></script>
-        <script type="text/javascript" src="/assets/plugins/back-to-top.js"></script>
-        {% block javascripts %} {% endblock %}
-        <!-- JS Page Level -->
-        <script type="text/javascript" src="/assets/js/app.js"></script>
-        <script type="text/javascript" src="/assets/js/pages/index.js"></script>
-        <script type="text/javascript">
-            jQuery(document).ready(function() {
-                App.init();
+<!-- JS Global Compulsory -->
+<script type="text/javascript" src="{{asset('theme/assets/plugins/jquery-1.10.2.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('theme/assets/plugins/jquery-migrate-1.2.1.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('theme/assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('theme/assets/plugins/hover-dropdown.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('theme/assets/plugins/back-to-top.js')}}"></script>
+<!-- JS Implementing Plugins -->
+<script type="text/javascript" src="{{asset('theme/assets/plugins/flexslider/jquery.flexslider-min.js')}}"></script>
+<script type="text/javascript" src="{{asset('theme/assets/plugins/parallax-slider/js/modernizr.js')}}"></script>
+<script type="text/javascript" src="{{asset('theme/assets/plugins/parallax-slider/js/jquery.cslider.js')}}"></script>
+<!-- JS Page Level -->
+{% block javascripts %} {% endblock %}
+<script type="text/javascript" src="{{asset('theme/assets/js/app.js')}}"></script>
+<script type="text/javascript" src="{{asset('theme/assets/js/pages/index.js')}}"></script>
+<script type="text/javascript">
+    jQuery(document).ready(function() {
+        App.init();
+        App.initSliders();
 <!--        App.initSliders();-->
 <!--        Index.initParallaxSlider();-->
-            {% block jqueryinit %} {% endblock %}
-            });
-            </script>
-            <!--[if lt IE 9]>
-                <script src="assets/js/respond.js"></script>
-            <![endif]-->
-        </body>
-    </html>
+        {% block jqueryinit %} {% endblock %}
+    });
+</script>
+<!--[if lt IE 9]>
+    <script src="{{asset('theme/assets/js/respond.js')}}"></script>
+<![endif]-->
+
+</body>
+</html>
