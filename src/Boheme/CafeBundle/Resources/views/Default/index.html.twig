@@ -1,7 +1,7 @@
 {# src/Boheme/CafeBundle/Resources/views/Default/index.html.twig #}
 {% extends 'NmsAdminBundle::layout.html.twig' %}
 
-{% set page_title = 'Meals list' %}
+{% set page_title = 'Home page' %}
 
 {% block title %}
 {{ parent() }} {{ page_title }}
@@ -15,74 +15,100 @@
 {% block breadcrumb %}{% endblock %}
 
 {% block body -%}
-        <!--=== Slider ===-->
-        <div class="center-img">
-            <img src="/image/home.png" alt="" />
-        </div>
-        <!--=== End Slider ===-->
+<!--=== Slider ===-->
+<div class="center-img" style='text-align: center'>
+    <img src="{{asset('image/home.png')}}" alt="" />
+</div>
 
-        <!--=== Purchase Block ===-->
-        <div class="row-fluid purchase margin-bottom-30">
-            <div class="container">
-                <div class="span11">
-                    <span>Cafe Boheme is a different cafe style restaurant.</span>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi  vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat.</p>
+<!--=== Purchase Block ===-->
+<div class="purchase">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <span>Cafe Boheme is a different cafe style restaurant.</span>
+                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi  vehicula sem ut volutpat. Ut non libero magna fusce condimentum eleifend enim a feugiat.</p>
+            </div>
+        </div>
+    </div>
+</div><!--/row-->
+<!-- End Purchase Block -->
+
+
+<!--=== Content Part ===-->
+<div class="container">
+<!-- Service Blocks -->
+<!-- //End Service Blokcs -->
+
+    <!-- Recent Works -->
+    <div class="headline"><h2>Recent Works</h2></div>
+    <div class="row">
+        <div class="col-md-3 col-sm-6">
+            <div class="thumbnails thumbnail-style thumbnail-kenburn">
+            	<div class="thumbnail-img">
+                    <div class="overflow-hidden">
+                        <img class="img-responsive" src="assets/img/main/2.jpg" alt="" />
+                    </div>
+                    <a class="btn-more hover-effect" href="#">read more +</a>
+                </div>
+                <div class="caption">
+                    <h3><a class="hover-effect" href="#">Project One</a></h3>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
                 </div>
             </div>
-        </div><!--/row-fluid-->
-        <!-- End Purchase Block -->
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                <div class="thumbnail-img">
+                    <div class="overflow-hidden">
+                        <img class="img-responsive" src="assets/img/main/3.jpg" alt="" />
+                    </div>
+                    <a class="btn-more hover-effect" href="#">read more +</a>
+                </div>
+                <div class="caption">
+                    <h3><a class="hover-effect" href="#">Project Two</a></h3>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                <div class="thumbnail-img">
+                    <div class="overflow-hidden">
+                        <img class="img-responsive" src="assets/img/main/9.jpg" alt="" />
+                    </div>
+                    <a class="btn-more hover-effect" href="#">read more +</a>
+                </div>
+                <div class="caption">
+                    <h3><a class="hover-effect" href="#">Project Three</a></h3>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-6">
+            <div class="thumbnails thumbnail-style thumbnail-kenburn">
+                <div class="thumbnail-img">
+                    <div class="overflow-hidden">
+                        <img class="img-responsive" src="assets/img/main/10.jpg" alt="" />
+                    </div>
+                    <a class="btn-more hover-effect" href="#">read more +</a>
+                </div>
+                <div class="caption">
+                    <h3><a class="hover-effect" href="#">Project Four</a></h3>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
+                </div>
+            </div>
+        </div>
+    </div><!--/row-->
+    <!-- End Recent Works -->
 
-        <!--=== Content Part ===-->
-        <div class="container">
-            <!-- Service Blocks -->
-            <!-- //End Service Blokcs -->
+    <!-- Info Blocks -->
+    <!-- End Info Blocks -->
 
-            <!-- Recent Works -->
-            <div class="headline"><h3>Recent Works</h3></div>
-            <ul class="thumbnails">
-                <li class="span3">
-                    <div class="thumbnail-style thumbnail-kenburn">
-                        <div class="thumbnail-img">
-                            <div class="overflow-hidden"><img src="/assets/img/carousel/2.jpg" alt="" /></div>
-                            <a class="btn-more hover-effect" href="#">read more +</a>
-                        </div>
-                        <h3><a class="hover-effect" href="#">Our Work</a></h3>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-                    </div>
-                </li>
-                <li class="span3">
-                    <div class="thumbnail-style thumbnail-kenburn">
-                        <div class="thumbnail-img">
-                            <div class="overflow-hidden"><img src="/assets/img/carousel/3.jpg" alt="" /></div>
-                            <a class="btn-more hover-effect" href="#">read more +</a>
-                        </div>
-                        <h3><a class="hover-effect" href="#">One More Work</a></h3>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-                    </div>
-                </li>
-                <li class="span3">
-                    <div class="thumbnail-style thumbnail-kenburn">
-                        <div class="thumbnail-img">
-                            <div class="overflow-hidden"><img src="/assets/img/carousel/9.jpg" alt="" /></div>
-                            <a class="btn-more hover-effect" href="#">read more +</a>
-                        </div>
-                        <h3><a class="hover-effect" href="#">Another Work</a></h3>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-                    </div>
-                </li>
-                <li class="span3">
-                    <div class="thumbnail-style thumbnail-kenburn">
-                        <div class="thumbnail-img">
-                            <div class="overflow-hidden"><img src="/assets/img/carousel/10.jpg" alt="" /></div>
-                            <a class="btn-more hover-effect" href="#">read more +</a>
-                        </div>
-                        <h3><a class="hover-effect" href="#">Huge Work</a></h3>
-                        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, justo sit amet risus etiam porta sem.</p>
-                    </div>
-                </li>
-            </ul><!--/thumbnails-->
-            <!-- //End Recent Works -->
+<!-- Our Clients -->
+<!-- End Our Clients -->
 
-        </div><!--/container-->
-        <!-- End Content Part -->
+</div>
+<!--/container-->
+<!-- End Content Part -->
 {% endblock %}
+
