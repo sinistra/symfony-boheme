@@ -157,7 +157,7 @@ CREATE TABLE `meals` (
   KEY `IDX_E229E6EA2C72584` (`menugroup_id`),
   CONSTRAINT `FK_E229E6EA2C72584` FOREIGN KEY (`menugroup_id`) REFERENCES `menugroups` (`id`),
   CONSTRAINT `FK_E229E6EA8014E66` FOREIGN KEY (`sitting_id`) REFERENCES `sittings` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,6 +166,7 @@ CREATE TABLE `meals` (
 
 LOCK TABLES `meals` WRITE;
 /*!40000 ALTER TABLE `meals` DISABLE KEYS */;
+INSERT INTO `meals` VALUES (1,1,2,'Bacon and egg role','juicy bacon, 2 organic eggs on a Sour dough role','2013-10-01','2018-12-31',8.50,'2013-12-18 08:50:49','paul','2013-12-18 08:50:49','paul');
 /*!40000 ALTER TABLE `meals` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,7 +186,7 @@ CREATE TABLE `menugroups` (
   `updated` datetime NOT NULL,
   `updatedBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -194,6 +195,7 @@ CREATE TABLE `menugroups` (
 
 LOCK TABLES `menugroups` WRITE;
 /*!40000 ALTER TABLE `menugroups` DISABLE KEYS */;
+INSERT INTO `menugroups` VALUES (1,'breads','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(2,'entree','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(3,'main','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(4,'sandwiches','','0000-00-00 00:00:00','','0000-00-00 00:00:00','');
 /*!40000 ALTER TABLE `menugroups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -489,4 +491,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-17  8:10:11
+-- Dump completed on 2013-12-18  8:54:24
