@@ -404,7 +404,7 @@ class Wine {
      * @param \Nms\CafeBundle\Entity\Winevariety $variety
      * @return Wine
      */
-    public function setVariety(\Nms\CafeBundle\Entity\Winevariety $variety = null)
+    public function setVariety(\Boheme\CafeBundle\Entity\Winevariety $variety = null)
     {
         $this->variety = $variety;
 
@@ -414,7 +414,7 @@ class Wine {
     /**
      * Get variety
      *
-     * @return \Nms\CafeBundle\Entity\Winevariety
+     * @return \Boheme\CafeBundle\Entity\Winevariety
      */
     public function getVariety()
     {
@@ -424,10 +424,10 @@ class Wine {
     /**
      * Set region
      *
-     * @param \Nms\CafeBundle\Entity\Wineregion $region
+     * @param \Boheme\CafeBundle\Entity\Wineregion $region
      * @return Wine
      */
-    public function setRegion(\Nms\CafeBundle\Entity\Wineregion $region = null)
+    public function setRegion(\Boheme\CafeBundle\Entity\Wineregion $region = null)
     {
         $this->region = $region;
 
@@ -437,7 +437,7 @@ class Wine {
     /**
      * Get region
      *
-     * @return \Nms\CafeBundle\Entity\Wineregion
+     * @return \Boheme\CafeBundle\Entity\Wineregion
      */
     public function getRegion()
     {

@@ -1,6 +1,6 @@
 <?php
 
-// file: src/Nms/CafeBundle/Entity/Meal.php
+// file: src/Boheme/CafeBundle/Entity/Meal.php
 
 namespace Boheme\CafeBundle\Entity;
 
@@ -317,10 +317,10 @@ class Meal {
     /**
      * Set sitting
      *
-     * @param \Nms\CafeBundle\Entity\Sitting $sitting
+     * @param \Boheme\CafeBundle\Entity\Sitting $sitting
      * @return Meal
      */
-    public function setSitting(\Nms\CafeBundle\Entity\Sitting $sitting = null)
+    public function setSitting(\Boheme\CafeBundle\Entity\Sitting $sitting = null)
     {
         $this->sitting = $sitting;
 
@@ -330,7 +330,7 @@ class Meal {
     /**
      * Get sitting
      *
-     * @return \Nms\CafeBundle\Entity\Sitting
+     * @return \Boheme\CafeBundle\Entity\Sitting
      */
     public function getSitting()
     {
@@ -340,10 +340,10 @@ class Meal {
     /**
      * Set menugroup
      *
-     * @param \Nms\CafeBundle\Entity\Menugroup $menugroup
+     * @param \Boheme\CafeBundle\Entity\Menugroup $menugroup
      * @return Meal
      */
-    public function setMenugroup(\Nms\CafeBundle\Entity\Menugroup $menugroup = null)
+    public function setMenugroup(\Boheme\CafeBundle\Entity\Menugroup $menugroup = null)
     {
         $this->menugroup = $menugroup;
 
@@ -353,7 +353,7 @@ class Meal {
     /**
      * Get menugroup
      *
-     * @return \Nms\CafeBundle\Entity\Menugroup
+     * @return \Boheme\CafeBundle\Entity\Menugroup
      */
     public function getMenugroup()
     {
