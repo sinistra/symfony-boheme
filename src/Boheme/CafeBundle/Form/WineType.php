@@ -17,17 +17,21 @@ class WineType extends AbstractType
         $builder
             ->add('title')
             ->add('note')
-            ->add('variety')
-            ->add('region')
             ->add('glassvolume')
             ->add('glassprice')
             ->add('carafevolume')
             ->add('carafeprice')
             ->add('bottlevolume')
             ->add('bottleprice')
+            ->add('created')
+            ->add('createdby')
+            ->add('updated')
+            ->add('updatedby')
+            ->add('variety')
+            ->add('region')
         ;
     }
-
+    
     /**
      * @param OptionsResolverInterface $resolver
      */

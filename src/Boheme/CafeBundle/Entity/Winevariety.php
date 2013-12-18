@@ -80,11 +80,11 @@ class Winevariety {
     {
         $this->wines = new \Doctrine\Common\Collections\ArrayCollection();
     }
-    
+
     /**
      * Get id
      *
-     * @return integer 
+     * @return integer
      */
     public function getId()
     {
@@ -100,14 +100,14 @@ class Winevariety {
     public function setTitle($title)
     {
         $this->title = $title;
-    
+
         return $this;
     }
 
     /**
      * Get title
      *
-     * @return string 
+     * @return string
      */
     public function getTitle()
     {
@@ -123,14 +123,14 @@ class Winevariety {
     public function setContent($content)
     {
         $this->content = $content;
-    
+
         return $this;
     }
 
     /**
      * Get content
      *
-     * @return string 
+     * @return string
      */
     public function getContent()
     {
@@ -146,14 +146,14 @@ class Winevariety {
     public function setCreated($created)
     {
         $this->created = $created;
-    
+
         return $this;
     }
 
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -169,14 +169,14 @@ class Winevariety {
     public function setCreatedBy($createdBy)
     {
         $this->createdBy = $createdBy;
-    
+
         return $this;
     }
 
     /**
      * Get createdBy
      *
-     * @return string 
+     * @return string
      */
     public function getCreatedBy()
     {
@@ -192,14 +192,14 @@ class Winevariety {
     public function setUpdated($updated)
     {
         $this->updated = $updated;
-    
+
         return $this;
     }
 
     /**
      * Get updated
      *
-     * @return \DateTime 
+     * @return \DateTime
      */
     public function getUpdated()
     {
@@ -215,14 +215,14 @@ class Winevariety {
     public function setUpdatedBy($updatedBy)
     {
         $this->updatedBy = $updatedBy;
-    
+
         return $this;
     }
 
     /**
      * Get updatedBy
      *
-     * @return string 
+     * @return string
      */
     public function getUpdatedBy()
     {
@@ -238,7 +238,7 @@ class Winevariety {
     public function addWine(\Boheme\CafeBundle\Entity\Wine $wines)
     {
         $this->wines[] = $wines;
-    
+
         return $this;
     }
 
@@ -255,10 +255,20 @@ class Winevariety {
     /**
      * Get wines
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return \Doctrine\Common\Collections\Collection
      */
     public function getWines()
     {
         return $this->wines;
+    }
+
+    /**
+     * toString
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function __toString()
+    {
+        return $this->title;
     }
 }
