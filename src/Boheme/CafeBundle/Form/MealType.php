@@ -20,8 +20,16 @@ class MealType extends AbstractType
             ->add('sitting')
             ->add('menugroup')
             ->add('price')
-            ->add('publish')
-            ->add('expire')
+            ->add('publish', 'date', array('widget' => 'single_text',
+                            'input' => 'datetime',
+                            'format' => 'dd-MM-yyyy',
+                            'attr'=> array('class'=>'m-wrap m-ctrl-medium date-picker')
+            ))
+            ->add('expire', 'date', array('widget' => 'single_text',
+                            'input' => 'datetime',
+                            'format' => 'dd-MM-yyyy',
+                            'attr'=> array('class'=>'m-wrap m-ctrl-medium date-picker')
+            ))
         ;
     }
 

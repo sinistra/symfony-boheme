@@ -197,9 +197,13 @@ class MealController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        $logger = $this->get('logger');
+        $logger->info('start ' . __METHOD__ . 'line ' . __LINE__);
+
         if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
             throw new AccessDeniedException();
         }
+        $logger->info('\$_POST='.print_r($_POST,true));
 
         $em = $this->getDoctrine()->getManager();
 
@@ -214,18 +218,28 @@ class MealController extends Controller
         $editForm->handleRequest($request);
 
         if ($editForm->isValid()) {
+            $logger->info('line ' . __LINE__ . ' form is valid');
+
             $em->flush();
             $this->get('session')->getFlashBag()->set('success', 'Meal record updated!');
             return $this->redirect($this->generateUrl('meal_edit', array('id' => $id)));
         }
 
+        $logger->info('line ' . __LINE__ . ' form is NOT valid');
+
+        foreach ($editForm->getErrors() as $key => $error) {
+            $logger->info('line ' . __LINE__ . ' :'. $error->getMessage());
+        }
+
         $this->get('session')->getFlashBag()->set('danger', 'Meal form not valid!');
+
         return $this->render('BohemeCafeBundle:Meal:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Meal entity.
      *
