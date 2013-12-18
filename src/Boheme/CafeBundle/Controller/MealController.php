@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Boheme\CafeBundle\Entity\Meal;
 use Boheme\CafeBundle\Form\MealType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Meal controller.
@@ -21,6 +22,10 @@ class MealController extends Controller
      */
     public function indexAction()
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $meals = $em->getRepository('BohemeCafeBundle:Meal')
@@ -33,7 +38,7 @@ class MealController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-                $meals, $this->get('request')->query->get('page', 1)/* page number */, 10/* limit per page */, array()
+            $meals, $this->get('request')->query->get('page', 1)/* page number */, 10/* limit per page */, array()
         );
 
         $fields = array(
@@ -53,6 +58,10 @@ class MealController extends Controller
      */
     public function createAction(Request $request)
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $entity = new Meal();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -62,6 +71,7 @@ class MealController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->set('success', 'Meal record saved!');
             return $this->redirect($this->generateUrl('meal_show', array('id' => $entity->getId())));
         }
 
@@ -96,6 +106,10 @@ class MealController extends Controller
      */
     public function newAction()
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $entity = new Meal();
         $form   = $this->createCreateForm($entity);
 
@@ -111,6 +125,10 @@ class MealController extends Controller
      */
     public function showAction($id)
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BohemeCafeBundle:Meal')->find($id);
@@ -133,7 +151,11 @@ class MealController extends Controller
      */
     public function editAction($id)
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
         $em = $this->getDoctrine()->getManager();
+
 
         $entity = $em->getRepository('BohemeCafeBundle:Meal')->find($id);
 
@@ -175,6 +197,10 @@ class MealController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BohemeCafeBundle:Meal')->find($id);
@@ -189,10 +215,11 @@ class MealController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
-
+            $this->get('session')->getFlashBag()->set('success', 'Meal record updated!');
             return $this->redirect($this->generateUrl('meal_edit', array('id' => $id)));
         }
 
+        $this->get('session')->getFlashBag()->set('danger', 'Meal form not valid!');
         return $this->render('BohemeCafeBundle:Meal:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
@@ -205,6 +232,10 @@ class MealController extends Controller
      */
     public function deleteAction(Request $request, $id)
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $form = $this->createDeleteForm($id);
         $form->handleRequest($request);
 
@@ -218,6 +249,7 @@ class MealController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->get('session')->getFlashBag()->set('success', 'Meal record deleted!');
         }
 
         return $this->redirect($this->generateUrl('meal'));
