@@ -226,6 +226,7 @@ class MealController extends Controller
         }
 
         $logger->info('line ' . __LINE__ . ' form is NOT valid');
+        $logger->info('line ' . __LINE__ . ' $editForm='. var_dump($editForm));
 
         foreach ($editForm->getErrors() as $key => $error) {
             $logger->info('line ' . __LINE__ . ' :'. $error->getMessage());
