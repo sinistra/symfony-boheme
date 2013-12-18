@@ -382,7 +382,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'paul','Paul Taylor','f1d52014a9a6e78821bef5278f91844b','37ddb1477de6308ca9ef3824b28b4a1e79da8908','paul@nms.com.au',1,NULL,40,1,'2013-04-26 17:33:29','','2013-12-17 07:24:39',NULL),(2,'user','User One','9c961dd0b9d643a18fe69532b2a8c77a','6f0b18242c21b47aa5005863495d57ede071bff7','user@nms.com.au',1,NULL,0,2,'2013-04-26 17:33:29','','2013-07-25 20:17:19','paul'),(4,'paul1','paul','663aef479c4f8549ff6d13d5fcd8e6a3','db7f7a68b352ff8b7981ee24f906280ca60e4c2b','a@nms.com.au',1,NULL,3,1,'2013-07-21 21:27:54','paul','2013-07-26 22:36:14',NULL),(11,'user2','User Two','d07818e198d78a0b86f1d12cbc1c164f','b6b04cb532a1008883d2982ea5d8a3155bcb8904','pg.taylor12@gmail.com',1,'b351fb6bb55ab7e',1,2,'2013-07-30 21:01:14','paul','2013-08-02 21:08:41','user2');
+INSERT INTO `users` VALUES (1,'paul','Paul Taylor','f1d52014a9a6e78821bef5278f91844b','37ddb1477de6308ca9ef3824b28b4a1e79da8908','paul@nms.com.au',1,NULL,41,1,'2013-04-26 17:33:29','','2013-12-18 13:04:32',NULL),(2,'user','User One','9c961dd0b9d643a18fe69532b2a8c77a','6f0b18242c21b47aa5005863495d57ede071bff7','user@nms.com.au',1,NULL,0,2,'2013-04-26 17:33:29','','2013-07-25 20:17:19','paul'),(4,'paul1','paul','663aef479c4f8549ff6d13d5fcd8e6a3','db7f7a68b352ff8b7981ee24f906280ca60e4c2b','a@nms.com.au',1,NULL,3,1,'2013-07-21 21:27:54','paul','2013-07-26 22:36:14',NULL),(11,'user2','User Two','d07818e198d78a0b86f1d12cbc1c164f','b6b04cb532a1008883d2982ea5d8a3155bcb8904','pg.taylor12@gmail.com',1,'b351fb6bb55ab7e',1,2,'2013-07-30 21:01:14','paul','2013-08-02 21:08:41','user2');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -402,7 +402,7 @@ CREATE TABLE `wineregions` (
   `updated` datetime NOT NULL,
   `updatedBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -411,6 +411,7 @@ CREATE TABLE `wineregions` (
 
 LOCK TABLES `wineregions` WRITE;
 /*!40000 ALTER TABLE `wineregions` DISABLE KEYS */;
+INSERT INTO `wineregions` VALUES (1,'barossa','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(2,'margaret river','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(3,'beaujolais','','0000-00-00 00:00:00','','0000-00-00 00:00:00','');
 /*!40000 ALTER TABLE `wineregions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -442,7 +443,7 @@ CREATE TABLE `wines` (
   KEY `IDX_58312A0598260155` (`region_id`),
   CONSTRAINT `FK_58312A0578C2BC47` FOREIGN KEY (`variety_id`) REFERENCES `winevarieties` (`id`),
   CONSTRAINT `FK_58312A0598260155` FOREIGN KEY (`region_id`) REFERENCES `wineregions` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -451,6 +452,7 @@ CREATE TABLE `wines` (
 
 LOCK TABLES `wines` WRITE;
 /*!40000 ALTER TABLE `wines` DISABLE KEYS */;
+INSERT INTO `wines` VALUES (1,1,1,'St Hallets Faith Shiraz','blackberry tones',150,9.00,300,15.00,750,30.00,'2013-01-01 00:00:00','paul','2013-01-01 00:00:00','paul');
 /*!40000 ALTER TABLE `wines` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -470,7 +472,7 @@ CREATE TABLE `winevarieties` (
   `updated` datetime NOT NULL,
   `updatedBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -479,6 +481,7 @@ CREATE TABLE `winevarieties` (
 
 LOCK TABLES `winevarieties` WRITE;
 /*!40000 ALTER TABLE `winevarieties` DISABLE KEYS */;
+INSERT INTO `winevarieties` VALUES (1,'shiraz','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(2,'cabernet sauvignon','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(3,'sauvignon blanc','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(4,'riesling','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(5,'chardonnay','','0000-00-00 00:00:00','','0000-00-00 00:00:00','');
 /*!40000 ALTER TABLE `winevarieties` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -491,4 +494,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-18  8:54:24
+-- Dump completed on 2013-12-19  8:28:30
