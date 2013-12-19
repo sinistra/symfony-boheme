@@ -12,4 +12,17 @@ use Doctrine\ORM\EntityRepository;
  */
 class WineRepository extends EntityRepository
 {
+    public function filteredFind($sort = "m.id", $direction = "ASC", $filterField = null, $filterVal = null)
+    {
+
+        $q = $this->createQueryBuilder('w')
+            ->select('w')
+            ->orderBy($sort, $direction);
+        if (!empty($filterField)) {
+            $q->add('where', $filterField . ' LIKE  ?1')
+                ->setParameter(1, '%' . $filterVal . '%');
+        }
+        return $q->getQuery()->getResult();
+    }
+
 }

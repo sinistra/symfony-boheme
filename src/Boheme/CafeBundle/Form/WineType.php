@@ -23,15 +23,11 @@ class WineType extends AbstractType
             ->add('carafeprice')
             ->add('bottlevolume')
             ->add('bottleprice')
-            ->add('created')
-            ->add('createdby')
-            ->add('updated')
-            ->add('updatedby')
             ->add('variety')
             ->add('region')
         ;
     }
-    
+
     /**
      * @param OptionsResolverInterface $resolver
      */

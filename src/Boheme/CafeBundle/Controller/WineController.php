@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Boheme\CafeBundle\Entity\Wine;
 use Boheme\CafeBundle\Form\WineType;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 /**
  * Wine controller.
@@ -21,13 +22,35 @@ class WineController extends Controller
      */
     public function indexAction()
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('BohemeCafeBundle:Wine')->findAll();
+        $wines = $em->getRepository('BohemeCafeBundle:Wine')
+                ->filteredFind(
+                $this->get('request')->query->get('sort', 'w.id'),
+                $this->get('request')->query->get('direction', 'ASC'),
+                $this->get('request')->query->get('filterField', null),
+                $this->get('request')->query->get('filterValue', null)
+        );
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $wines, $this->get('request')->query->get('page', 1)/* page number */, 10/* limit per page */, array()
+        );
+
+        $fields = array(
+            'w.title' => 'Title',
+            'w.note' => 'Notes',
+        );
 
         return $this->render('BohemeCafeBundle:Wine:index.html.twig', array(
-            'entities' => $entities,
+            'pagination' => $pagination,
+            'fields' => $fields,
         ));
+
     }
     /**
      * Creates a new Wine entity.
