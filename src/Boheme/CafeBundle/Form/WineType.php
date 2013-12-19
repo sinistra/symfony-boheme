@@ -17,12 +17,24 @@ class WineType extends AbstractType
         $builder
             ->add('title')
             ->add('note')
-            ->add('glassvolume')
-            ->add('glassprice')
-            ->add('carafevolume')
-            ->add('carafeprice')
-            ->add('bottlevolume')
-            ->add('bottleprice')
+            ->add('glassvolume', null, array(
+                'label' => 'Glass volume',
+            ))
+            ->add('glassprice', null, array(
+                'label' => 'Glass price',
+            ))
+            ->add('carafevolume', null, array(
+                'label' => 'Carafe volume',
+            ))
+            ->add('carafeprice', null, array(
+                'label' => 'Carafe price',
+            ))
+            ->add('bottlevolume', null, array(
+                'label' => 'Bottle volume',
+            ))
+            ->add('bottleprice', null, array(
+                'label' => 'Bottle price',
+            ))
             ->add('variety')
             ->add('region')
         ;
