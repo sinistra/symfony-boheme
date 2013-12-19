@@ -58,6 +58,10 @@ class WineController extends Controller
      */
     public function createAction(Request $request)
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $entity = new Wine();
         $form = $this->createCreateForm($entity);
         $form->handleRequest($request);
@@ -67,6 +71,7 @@ class WineController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->set('success', 'Wine record saved!');
             return $this->redirect($this->generateUrl('wine_show', array('id' => $entity->getId())));
         }
 
@@ -90,7 +95,7 @@ class WineController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Create'));
+//        $form->add('submit', 'submit', array('label' => 'Create'));
 
         return $form;
     }
@@ -101,6 +106,10 @@ class WineController extends Controller
      */
     public function newAction()
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $entity = new Wine();
         $form   = $this->createCreateForm($entity);
 
