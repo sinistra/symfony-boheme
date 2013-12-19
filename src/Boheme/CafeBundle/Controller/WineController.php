@@ -125,6 +125,10 @@ class WineController extends Controller
      */
     public function showAction($id)
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BohemeCafeBundle:Wine')->find($id);
@@ -137,7 +141,8 @@ class WineController extends Controller
 
         return $this->render('BohemeCafeBundle:Wine:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'delete_form' => $deleteForm->createView(),
+            ));
     }
 
     /**
@@ -146,6 +151,10 @@ class WineController extends Controller
      */
     public function editAction($id)
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BohemeCafeBundle:Wine')->find($id);
@@ -178,7 +187,7 @@ class WineController extends Controller
             'method' => 'PUT',
         ));
 
-        $form->add('submit', 'submit', array('label' => 'Update'));
+//        $form->add('submit', 'submit', array('label' => 'Update'));
 
         return $form;
     }
@@ -188,6 +197,10 @@ class WineController extends Controller
      */
     public function updateAction(Request $request, $id)
     {
+        if (false === $this->get('security.context')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+            throw new AccessDeniedException();
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $entity = $em->getRepository('BohemeCafeBundle:Wine')->find($id);
@@ -202,6 +215,7 @@ class WineController extends Controller
 
         if ($editForm->isValid()) {
             $em->flush();
+            $this->get('session')->getFlashBag()->set('success', 'Wine record updated!');
 
             return $this->redirect($this->generateUrl('wine_edit', array('id' => $id)));
         }
@@ -231,6 +245,7 @@ class WineController extends Controller
 
             $em->remove($entity);
             $em->flush();
+            $this->get('session')->getFlashBag()->set('success', 'Wine record deleted!');
         }
 
         return $this->redirect($this->generateUrl('wine'));
@@ -248,7 +263,7 @@ class WineController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('wine_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+//            ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }

@@ -1,16 +1,129 @@
-{% extends '::base.html.twig' %}
+{# src/Boheme/CafeBundle/Resources/views/Wine/edit.html.twig #}
+{% extends 'NmsAdminBundle::layout.html.twig' %}
+{% form_theme edit_form 'NmsAdminBundle:Form:choice_expanded.html.twig' %}
 
-{% block body -%}
-    <h1>Wine edit</h1>
+{% set page_title = 'edit Wine' %}
 
-    {{ form(edit_form) }}
+{% block title %}
+{{ parent() }} {{page_title }}
+{% endblock %}
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('wine') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block pagetitle %} {% endblock %}
+
+{% block breadcrumb %}
+<li><a href="{{ path('wine') }}">Wine</a><i class="icon-angle-right"></i></li>
+<li><a href="{{ path('wine_new', { 'id': entity.id }) }}">Add</a></li>
+{% endblock %}
+
+{% block body %}
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-grey margin-bottom-40">
+                <div class="panel-heading">
+                    <h3 class="panel-title"><i class="icon-glass"></i> {{page_title }}</h3>
+                </div>
+                <div class="panel-body">
+                    {{ form_errors(edit_form) }}
+                    <form action="{{ path('wine_update', { 'id': entity.id }) }}" class="form-horizontal" method="post" {{ form_enctype(edit_form) }}>
+                        <div class="form-group">
+                        {{ form_label(edit_form.title, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                            <div class="col-lg-6">
+                            {{ form_errors(edit_form.title) }}
+                            {{ form_widget(edit_form.title, {'attr':{'class':'form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                        {{ form_label(edit_form.note, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                            <div class="col-lg-8">
+                            {{ form_errors(edit_form.note) }}
+                            {{ form_widget(edit_form.note, {'attr':{'class':'form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(edit_form.glassprice, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                            <div class="col-lg-2">
+                            {{ form_errors(edit_form.glassprice) }}
+                            {{ form_widget(edit_form.glassprice, {'attr':{'class':'form-control text-right'} }) }}
+                            </div>
+                            {{ form_label(edit_form.glassvolume, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                            <div class="col-lg-2">
+                            {{ form_errors(edit_form.glassvolume) }}
+                            {{ form_widget(edit_form.glassvolume, {'attr':{'class':'form-control text-right'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(edit_form.carafeprice, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                            <div class="col-lg-2">
+                            {{ form_errors(edit_form.carafeprice) }}
+                            {{ form_widget(edit_form.carafeprice, {'attr':{'class':'form-control text-right'} }) }}
+                            </div>
+                            {{ form_label(edit_form.carafevolume, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                            <div class="col-lg-2">
+                            {{ form_errors(edit_form.carafevolume) }}
+                            {{ form_widget(edit_form.carafevolume, {'attr':{'class':'form-control text-right'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_label(edit_form.bottleprice, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                            <div class="col-lg-2">
+                            {{ form_errors(edit_form.bottleprice) }}
+                            {{ form_widget(edit_form.bottleprice, {'attr':{'class':'form-control text-right'} }) }}
+                            </div>
+                            {{ form_label(edit_form.bottlevolume, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                            <div class="col-lg-2">
+                            {{ form_errors(edit_form.bottlevolume) }}
+                            {{ form_widget(edit_form.bottlevolume, {'attr':{'class':'form-control text-right'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                        {{ form_label(edit_form.variety, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                            <div class="col-lg-3">
+                            {{ form_errors(edit_form.variety) }}
+                            {{ form_widget(edit_form.variety, {'attr':{'class':'form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                        {{ form_label(edit_form.region, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                            <div class="col-lg-3">
+                            {{ form_errors(edit_form.region) }}
+                            {{ form_widget(edit_form.region, {'attr':{'class':'form-control'} }) }}
+                            </div>
+                        </div>
+
+                        {{ form_rest(edit_form) }}
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button type="submit" class="btn-u btn-u-green">Update</button>
+                                <a href="{{ path('wine') }}" class="btn btn-default">Back</a>
+                    </form>
+                                <span class="pull-right">
+                                    <form action="{{ path('wine_delete', { 'id': entity.id }) }}" method="post">
+                                        <input type="hidden" name="_method" value="DELETE" />
+                                            {{ form_widget(delete_form) }}
+                                        <button class="btn btn-danger" type="submit"><i class="icon-trash"></i> Delete</button>
+                                    </form>
+                                </span>
+
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

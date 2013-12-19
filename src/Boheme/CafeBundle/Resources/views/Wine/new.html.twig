@@ -17,8 +17,8 @@
 {% block pagetitle %} {% endblock %}
 
 {% block breadcrumb %}
-<li><a href="{{ path('meal') }}">Meal</a><i class="icon-angle-right"></i></li>
-<li><a href="{{ path('meal_new', { 'id': entity.id }) }}">Add</a></li>
+<li><a href="{{ path('wine') }}">Wine</a><i class="icon-angle-right"></i></li>
+<li><a href="{{ path('wine_new', { 'id': entity.id }) }}">Add</a></li>
 {% endblock %}
 
 {% block body %}
@@ -109,7 +109,7 @@
                         <div class="form-group">
                             <div class="col-lg-offset-2 col-lg-10">
                                 <button type="submit" class="btn-u btn-u-green">Create</button>
-                                <a href="{{ path('wine') }}" class="btn-u btn-u-default">Back</a>
+                                <a href="{{ path('wine') }}" class="btn btn-default">Back</a>
                             </div>
                         </div>
                     </form>
