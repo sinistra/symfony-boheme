@@ -2,9 +2,9 @@ boheme_cafe_homepage:
     pattern:  /
     defaults: { _controller: BohemeCafeBundle:Default:index }
 
-boheme_cafe_mealpage:
-    pattern:  /meals
-    defaults: { _controller: BohemeCafeBundle:Default:meal }
+boheme_cafe_foodpage:
+    pattern:  /food
+    defaults: { _controller: BohemeCafeBundle:Default:food }
 
 boheme_cafe_winepage:
     pattern:  /wines
