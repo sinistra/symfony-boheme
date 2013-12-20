@@ -213,6 +213,12 @@ class WineController extends Controller
         $editForm = $this->createEditForm($entity);
         $editForm->handleRequest($request);
 
+        if ($editForm->isSubmitted()) {
+            echo 'form was submitted<br>';
+        } else {
+            echo 'form was <b>NOT</b> submitted<br>';
+        }
+
         if ($editForm->isValid()) {
             $em->flush();
             $this->get('session')->getFlashBag()->set('success', 'Wine record updated!');
@@ -220,6 +226,11 @@ class WineController extends Controller
             return $this->redirect($this->generateUrl('wine_edit', array('id' => $id)));
         } else {
             echo $editForm->getErrorsAsString();
+            if ($editForm->isSubmitted()) {
+                echo 'form was submitted<br>';
+            } else {
+                echo 'form was <b>NOT</b> submitted<br>';
+            }
             exit();
         }
 

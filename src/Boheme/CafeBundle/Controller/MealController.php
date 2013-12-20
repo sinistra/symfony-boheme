@@ -225,15 +225,6 @@ class MealController extends Controller
             return $this->redirect($this->generateUrl('meal_edit', array('id' => $id)));
         }
 
-        $logger->info('line ' . __LINE__ . ' form is NOT valid');
-        $logger->info('line ' . __LINE__ . ' $editForm='. var_dump($editForm));
-
-        foreach ($editForm->getErrors() as $key => $error) {
-            $logger->info('line ' . __LINE__ . ' :'. $error->getMessage());
-        }
-
-        $this->get('session')->getFlashBag()->set('danger', 'Meal form not valid!');
-
         return $this->render('BohemeCafeBundle:Meal:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),

@@ -25,80 +25,85 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel margin-bottom-40">
+            <div class="panel panel-grey margin-bottom-40">
                 <div class="panel-heading">
                     <h3 class="panel-title"><i class="icon-food"></i> {{page_title}}</h3>
                 </div>
                 <div class="panel-body form-horizontal">
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Id</label>
-                            <div class="col-lg-9 controls">
-                                <span class="text">{{ entity.id }}</span>
-                            </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Id</label>
+                        <div class="col-lg-9 controls">
+                            <span class="text">{{ entity.id }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Title</label>
-                            <div class="col-lg-9 controls">
-                                <span class="text">{{ entity.title }}</span>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Title</label>
+                        <div class="col-lg-9 controls">
+                            <span class="text">{{ entity.title }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Description</label>
-                            <div class="col-lg-9 controls">
-                                <span class="text">{{ entity.content }}</span>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Description</label>
+                        <div class="col-lg-9 controls">
+                            <span class="text">{{ entity.content }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Sitting</label>
-                            <div class="col-lg-9 controls">
-                                <span class="text">{{ entity.sitting }}</span>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Sitting</label>
+                        <div class="col-lg-9 controls">
+                            <span class="text">{{ entity.sitting }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Menu group</label>
-                            <div class="col-lg-9 controls">
-                                <span class="text">{{ entity.menugroup }}</span>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Menu group</label>
+                        <div class="col-lg-9 controls">
+                            <span class="text">{{ entity.menugroup }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Price</label>
-                            <div class="col-lg-9 controls">
-                                <span class="text">{{ entity.price }}</span>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Price</label>
+                        <div class="col-lg-9 controls">
+                            <span class="text">{{ entity.price }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Publish</label>
-                            <div class="col-lg-9 controls">
-                                <span class="text">{{ entity.publish|date('d-m-Y H:i:s') }}</span>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Publish</label>
+                        <div class="col-lg-9 controls">
+                            <span class="text">{{ entity.publish|date('d-m-Y H:i:s') }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Expire</label>
-                            <div class="col-lg-9 controls">
-                                <span class="text">{{ entity.expire|date('d-m-Y H:i:s') }}</span>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Expire</label>
+                        <div class="col-lg-9 controls">
+                            <span class="text">{{ entity.expire|date('d-m-Y H:i:s') }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Created</label>
-                            <div class="col-lg-9 controls">
-                                <span class="text">{{ entity.createdby }} at {{ entity.created|date('d-m-Y H:i:s') }}</span>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Created</label>
+                        <div class="col-lg-9 controls">
+                            <span class="text">{{ entity.createdby }} at {{ entity.created|date('d-m-Y H:i:s') }}</span>
                         </div>
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">Updated</label>
-                            <div class="col-lg-9 controls">
-                                <span class="text">{{ entity.updatedby }} at {{ entity.updated|date('d-m-Y H:i:s') }}</span>
-                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-3 control-label">Updated</label>
+                        <div class="col-lg-9 controls">
+                            <span class="text">{{ entity.updatedby }} at {{ entity.updated|date('d-m-Y H:i:s') }}</span>
                         </div>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="col-lg-offset-2 col-lg-10">
-                                <a href="{{ path('meal_edit', { 'id': entity.id }) }}" class="btn btn-primary" >Edit</a>
-                                <a href="{{ path('meal') }}" class="btn btn-default" >Back</a>
-                            </div>
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <a href="{{ path('meal_edit', { 'id': entity.id }) }}" class="btn btn-primary" >Edit</a>
+                            <a href="{{ path('meal') }}" class="btn btn-default" >Back</a>
+                            <span class="pull-right">
+                                <form action="{{ path('wine_delete', { 'id': entity.id }) }}" method="post">
+                                    <input type="hidden" name="_method" value="DELETE" />
+                                        {{ form_widget(delete_form) }}
+                                    <button class="btn btn-danger" type="submit"><i class="icon-trash"></i> Delete</button>
+                                </form>
+                            </span>
                         </div>
-
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>

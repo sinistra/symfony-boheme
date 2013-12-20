@@ -26,13 +26,14 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="panel margin-bottom-40">
+            <div class="panel panel-grey margin-bottom-40">
                 <div class="panel-heading">
-                    <h3 class="panel-title"><i class="icon-food"></i> {{page_title}}</h3>
+                    <h3 class="panel-title"><i class="icon-food"></i> {{page_title }}</h3>
                 </div>
                 <div class="panel-body">
-                {{ form_errors(edit_form) }}
-                    <form action="{{ path('meal_update', { 'id': entity.id }) }}" class="form-horizontal" method="post" {{ form_enctype(edit_form) }}>
+                    {{ form_errors(edit_form) }}
+                    {{ form_start(edit_form, {'attr':{'class':'form-horizontal'} }) }}
+{#                    <form action="{{ path('meal_update', { 'id': entity.id }) }}" class="form-horizontal" method="post" {{ form_enctype(edit_form) }}>#}
                         <div class="form-group">
                         {{ form_label(edit_form.title, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
                             <div class="col-lg-6">
@@ -83,14 +84,15 @@
                             </div>
                         </div>
 
-                    {{ form_widget(edit_form._token) }}
-                    {{ form_end(edit_form) }}
+{#                    {{ form_widget(edit_form._token) }}#}
 
                         <div class="form-group">
                             <div class="col-lg-offset-2 col-lg-10">
+{#                                {{ form_widget(edit_form.submit, {'attr':{'class':'btn-u btn-u-green'} }) }}#}
                                 <button type="submit" class="btn-u btn-u-green"><i class="icon-ok"></i> Update</button>
-                                <a href="{{ path('meal') }}" class="btn black" >Back</a>
-                    </form>
+                                <a href="{{ path('meal') }}" class="btn btn-default" >Back</a>
+                    {{ form_end(edit_form) }}
+{#                    </form>#}
                                 <span class="pull-right">
                                     <form action="{{ path('meal_delete', { 'id': entity.id }) }}" method="post">
                                         <input type="hidden" name="_method" value="DELETE" />
