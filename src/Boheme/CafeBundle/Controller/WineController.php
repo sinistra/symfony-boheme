@@ -218,6 +218,9 @@ class WineController extends Controller
             $this->get('session')->getFlashBag()->set('success', 'Wine record updated!');
 
             return $this->redirect($this->generateUrl('wine_edit', array('id' => $id)));
+        } else {
+            echo $editForm->getErrorsAsString();
+            exit();
         }
 
         return $this->render('BohemeCafeBundle:Wine:edit.html.twig', array(
