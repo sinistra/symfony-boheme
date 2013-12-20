@@ -13,10 +13,10 @@ class DefaultController extends Controller
                 array('name' => $name));
     }
 
-    public function mealAction()
+    public function foodAction()
     {
         $name = 'Darren';
-        return $this->render('BohemeCafeBundle:Default:meal.html.twig',
+        return $this->render('BohemeCafeBundle:Default:food.html.twig',
                 array('name' => $name));
     }
 
