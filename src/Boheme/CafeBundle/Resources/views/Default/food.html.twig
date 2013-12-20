@@ -1,0 +1,44 @@
+{# src/Boheme/CafeBundle/Resources/views/Default/contact.html.twig #}
+{% extends 'NmsAdminBundle::layout.html.twig' %}
+
+{% set page_title = 'Memu' %}
+
+{% block title %}
+{{ parent() }} {{ page_title }}
+{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
+
+{% block jqueryinit %}
+{% endblock %}
+
+{% block pagetitle %}{% endblock %}
+
+{% block breadcrumb %}{% endblock %}
+
+{% block body -%}
+
+<!--=== Content Part ===-->
+<div class="container">
+    <div class="row margin-bottom-30">
+
+        <div class="col-md-4">
+            <!-- Contacts -->
+            <img src="{{asset('image/breakfast.png')}}" alt="" />
+
+        </div><!--/col-md-3-->
+        <div class="col-md-8 mb-margin-bottom-30">
+            <div class="headline"><h2>Menu</h2></div>
+
+            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas feugiat. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit landitiis.</p><br />
+        </div><!--/col-md-9-->
+
+    </div><!--/row-->
+
+</div><!--/container-->
+<!--=== End Content Part ===-->
+{% endblock %}

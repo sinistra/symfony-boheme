@@ -16,7 +16,9 @@ class MealType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('content')
+            ->add('content', null, array(
+                'required' => false,
+            ))
             ->add('sitting')
             ->add('menugroup')
             ->add('price')
