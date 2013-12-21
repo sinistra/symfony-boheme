@@ -39,6 +39,8 @@
                         {# sorting of properties based on query components #}
                             <th>{{ knp_pagination_sortable(pagination, 'Title', 'm.title') }}</th>
                             <th{% if pagination.isSorted('m.content') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Content', 'm.content') }}</th>
+                            <th{% if pagination.isSorted('m.sitting') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Sitting', 'm.sitting') }}</th>
+                            <th>Group</th>
                             <th>Published</th>
                             <th>Expired</th>
                             <th>Price</th>
@@ -53,9 +55,11 @@
                         <tr>
                             <td>{{ meal.title }}</td>
                             <td>{{ meal.content }}</td>
+                            <td>{{ meal.sitting.title }}</td>
+                            <td>{{ meal.menugroup.title }}</td>
+                            <td>{{ meal.price }}</td>
                             <td>{% if meal.publish %}{{ meal.publish|date('Y-m-d H:i:s') }}{% endif %}</td>
                             <td>{% if meal.expire %}{{ meal.expire|date('Y-m-d H:i:s') }}{% endif %}</td>
-                            <td>{{ meal.price }}</td>
                             <td>{% if meal.updated %}{{ meal.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
                             <td>{{ meal.updatedby }}</td>
                             <td>
