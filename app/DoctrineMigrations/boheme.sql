@@ -144,7 +144,7 @@ CREATE TABLE `meals` (
   `sitting_id` int(11) DEFAULT NULL,
   `menugroup_id` int(11) DEFAULT NULL,
   `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `content` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `content` longtext COLLATE utf8_unicode_ci,
   `publish` date NOT NULL,
   `expire` date NOT NULL,
   `price` decimal(10,2) NOT NULL,
@@ -157,7 +157,7 @@ CREATE TABLE `meals` (
   KEY `IDX_E229E6EA2C72584` (`menugroup_id`),
   CONSTRAINT `FK_E229E6EA2C72584` FOREIGN KEY (`menugroup_id`) REFERENCES `menugroups` (`id`),
   CONSTRAINT `FK_E229E6EA8014E66` FOREIGN KEY (`sitting_id`) REFERENCES `sittings` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -166,7 +166,7 @@ CREATE TABLE `meals` (
 
 LOCK TABLES `meals` WRITE;
 /*!40000 ALTER TABLE `meals` DISABLE KEYS */;
-INSERT INTO `meals` VALUES (1,1,2,'Bacon and egg role','juicy bacon, 2 organic eggs on a Sour dough role','2013-10-01','2018-12-31',8.50,'2013-12-18 08:50:49','paul','2013-12-18 08:50:49','paul');
+INSERT INTO `meals` VALUES (1,1,2,'Bacon and egg role','juicy bacon, 2 organic eggs on a Sour dough role','2013-10-01','2018-12-31',8.50,'2013-12-18 08:50:49','paul','2013-12-18 08:50:49','paul'),(2,1,1,'Bread available','sourdough, mixed grains, brioche, gluten-free or miche','2013-10-01','2018-12-31',0.00,'2013-12-20 21:59:56','paul','2013-12-20 21:59:56','paul'),(3,1,1,'Toast with organic butter & spreads',NULL,'2013-10-01','2018-12-31',5.50,'2013-12-20 22:20:56','paul','2013-12-20 22:20:56','paul'),(4,1,1,'Toasted fruit & nut bread',NULL,'2013-10-01','2018-12-31',5.50,'2013-12-20 22:26:13','paul','2013-12-20 22:26:13','paul'),(5,1,1,'Toasted fruit & nut bread','with ricotta & organic honey','2013-10-01','2018-12-31',8.50,'2013-12-20 22:27:06','paul','2013-12-20 22:27:06','paul'),(6,1,1,'Fresh seasonal fruit with yoghurt & chia seeds',NULL,'2013-10-01','2018-12-31',12.00,'2013-12-20 22:30:07','paul','2013-12-20 22:30:07','paul'),(7,1,1,'Farmer Jo bircher muesli with apple, strawberry & nuts',NULL,'2013-10-01','2018-12-31',13.00,'2013-12-20 22:33:08','paul','2013-12-20 22:33:08','paul'),(8,1,1,'Farmer Jo granola with yoghurt & fresh seasonal fruit',NULL,'2013-10-01','2018-12-31',14.00,'2013-12-20 22:33:57','paul','2013-12-20 22:33:57','paul'),(9,1,1,'Organic eggs, poached, scrambled or fried','with your choice of toast & tomato jam','2013-10-01','2018-12-31',10.00,'2013-12-20 22:34:56','paul','2013-12-20 22:34:56','paul'),(10,1,1,'French toast of brioche','with caramelised pears & vanilla ice cream','2013-10-01','2018-12-31',15.00,'2013-12-20 22:37:29','paul','2013-12-20 22:37:29','paul'),(11,1,1,'Omelette','with mushrooms, Gruyere, chives & ricotta','2013-10-01','2018-12-31',16.00,'2013-12-20 22:40:19','paul','2013-12-20 22:40:19','paul'),(12,1,2,'Croque Monsieur/Madame',NULL,'2013-10-01','2018-12-31',15.00,'2013-12-20 23:01:32','paul','2013-12-20 23:01:32','paul'),(13,1,1,'Deli plate','of soft-boiled organic egg, avocado smash, vine-ripened tomato,\r\nPersian feta & toast','2013-10-01','2018-12-31',14.00,'2013-12-20 23:04:50','paul','2013-12-20 23:04:50','paul'),(14,1,5,'Crispy Bacon, Tasha’s ocean trout gravlax,','pork & fennel sausage or merguez','2013-10-01','2018-12-31',5.00,'2013-12-20 23:07:02','paul','2013-12-20 23:08:19','paul'),(15,1,5,'Avocado smash,','herb roasted field mushroom, spinach, roasted balsamic tomato,\r\nfresh ricotta or Persian feta','2013-10-01','2018-12-31',3.50,'2013-12-20 23:09:00','paul','2013-12-20 23:09:00','paul'),(16,1,6,'Daily selection of pastries at the bar','all made in-house','2013-10-01','2018-12-31',0.00,'2013-12-20 23:10:24','paul','2013-12-20 23:10:24','paul'),(17,1,7,'Coffee','Short or long black, macchiato or piccolo','2013-10-01','2018-12-31',3.00,'2013-12-20 23:13:16','paul','2013-12-20 23:13:16','paul'),(18,1,7,'Flat white, latte or cappucino',NULL,'2013-10-01','2018-12-31',3.50,'2013-12-20 23:15:25','paul','2013-12-20 23:15:25','paul'),(19,1,7,'Extra shot, Bonsoy, large or decaf',NULL,'2013-10-01','2018-12-31',0.50,'2013-12-20 23:19:56','paul','2013-12-20 23:19:56','paul'),(20,1,7,'Hot chocolate',NULL,'2013-10-01','2018-12-31',4.00,'2013-12-20 23:23:29','paul','2013-12-20 23:23:29','paul'),(21,1,7,'Tea Drop teas',NULL,'2013-10-01','2018-12-31',4.50,'2013-12-20 23:24:22','paul','2013-12-20 23:24:22','paul'),(22,1,7,'Zac’s chai',NULL,'2013-10-01','2018-12-31',4.50,'2013-12-20 23:26:03','paul','2013-12-20 23:26:03','paul'),(23,1,7,'Milkshakes','dark chocolate, dulce de leche\r\nor vanilla bean','2013-10-01','2018-12-31',5.50,'2013-12-20 23:27:06','paul','2013-12-20 23:27:06','paul'),(24,1,7,'Freshly squeezed O.J',NULL,'2013-10-01','2018-12-31',6.00,'2013-12-20 23:27:52','paul','2013-12-20 23:27:52','paul'),(25,1,7,'Berry smoothie',NULL,'2013-10-01','2018-12-31',5.50,'2013-12-20 23:28:53','paul','2013-12-20 23:28:53','paul');
 /*!40000 ALTER TABLE `meals` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,7 +186,7 @@ CREATE TABLE `menugroups` (
   `updated` datetime NOT NULL,
   `updatedBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,7 +195,7 @@ CREATE TABLE `menugroups` (
 
 LOCK TABLES `menugroups` WRITE;
 /*!40000 ALTER TABLE `menugroups` DISABLE KEYS */;
-INSERT INTO `menugroups` VALUES (1,'breads','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(2,'entree','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(3,'main','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(4,'sandwiches','','0000-00-00 00:00:00','','0000-00-00 00:00:00','');
+INSERT INTO `menugroups` VALUES (1,'breads','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(2,'entree','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(3,'main','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(4,'sandwiches','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(5,'sides','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(6,'pastries','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(7,'drinks','','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(8,'salads','','0000-00-00 00:00:00','','0000-00-00 00:00:00','');
 /*!40000 ALTER TABLE `menugroups` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -254,7 +254,7 @@ CREATE TABLE `migration_versions` (
 
 LOCK TABLES `migration_versions` WRITE;
 /*!40000 ALTER TABLE `migration_versions` DISABLE KEYS */;
-INSERT INTO `migration_versions` VALUES ('20131001090506'),('20131007163247'),('20131007165101');
+INSERT INTO `migration_versions` VALUES ('20131001090506'),('20131007163247'),('20131007165101'),('20131220221958');
 /*!40000 ALTER TABLE `migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -362,7 +362,6 @@ CREATE TABLE `users` (
   `is_active` tinyint(1) NOT NULL,
   `token` varchar(20) COLLATE utf8_unicode_ci DEFAULT NULL,
   `logins` int(11) NOT NULL,
-  `club_id` int(11) DEFAULT NULL,
   `created` datetime NOT NULL,
   `createdBy` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `updated` datetime NOT NULL,
@@ -370,9 +369,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `UNIQ_1483A5E9F85E0677` (`username`),
   UNIQUE KEY `UNIQ_1483A5E9E7927C74` (`email`),
-  UNIQUE KEY `UNIQ_1483A5E95F37A13B` (`token`),
-  KEY `IDX_1483A5E961190A32` (`club_id`),
-  CONSTRAINT `FK_1483A5E961190A32` FOREIGN KEY (`club_id`) REFERENCES `clubs` (`id`)
+  UNIQUE KEY `UNIQ_1483A5E95F37A13B` (`token`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -382,7 +379,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'paul','Paul Taylor','f1d52014a9a6e78821bef5278f91844b','37ddb1477de6308ca9ef3824b28b4a1e79da8908','paul@nms.com.au',1,NULL,41,1,'2013-04-26 17:33:29','','2013-12-18 13:04:32',NULL),(2,'user','User One','9c961dd0b9d643a18fe69532b2a8c77a','6f0b18242c21b47aa5005863495d57ede071bff7','user@nms.com.au',1,NULL,0,2,'2013-04-26 17:33:29','','2013-07-25 20:17:19','paul'),(4,'paul1','paul','663aef479c4f8549ff6d13d5fcd8e6a3','db7f7a68b352ff8b7981ee24f906280ca60e4c2b','a@nms.com.au',1,NULL,3,1,'2013-07-21 21:27:54','paul','2013-07-26 22:36:14',NULL),(11,'user2','User Two','d07818e198d78a0b86f1d12cbc1c164f','b6b04cb532a1008883d2982ea5d8a3155bcb8904','pg.taylor12@gmail.com',1,'b351fb6bb55ab7e',1,2,'2013-07-30 21:01:14','paul','2013-08-02 21:08:41','user2');
+INSERT INTO `users` VALUES (1,'paul','Paul Taylor','f1d52014a9a6e78821bef5278f91844b','37ddb1477de6308ca9ef3824b28b4a1e79da8908','paul@nms.com.au',1,NULL,41,'2013-04-26 17:33:29','','2013-12-18 13:04:32',NULL),(2,'user','User One','9c961dd0b9d643a18fe69532b2a8c77a','6f0b18242c21b47aa5005863495d57ede071bff7','user@nms.com.au',1,NULL,0,'2013-04-26 17:33:29','','2013-07-25 20:17:19','paul'),(4,'paul1','paul','663aef479c4f8549ff6d13d5fcd8e6a3','db7f7a68b352ff8b7981ee24f906280ca60e4c2b','a@nms.com.au',1,NULL,3,'2013-07-21 21:27:54','paul','2013-07-26 22:36:14',NULL),(11,'user2','User Two','d07818e198d78a0b86f1d12cbc1c164f','b6b04cb532a1008883d2982ea5d8a3155bcb8904','pg.taylor12@gmail.com',1,'b351fb6bb55ab7e',1,'2013-07-30 21:01:14','paul','2013-08-02 21:08:41','user2');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -427,7 +424,7 @@ CREATE TABLE `wines` (
   `variety_id` int(11) DEFAULT NULL,
   `region_id` int(11) DEFAULT NULL,
   `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
-  `note` longtext COLLATE utf8_unicode_ci NOT NULL,
+  `note` longtext COLLATE utf8_unicode_ci,
   `glassvolume` int(11) NOT NULL,
   `glassprice` decimal(10,2) NOT NULL,
   `carafevolume` int(11) NOT NULL,
@@ -494,4 +491,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-19 22:43:00
+-- Dump completed on 2013-12-23  7:31:43
