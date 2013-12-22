@@ -15,9 +15,20 @@ class DefaultController extends Controller
 
     public function foodAction()
     {
-        $name = 'Darren';
+        $em = $this->getDoctrine()->getManager();
+
+        $meals = $em->getRepository('BohemeCafeBundle:Meal')->menu();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $meals, $this->get('request')->query->get('page', 1)/* page number */, 20/* limit per page */, array()
+        );
+
         return $this->render('BohemeCafeBundle:Default:food.html.twig',
-                array('name' => $name));
+                array(
+                    'pagination' => $pagination,
+        ));
+
     }
 
     public function wineAction()

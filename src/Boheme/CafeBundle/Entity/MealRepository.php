@@ -27,4 +27,19 @@ class MealRepository extends EntityRepository {
 //        $users = $query->getResult(); // array of ForumUser objects
     }
 
+    public function menu() {
+//        $q = $this->createQueryBuilder('m')
+//                ->select('m')
+//                ->where('m.publish <= CURRENT_DATE()')
+//                ->orderBy('m.sitting.title', 'ASC');
+//        return $q->getQuery()->getResult();
+
+
+        $query = $this->getEntityManager()->createQuery('SELECT m,s,g FROM BohemeCafeBundle:Meal m '
+                . 'JOIN m.sitting s '
+                . 'JOIN m.menugroup g '
+                . 'WHERE m.publish <= CURRENT_DATE()');
+//        $query-> $query->setParameter(1, 'CURRENT_DATE()');
+        return $query->getResult();
+    }
 }

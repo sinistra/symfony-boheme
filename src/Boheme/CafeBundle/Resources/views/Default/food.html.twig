@@ -22,6 +22,9 @@
 
 {% block body -%}
 
+{% set prevsitting=''%}
+{% set prevgroup=''%}
+
 <!--=== Content Part ===-->
 <div class="container">
     <div class="row margin-bottom-30">
@@ -34,7 +37,44 @@
         <div class="col-md-8 mb-margin-bottom-30">
             <div class="headline"><h2>Menu</h2></div>
 
-            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas feugiat. Et harum quidem rerum facilis est et expedita distinctio lorem ipsum dolor sit amet, consectetur adipiscing elit landitiis.</p><br />
+            <table class="table">
+                <thead>
+                    <tr>
+                    {# sorting of properties based on query components #}
+                        <th>Description</th>
+                        <th>Group</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for meal in pagination %}
+                    {% if meal.sitting.title != prevsitting %}
+                    <tr><td><h4>{{meal.sitting.title}}</h4></td></tr>
+                        {% set prevsitting = meal.sitting.title %}
+                    {% endif %}
+                    {% if meal.menugroup.title != prevgroup %}
+                    <tr><td><b>{{meal.menugroup.title}}</b></td></tr>
+                        {% set prevgroup = meal.menugroup.title %}
+                    {% endif %}
+                    <tr>
+                        <td>{{ meal.title }} {{ meal.content }}</td>
+                        <td>{{ meal.sitting.title }}</td>
+                        <td>{{ meal.menugroup.title }}</td>
+                        <td>{{ meal.price }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="dataTables_info" id="record_info">{{pagination.TotalItemCount}} records in total.</div>
+                </div>
+                <div class="col-md-6">
+                    {{ knp_pagination_render(pagination) }}
+                </div>
+            </div>
+
         </div><!--/col-md-9-->
 
     </div><!--/row-->
