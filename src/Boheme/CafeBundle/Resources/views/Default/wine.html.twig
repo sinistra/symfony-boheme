@@ -1,7 +1,7 @@
-{# src/Boheme/CafeBundle/Resources/views/Default/contact.html.twig #}
+{# src/Boheme/CafeBundle/Resources/views/Default/wine.html.twig #}
 {% extends 'NmsAdminBundle::layout.html.twig' %}
 
-{% set page_title = 'Memu' %}
+{% set page_title = 'Wine' %}
 
 {% block title %}
 {{ parent() }} {{ page_title }}
@@ -22,7 +22,7 @@
 
 {% block body -%}
 
-{% set prevsitting=''%}
+{% set prevvariety=''%}
 {% set prevgroup=''%}
 
 <!--=== Content Part ===-->
@@ -31,24 +31,26 @@
 
         <div class="col-md-4">
             <!-- Contacts -->
-            <img src="{{asset('image/breakfast.png')}}" alt="" />
+            <img src="{{asset('image/wine.png')}}" alt="" />
 
         </div><!--/col-md-3-->
         <div class="col-md-8 mb-margin-bottom-30">
-            <div class="headline"><h2>Menu</h2></div>
+            <div class="headline"><h2>{{ page_title }}</h2></div>
 
             <table class="table">
                 <thead>
                     <tr>
                     {# sorting of properties based on query components #}
                         <th>Description</th>
-                        <th>Price</th>
+                        <th>Glass</th>
+                        <th>carafe</th>
+                        <th>Bottle</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    {% for meal in pagination %}
-                    {% if meal.sitting.title != prevsitting %}
+                    {% for wine in pagination %}
+                    {% if wine.variety.title != prevvariety %}
                     <tr><td><h4>{{meal.sitting.title}}</h4></td></tr>
                         {% set prevsitting = meal.sitting.title %}
                     {% endif %}

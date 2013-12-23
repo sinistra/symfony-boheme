@@ -33,9 +33,19 @@ class DefaultController extends Controller
 
     public function wineAction()
     {
-        $name = 'Darren';
+        $em = $this->getDoctrine()->getManager();
+
+        $wines = $em->getRepository('BohemeCafeBundle:Wine')->winelist();
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $wines, $this->get('request')->query->get('page', 1)/* page number */, 20/* limit per page */, array()
+        );
+
         return $this->render('BohemeCafeBundle:Default:wine.html.twig',
-                array('name' => $name));
+                array(
+                    'pagination' => $pagination,
+        ));
     }
 
     public function contactAction()

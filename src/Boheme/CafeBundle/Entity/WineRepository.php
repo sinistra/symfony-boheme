@@ -25,4 +25,18 @@ class WineRepository extends EntityRepository
         return $q->getQuery()->getResult();
     }
 
+    public function winelist() {
+//        $q = $this->createQueryBuilder('m')
+//                ->select('m')
+//                ->where('m.publish <= CURRENT_DATE()')
+//                ->orderBy('m.sitting.title', 'ASC');
+//        return $q->getQuery()->getResult();
+
+        $query = $this->getEntityManager()->createQuery('SELECT w,v,r FROM BohemeCafeBundle:Wine w '
+                . 'JOIN w.variety v '
+                . 'JOIN w.region r '
+            );
+//        $query-> $query->setParameter(1, 'CURRENT_DATE()');
+        return $query->getResult();
+    }
 }
