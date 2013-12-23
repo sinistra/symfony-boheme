@@ -35,6 +35,7 @@ class WineType extends AbstractType
             ->add('bottleprice', null, array(
                 'label' => 'Bottle price',
             ))
+            ->add('type')
             ->add('variety')
             ->add('region')
         ;
