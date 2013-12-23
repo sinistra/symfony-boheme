@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.27, for osx10.6 (i386)
+-- MySQL dump 10.13  Distrib 5.5.34, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: boheme
 -- ------------------------------------------------------
--- Server version	5.5.27
+-- Server version	5.5.34-0ubuntu0.13.10.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -254,7 +254,7 @@ CREATE TABLE `migration_versions` (
 
 LOCK TABLES `migration_versions` WRITE;
 /*!40000 ALTER TABLE `migration_versions` DISABLE KEYS */;
-INSERT INTO `migration_versions` VALUES ('20131001090506'),('20131007163247'),('20131007165101'),('20131220221958');
+INSERT INTO `migration_versions` VALUES ('20131001090506'),('20131007163247'),('20131007165101'),('20131220221958'),('20131224080423');
 /*!40000 ALTER TABLE `migration_versions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -435,9 +435,12 @@ CREATE TABLE `wines` (
   `createdby` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `updated` datetime NOT NULL,
   `updatedby` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `type_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_58312A0578C2BC47` (`variety_id`),
   KEY `IDX_58312A0598260155` (`region_id`),
+  KEY `IDX_58312A05C54C8C93` (`type_id`),
+  CONSTRAINT `FK_58312A05C54C8C93` FOREIGN KEY (`type_id`) REFERENCES `winetypes` (`id`),
   CONSTRAINT `FK_58312A0578C2BC47` FOREIGN KEY (`variety_id`) REFERENCES `winevarieties` (`id`),
   CONSTRAINT `FK_58312A0598260155` FOREIGN KEY (`region_id`) REFERENCES `wineregions` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -449,8 +452,36 @@ CREATE TABLE `wines` (
 
 LOCK TABLES `wines` WRITE;
 /*!40000 ALTER TABLE `wines` DISABLE KEYS */;
-INSERT INTO `wines` VALUES (1,1,1,'St Hallets Faith Shiraz','blackberry tones',150,9.00,300,15.00,750,30.00,'2013-01-01 00:00:00','paul','2013-01-01 00:00:00','paul'),(2,3,2,'Evans & Tate Classic Dry White','a classic blend of dry white varieties',0,0.00,0,0.00,0,0.00,'2013-12-19 22:21:11','paul','2013-12-19 22:23:59','paul'),(3,11,4,'NV Furlan Treviso',NULL,125,12.00,0,0.00,750,63.00,'2013-12-23 22:13:42','paul','2013-12-23 22:13:42','paul'),(4,12,5,'NV Dosnon & Lepage  Blanc de Noir',NULL,125,25.00,0,0.00,750,138.00,'2013-12-23 22:15:46','paul','2013-12-23 22:15:46','paul'),(5,13,6,'‘11 Dm. de La Grenaudiere',NULL,150,10.00,500,31.00,750,44.00,'2013-12-23 22:17:12','paul','2013-12-23 22:17:12','paul'),(6,14,7,'‘12 Cielo D’Abruzzo ‘Kasaura’',NULL,150,9.00,500,29.00,750,41.00,'2013-12-23 22:18:25','paul','2013-12-23 22:18:25','paul'),(7,4,8,'‘08 Sam Miranda ‘Cellar Release’',NULL,150,10.00,500,31.00,750,44.00,'2013-12-23 22:19:39','paul','2013-12-23 22:19:39','paul'),(8,15,9,'12 Far Ago Hill ‘Canyonleigh Reserve’',NULL,150,13.00,500,40.00,750,56.00,'2013-12-23 22:20:26','paul','2013-12-23 22:20:26','paul'),(9,3,6,'‘11 Monmousseau Touraine',NULL,150,10.00,500,30.00,750,43.00,'2013-12-23 22:21:25','paul','2013-12-23 22:21:25','paul'),(10,16,10,'’12 Crazy by Nature –certified organic',NULL,150,9.00,500,27.00,750,39.00,'2013-12-23 22:22:19','paul','2013-12-23 22:22:19','paul'),(11,17,1,'‘12 Massena ‘The Surly Muse’',NULL,150,11.00,500,33.00,750,47.00,'2013-12-23 22:23:31','paul','2013-12-23 22:23:31','paul'),(12,5,11,'‘10 Denis Pommier Petit Chablis Chardonnay – Chablis',NULL,150,14.00,500,44.00,750,62.00,'2013-12-23 22:24:50','paul','2013-12-23 22:24:50','paul'),(13,19,12,'’12 Rimauresq ‘Petit Rose’',NULL,150,11.00,500,35.00,750,50.00,'2013-12-23 22:26:17','paul','2013-12-23 22:26:17','paul'),(14,12,13,'‘11 Vincent Girardin Bourgogne Rouge',NULL,150,14.00,500,42.00,750,60.00,'2013-12-23 22:27:12','paul','2013-12-23 22:27:12','paul'),(15,20,14,'’11 Cantina dei Colli Amerini',NULL,150,9.00,500,28.00,750,40.00,'2013-12-23 22:28:12','paul','2013-12-23 22:28:12','paul'),(16,21,15,'‘12 Yves Cuilleron',NULL,150,12.00,500,38.00,750,54.00,'2013-12-23 22:29:06','paul','2013-12-23 22:29:06','paul'),(17,1,16,'’13 Battle of Bosworth ‘Puritan’','–certified organic & no added preservative, served lightly chilled',150,9.00,500,29.00,750,41.00,'2013-12-23 22:30:23','paul','2013-12-23 22:30:36','paul'),(18,22,3,'‘09 Vieux Naudin Bordeaux Superieur',NULL,150,10.00,500,30.00,750,43.00,'2013-12-23 22:31:27','paul','2013-12-23 22:31:27','paul');
+INSERT INTO `wines` VALUES (1,1,1,'St Hallets Faith Shiraz','blackberry tones',150,9.00,300,15.00,750,30.00,'2013-01-01 00:00:00','paul','2013-12-24 08:23:00','paul',4),(2,3,2,'Evans & Tate Classic Dry White','a classic blend of dry white varieties',0,0.00,0,0.00,0,0.00,'2013-12-19 22:21:11','paul','2013-12-24 08:27:30','paul',2),(3,11,4,'NV Furlan Treviso',NULL,125,12.00,0,0.00,750,63.00,'2013-12-23 22:13:42','paul','2013-12-24 08:27:40','paul',1),(4,12,5,'NV Dosnon & Lepage  Blanc de Noir',NULL,125,25.00,0,0.00,750,138.00,'2013-12-23 22:15:46','paul','2013-12-24 08:27:49','paul',1),(5,13,6,'‘11 Dm. de La Grenaudiere',NULL,150,10.00,500,31.00,750,44.00,'2013-12-23 22:17:12','paul','2013-12-24 08:28:38','paul',2),(6,14,7,'‘12 Cielo D’Abruzzo ‘Kasaura’',NULL,150,9.00,500,29.00,750,41.00,'2013-12-23 22:18:25','paul','2013-12-24 08:30:46','paul',2),(7,4,8,'‘08 Sam Miranda ‘Cellar Release’',NULL,150,10.00,500,31.00,750,44.00,'2013-12-23 22:19:39','paul','2013-12-24 08:30:55','paul',2),(8,15,9,'12 Far Ago Hill ‘Canyonleigh Reserve’',NULL,150,13.00,500,40.00,750,56.00,'2013-12-23 22:20:26','paul','2013-12-24 08:31:06','paul',2),(9,3,6,'‘11 Monmousseau Touraine',NULL,150,10.00,500,30.00,750,43.00,'2013-12-23 22:21:25','paul','2013-12-24 08:31:16','paul',2),(10,16,10,'’12 Crazy by Nature –certified organic',NULL,150,9.00,500,27.00,750,39.00,'2013-12-23 22:22:19','paul','2013-12-24 08:31:25','paul',2),(11,17,1,'‘12 Massena ‘The Surly Muse’',NULL,150,11.00,500,33.00,750,47.00,'2013-12-23 22:23:31','paul','2013-12-24 08:32:12','paul',2),(12,5,11,'‘10 Denis Pommier Petit Chablis Chardonnay – Chablis',NULL,150,14.00,500,44.00,750,62.00,'2013-12-23 22:24:50','paul','2013-12-24 08:32:29','paul',2),(13,19,12,'’12 Rimauresq ‘Petit Rose’',NULL,150,11.00,500,35.00,750,50.00,'2013-12-23 22:26:17','paul','2013-12-24 08:32:46','paul',3),(14,12,13,'‘11 Vincent Girardin Bourgogne Rouge',NULL,150,14.00,500,42.00,750,60.00,'2013-12-23 22:27:12','paul','2013-12-24 08:33:05','paul',4),(15,20,14,'’11 Cantina dei Colli Amerini',NULL,150,9.00,500,28.00,750,40.00,'2013-12-23 22:28:12','paul','2013-12-24 08:33:17','paul',4),(16,21,15,'‘12 Yves Cuilleron',NULL,150,12.00,500,38.00,750,54.00,'2013-12-23 22:29:06','paul','2013-12-24 08:45:45','paul',4),(17,1,16,'’13 Battle of Bosworth ‘Puritan’','–certified organic & no added preservative, served lightly chilled',150,9.00,500,29.00,750,41.00,'2013-12-23 22:30:23','paul','2013-12-24 08:45:56','paul',4),(18,22,3,'‘09 Vieux Naudin Bordeaux Superieur',NULL,150,10.00,500,30.00,750,43.00,'2013-12-23 22:31:27','paul','2013-12-24 08:46:15','paul',5);
 /*!40000 ALTER TABLE `wines` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `winetypes`
+--
+
+DROP TABLE IF EXISTS `winetypes`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `winetypes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
+  `created` datetime NOT NULL,
+  `createdBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  `updated` datetime NOT NULL,
+  `updatedBy` varchar(25) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `winetypes`
+--
+
+LOCK TABLES `winetypes` WRITE;
+/*!40000 ALTER TABLE `winetypes` DISABLE KEYS */;
+INSERT INTO `winetypes` VALUES (1,'Sparkling','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(2,'White','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(3,'Rose','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(4,'Red','0000-00-00 00:00:00','','0000-00-00 00:00:00',''),(5,'Desert','0000-00-00 00:00:00','','0000-00-00 00:00:00','');
+/*!40000 ALTER TABLE `winetypes` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -491,4 +522,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-23 22:39:30
+-- Dump completed on 2013-12-24  9:27:08
