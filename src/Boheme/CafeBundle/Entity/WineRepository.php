@@ -32,9 +32,10 @@ class WineRepository extends EntityRepository
 //                ->orderBy('m.sitting.title', 'ASC');
 //        return $q->getQuery()->getResult();
 
-        $query = $this->getEntityManager()->createQuery('SELECT w,v,r FROM BohemeCafeBundle:Wine w '
+        $query = $this->getEntityManager()->createQuery('SELECT w,t,v FROM BohemeCafeBundle:Wine w '
+                . 'JOIN w.type t '
                 . 'JOIN w.variety v '
-                . 'JOIN w.region r '
+                . 'ORDER by w.type'
             );
 //        $query-> $query->setParameter(1, 'CURRENT_DATE()');
         return $query->getResult();
