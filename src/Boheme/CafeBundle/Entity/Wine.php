@@ -65,6 +65,11 @@ class Wine {
     private $bottleprice = 0;
 
     /**
+     * @ORM\ManyToOne(targetEntity="Winetype", inversedBy="wines")
+     */
+    private $type;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Winevariety", inversedBy="wines")
      */
     private $variety;
@@ -442,5 +447,28 @@ class Wine {
     public function getRegion()
     {
         return $this->region;
+    }
+
+    /**
+     * Set type
+     *
+     * @param \Boheme\CafeBundle\Entity\Winetype $type
+     * @return Wine
+     */
+    public function setType(\Boheme\CafeBundle\Entity\Winetype $type = null)
+    {
+        $this->type = $type;
+    
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return \Boheme\CafeBundle\Entity\Winetype 
+     */
+    public function getType()
+    {
+        return $this->type;
     }
 }
