@@ -89,6 +89,14 @@
                         </div>
 
                         <div class="form-group">
+                        {{ form_label(form.type, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
+                            <div class="col-lg-3">
+                            {{ form_errors(form.type) }}
+                            {{ form_widget(form.type, {'attr':{'class':'form-control'} }) }}
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                         {{ form_label(form.variety, label|default(null), { 'label_attr': { 'class': 'col-lg-2 control-label' } }) }}
                             <div class="col-lg-3">
                             {{ form_errors(form.variety) }}

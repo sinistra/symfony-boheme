@@ -39,6 +39,7 @@
                         {# sorting of properties based on query components #}
                             <th>{{ knp_pagination_sortable(pagination, 'Title', 'w.title') }}</th>
                             <th{% if pagination.isSorted('w.note') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Notes', 'w.note') }}</th>
+                            <th>Type</th>
                             <th>Variety</th>
                             <th>Region</th>
                             <th>Updated</th>
@@ -51,6 +52,7 @@
                         <tr>
                             <td>{{ wine.title }}</td>
                             <td>{{ wine.note }}</td>
+                            <td>{{ wine.type }}</td>
                             <td>{{ wine.variety }}</td>
                             <td>{{ wine.region }}</td>
                             <td>{% if wine.updated %}{{ wine.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
