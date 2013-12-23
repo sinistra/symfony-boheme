@@ -22,8 +22,8 @@
 
 {% block body -%}
 
+{% set prevtype=''%}
 {% set prevvariety=''%}
-{% set prevgroup=''%}
 
 <!--=== Content Part ===-->
 <div class="container">
@@ -50,17 +50,19 @@
 
                 <tbody>
                     {% for wine in pagination %}
-                    {% if wine.variety.title != prevvariety %}
-                    <tr><td><h4>{{meal.sitting.title}}</h4></td></tr>
-                        {% set prevsitting = meal.sitting.title %}
+                    {% if wine.type.title != prevtype %}
+                    <tr><td><h4>{{wine.type.title}}</h4></td></tr>
+                        {% set prevtype = wine.type.title %}
                     {% endif %}
-                    {% if meal.menugroup.title != prevgroup %}
-                    <tr><td><b>{{meal.menugroup.title}}</b></td></tr>
-                        {% set prevgroup = meal.menugroup.title %}
+{#                    {% if wine.variety.title != prevvariety %}
+                    <tr><td><b>{{wine.variety.title}}</b></td></tr>
+                        {% set prevvariety = wine.variety.title %}
                     {% endif %}
-                    <tr>
-                        <td>{{ meal.title }} {{ meal.content }}</td>
-                        <td class="text-right">{% if meal.price > 0 %}{{ meal.price }} {% endif %}</td>
+#}                    <tr>
+                        <td>{{ wine.title }} {{ wine.note }} {{ wine.region }} {{ wine.variety }}</td>
+                        <td class="text-right">{% if wine.glassprice > 0 %}{{ wine.glassprice }} {% endif %}</td>
+                        <td class="text-right">{% if wine.carafeprice > 0 %}{{ wine.carafeprice }} {% endif %}</td>
+                        <td class="text-right">{% if wine.bottleprice > 0 %}{{ wine.bottleprice }} {% endif %}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
