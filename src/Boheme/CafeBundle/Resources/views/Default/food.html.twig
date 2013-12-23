@@ -42,7 +42,6 @@
                     <tr>
                     {# sorting of properties based on query components #}
                         <th>Description</th>
-                        <th>Group</th>
                         <th>Price</th>
                     </tr>
                 </thead>
@@ -59,9 +58,7 @@
                     {% endif %}
                     <tr>
                         <td>{{ meal.title }} {{ meal.content }}</td>
-                        <td>{{ meal.sitting.title }}</td>
-                        <td>{{ meal.menugroup.title }}</td>
-                        <td>{{ meal.price }}</td>
+                        <td class="text-right">{% if meal.price > 0 %}{{ meal.price }} {% endif %}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
