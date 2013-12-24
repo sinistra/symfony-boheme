@@ -21,7 +21,7 @@ class DefaultController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $meals, $this->get('request')->query->get('page', 1)/* page number */, 20/* limit per page */, array()
+            $meals, $this->get('request')->query->get('page', 1)/* page number */, 15/* limit per page */, array()
         );
 
         return $this->render('BohemeCafeBundle:Default:food.html.twig',
@@ -39,7 +39,7 @@ class DefaultController extends Controller
 
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
-            $wines, $this->get('request')->query->get('page', 1)/* page number */, 20/* limit per page */, array()
+            $wines, $this->get('request')->query->get('page', 1)/* page number */, 15/* limit per page */, array()
         );
 
         return $this->render('BohemeCafeBundle:Default:wine.html.twig',
