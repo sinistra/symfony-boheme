@@ -4,42 +4,33 @@
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
     <title>Cafe Boheme</title>
-
     <!-- Meta -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="Paul Taylor">
-
     <!-- CSS Global Compulsory-->
     <link rel="stylesheet" href="{{asset('theme/assets/plugins/bootstrap/css/bootstrap.css')}}">
     <link rel="stylesheet" href="{{asset('theme/assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('theme/assets/css/headers/header1.css')}}">
     <link rel="stylesheet" href="{{asset('theme/assets/css/responsive.css')}}">
-
     <link rel="shortcut icon" href="{{ asset('images/favicons/favicon.ico')}}">
-
     <!-- CSS Implementing Plugins -->
     <link rel="stylesheet" href="{{asset('theme/assets/plugins/font-awesome/css/font-awesome.css')}}">
     <link rel="stylesheet" href="{{asset('theme/assets/plugins/flexslider/flexslider.css')}}">
     <link rel="stylesheet" href="{{asset('theme/assets/plugins/parallax-slider/css/parallax-slider.css')}}">
-
     <!-- CSS Theme -->
 {#    <link rel="stylesheet" href="{{asset('theme/assets/css/themes/default.css')}}" id="style_color">#}
 {#    <link rel="stylesheet" href="{{asset('theme/assets/css/themes/headers/default.css')}}" id="style_color-header-1">#}
-
     <link rel="stylesheet" href="{{asset('theme/assets/css/themes/light.css')}}" id="style_color">
     <link rel="stylesheet" href="{{asset('theme/assets/css/themes/headers/header1-light.css')}}" id="style_color-header-1">
-
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 {% block stylesheets %}{% stylesheets 'css/*' %}{% endstylesheets %}{% endblock %}
 </head>
-
 <body>
-    {% set version = constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION')%}
+{% set version = constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION')%}
 <!--=== Style Switcher ===-->
 <!--=== End Style Switcher ===-->
-
 <!--=== Top ===-->
 <div class="top">
     <div class="container">
@@ -68,13 +59,10 @@
             {% else %}
             <a href="{{ path('login') }}" class="login-btn">Login</a>
             {% endif %}
-
         </ul>
     </div>
 </div><!--/top-->
 <!--=== End Top ===-->
-
-
 <!--=== Header ===-->
 <div class="header">
     <div class="navbar navbar-default" role="navigation">
@@ -91,14 +79,12 @@
                     <img id="logo-header" src="/image/bohemeLogo.png" alt="Logo">
                 </a>
             </div>
-
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active">
                         <a href="{{ path('boheme_cafe_homepage') }}" >Home</a>
                     </li>
-
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="0" data-close-others="false">
                             Menu
@@ -112,7 +98,6 @@
                     <li>
                         <a href="{{ path('boheme_cafe_contact') }}" >Contact</a>
                     </li>
-
                     <li class="hidden-sm"><a class="search"><i class="icon-search search-btn"></i></a></li>
                 </ul>
                 <div class="search-open">
@@ -128,7 +113,6 @@
     </div>
 </div><!--/header-->
 <!--=== End Header ===-->
-
 <!--page content starts here-->
 <h3 class="page-title">
     {% block pagetitle %}
@@ -168,7 +152,6 @@
 {% endfor %}
 <!-- END PAGE HEADER-->
 {% block body %}{% endblock %}
-
 <!--=== Footer ===-->
 <div class="footer">
     <div class="container">
@@ -177,7 +160,6 @@
                 <!-- About -->
                 <div class="headline"><h2>About</h2></div>
                 <p class="margin-bottom-25 md-margin-bottom-40">Who is Cafe Boheme.</p>
-
                 <!-- Monthly Newsletter -->
                 <div class="headline"><h2>Monthly Newsletter</h2></div>
                 <p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
@@ -190,12 +172,10 @@
                     </div><!-- /input-group -->
                 </form>
             </div><!--/col-md-4-->
-
             <div class="col-md-4 md-margin-bottom-40">
                 <div class="posts">
                 </div>
             </div><!--/col-md-4-->
-
             <div class="col-md-4">
                 <!-- Contact Us-->
                 <div class="headline"><h2>Contact Us</h2></div>
@@ -206,7 +186,6 @@
                     Fax: 800 123 3456 <br />
                     Email: <a href="mailto:info@cafeboheme.com.au" class="">info@cafeboheme.com.au</a>
                 </address>
-
                 <!-- Stay Connected -->
                 <div class="headline"><h2>Stay Connected</h2></div>
                 <ul class="social-icons">
@@ -219,7 +198,6 @@
     </div><!--/container-->
 </div><!--/footer-->
 <!--=== End Footer ===-->
-
 <!--=== Copyright ===-->
 <div class="copyright">
     <div class="container">
@@ -239,7 +217,6 @@
     </div><!--/container-->
 </div><!--/copyright-->
 <!--=== End Copyright ===-->
-
 <!-- JS Global Compulsory -->
 <script type="text/javascript" src="{{asset('theme/assets/plugins/jquery-1.10.2.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('theme/assets/plugins/jquery-migrate-1.2.1.min.js')}}"></script>
@@ -265,6 +242,5 @@
 <!--[if lt IE 9]>
     <script src="{{asset('theme/assets/js/respond.js')}}"></script>
 <![endif]-->
-
 </body>
 </html>
