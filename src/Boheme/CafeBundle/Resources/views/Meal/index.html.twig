@@ -41,9 +41,9 @@
                             <th{% if pagination.isSorted('m.content') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Content', 'm.content') }}</th>
                             <th{% if pagination.isSorted('m.sitting') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Sitting', 'm.sitting') }}</th>
                             <th>Group</th>
+                            <th>Price</th>
                             <th>Published</th>
                             <th>Expired</th>
-                            <th>Price</th>
                             <th>Updated</th>
                             <th>Updated By</th>
                             <th style="width:100px">Actions</th>
@@ -58,8 +58,8 @@
                             <td>{{ meal.sitting.title }}</td>
                             <td>{{ meal.menugroup.title }}</td>
                             <td>{{ meal.price }}</td>
-                            <td>{% if meal.publish %}{{ meal.publish|date('Y-m-d H:i:s') }}{% endif %}</td>
-                            <td>{% if meal.expire %}{{ meal.expire|date('Y-m-d H:i:s') }}{% endif %}</td>
+                            <td>{% if meal.publish %}{{ meal.publish|date('Y-m-d') }}{% endif %}</td>
+                            <td>{% if meal.expire %}{{ meal.expire|date('Y-m-d') }}{% endif %}</td>
                             <td>{% if meal.updated %}{{ meal.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
                             <td>{{ meal.updatedby }}</td>
                             <td>
