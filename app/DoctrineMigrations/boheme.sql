@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.34, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.5.27, for osx10.6 (i386)
 --
 -- Host: localhost    Database: boheme
 -- ------------------------------------------------------
--- Server version	5.5.34-0ubuntu0.13.10.1
+-- Server version	5.5.27
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -341,7 +341,7 @@ CREATE TABLE `user_group` (
 
 LOCK TABLES `user_group` WRITE;
 /*!40000 ALTER TABLE `user_group` DISABLE KEYS */;
-INSERT INTO `user_group` VALUES (1,2),(2,2),(2,5),(2,10),(11,3);
+INSERT INTO `user_group` VALUES (1,2),(2,2),(2,5),(2,10);
 /*!40000 ALTER TABLE `user_group` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -379,7 +379,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'paul','Paul Taylor','f1d52014a9a6e78821bef5278f91844b','37ddb1477de6308ca9ef3824b28b4a1e79da8908','paul@nms.com.au',1,NULL,41,'2013-04-26 17:33:29','','2013-12-18 13:04:32',NULL),(2,'user','User One','9c961dd0b9d643a18fe69532b2a8c77a','6f0b18242c21b47aa5005863495d57ede071bff7','user@nms.com.au',1,NULL,0,'2013-04-26 17:33:29','','2013-07-25 20:17:19','paul'),(4,'paul1','paul','663aef479c4f8549ff6d13d5fcd8e6a3','db7f7a68b352ff8b7981ee24f906280ca60e4c2b','a@nms.com.au',1,NULL,3,'2013-07-21 21:27:54','paul','2013-07-26 22:36:14',NULL),(11,'user2','User Two','d07818e198d78a0b86f1d12cbc1c164f','b6b04cb532a1008883d2982ea5d8a3155bcb8904','pg.taylor12@gmail.com',1,'b351fb6bb55ab7e',1,'2013-07-30 21:01:14','paul','2013-08-02 21:08:41','user2');
+INSERT INTO `users` VALUES (1,'paul','Paul Taylor','f1d52014a9a6e78821bef5278f91844b','37ddb1477de6308ca9ef3824b28b4a1e79da8908','paul@nms.com.au',1,NULL,45,'2013-04-26 17:33:29','','2013-12-25 18:37:39',NULL),(2,'user','User One','9c961dd0b9d643a18fe69532b2a8c77a','6f0b18242c21b47aa5005863495d57ede071bff7','user@nms.com.au',1,NULL,0,'2013-04-26 17:33:29','','2013-07-25 20:17:19','paul'),(4,'boheme','Cafe Boheme','faf2c3628a104a128fb422ddd76c3a76','dfc96cd2fd29c8cd2707a9bd47cfa147e8e8c1ed','info@cafeboheme.com.au',1,NULL,4,'2013-07-21 21:27:54','paul','2014-01-12 16:27:39',NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -440,9 +440,9 @@ CREATE TABLE `wines` (
   KEY `IDX_58312A0578C2BC47` (`variety_id`),
   KEY `IDX_58312A0598260155` (`region_id`),
   KEY `IDX_58312A05C54C8C93` (`type_id`),
-  CONSTRAINT `FK_58312A05C54C8C93` FOREIGN KEY (`type_id`) REFERENCES `winetypes` (`id`),
   CONSTRAINT `FK_58312A0578C2BC47` FOREIGN KEY (`variety_id`) REFERENCES `winevarieties` (`id`),
-  CONSTRAINT `FK_58312A0598260155` FOREIGN KEY (`region_id`) REFERENCES `wineregions` (`id`)
+  CONSTRAINT `FK_58312A0598260155` FOREIGN KEY (`region_id`) REFERENCES `wineregions` (`id`),
+  CONSTRAINT `FK_58312A05C54C8C93` FOREIGN KEY (`type_id`) REFERENCES `winetypes` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -522,4 +522,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-12-24  9:27:08
+-- Dump completed on 2014-01-12 16:36:04
