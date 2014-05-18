@@ -17,3 +17,18 @@ login_check:
 logout:
     pattern: /logout
     defaults: { _controller: NmsAdminBundle:Security:logout }
+
+kitpages_cms:
+    resource: "@KitpagesCmsBundle/Resources/config/routing.yml"
+    prefix: "cms"
+
+kitpages_file:
+    resource: "@KitpagesFileBundle/Resources/config/routing.yml"
+    prefix: "file"
+
+kitpages_cms_page_view_lang:
+    pattern:  /{lang}/cms/{id}/{urlTitle}
+    defaults: { _controller: KitpagesCmsBundle:Page:view, lang: fr }
+    requirements:
+        id: \d+
+        lang:  en|fr

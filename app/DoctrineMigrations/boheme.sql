@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.5.27, for osx10.6 (i386)
+-- MySQL dump 10.13  Distrib 5.5.37, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: boheme
 -- ------------------------------------------------------
--- Server version	5.5.27
+-- Server version	5.5.37-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -40,6 +40,372 @@ CREATE TABLE `blogs` (
 LOCK TABLES `blogs` WRITE;
 /*!40000 ALTER TABLE `blogs` DISABLE KEYS */;
 /*!40000 ALTER TABLE `blogs` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_block`
+--
+
+DROP TABLE IF EXISTS `cms_block`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_block` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `block_type` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `template` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `is_published` tinyint(1) NOT NULL,
+  `data` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `data_media` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `canonical_url` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `real_updated_date` datetime NOT NULL,
+  `published_at` datetime DEFAULT NULL,
+  `unpublished_at` datetime DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_AD680C0E989D9B62` (`slug`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_block`
+--
+
+LOCK TABLES `cms_block` WRITE;
+/*!40000 ALTER TABLE `cms_block` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_block` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_block_publish`
+--
+
+DROP TABLE IF EXISTS `cms_block_publish`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_block_publish` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `block_id` int(11) DEFAULT NULL,
+  `slug` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `block_type` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `renderer` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `data` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `data_media` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `canonical_url` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_72E6836AE9ED820C` (`block_id`),
+  CONSTRAINT `FK_72E6836AE9ED820C` FOREIGN KEY (`block_id`) REFERENCES `cms_block` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_block_publish`
+--
+
+LOCK TABLES `cms_block_publish` WRITE;
+/*!40000 ALTER TABLE `cms_block_publish` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_block_publish` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_nav_publish`
+--
+
+DROP TABLE IF EXISTS `cms_nav_publish`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_nav_publish` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `page_id` int(11) DEFAULT NULL,
+  `parent_id` int(11) DEFAULT NULL,
+  `slug` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `forced_url` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `link_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_link_url_first_child` tinyint(1) DEFAULT NULL,
+  `data` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `lft` int(11) NOT NULL,
+  `rgt` int(11) NOT NULL,
+  `root` int(11) NOT NULL,
+  `lvl` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_E0A69C42989D9B62` (`slug`),
+  UNIQUE KEY `UNIQ_E0A69C4244505E8D` (`forced_url`),
+  UNIQUE KEY `UNIQ_E0A69C42C4663E4` (`page_id`),
+  KEY `IDX_E0A69C42727ACA70` (`parent_id`),
+  CONSTRAINT `FK_E0A69C42727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `cms_nav_publish` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `FK_E0A69C42C4663E4` FOREIGN KEY (`page_id`) REFERENCES `cms_page` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_nav_publish`
+--
+
+LOCK TABLES `cms_nav_publish` WRITE;
+/*!40000 ALTER TABLE `cms_nav_publish` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_nav_publish` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_page`
+--
+
+DROP TABLE IF EXISTS `cms_page`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_page` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `slug` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `language` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `title` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `url_title` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `forced_url` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `menu_title` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `page_type` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `layout` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_published` tinyint(1) NOT NULL,
+  `is_in_navigation` tinyint(1) NOT NULL,
+  `is_link_url_first_child` tinyint(1) DEFAULT NULL,
+  `is_pending_delete` tinyint(1) NOT NULL,
+  `data` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `link_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `published_at` datetime DEFAULT NULL,
+  `unpublished_at` datetime DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  `lft` int(11) NOT NULL,
+  `rgt` int(11) NOT NULL,
+  `root` int(11) NOT NULL,
+  `lvl` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_D39C1B5D989D9B62` (`slug`),
+  UNIQUE KEY `UNIQ_D39C1B5D44505E8D` (`forced_url`),
+  KEY `IDX_D39C1B5D727ACA70` (`parent_id`),
+  CONSTRAINT `FK_D39C1B5D727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `cms_page` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_page`
+--
+
+LOCK TABLES `cms_page` WRITE;
+/*!40000 ALTER TABLE `cms_page` DISABLE KEYS */;
+INSERT INTO `cms_page` VALUES (1,NULL,'site','en','null','null',NULL,NULL,'technical',NULL,0,1,NULL,0,'N;',NULL,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27',-1,16,1,0),(2,1,'en','en',NULL,'',NULL,NULL,'technical',NULL,0,1,NULL,0,'N;',NULL,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27',0,7,1,1),(3,2,'en-main','en',NULL,'',NULL,NULL,'technical',NULL,0,1,NULL,0,'N;',NULL,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27',1,4,1,2),(4,2,'en-footer','en',NULL,'',NULL,NULL,'technical',NULL,0,1,NULL,0,'N;',NULL,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27',5,6,1,2),(5,3,'en-home','en','home en','home-en',NULL,'home','edito','default',0,1,NULL,0,'N;',NULL,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27',2,3,1,3),(6,1,'fr','fr',NULL,'',NULL,NULL,'technical',NULL,0,1,NULL,0,'N;',NULL,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27',8,15,1,1),(7,6,'fr-main','fr',NULL,'',NULL,NULL,'technical',NULL,0,1,NULL,0,'N;',NULL,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27',9,12,1,2),(8,6,'fr-footer','fr',NULL,'',NULL,NULL,'technical',NULL,0,1,NULL,0,'N;',NULL,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27',13,14,1,2),(9,7,'fr-home','fr','home fr','home-fr',NULL,'home','edito','default',0,1,NULL,0,'N;',NULL,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27',10,11,1,3);
+/*!40000 ALTER TABLE `cms_page` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_page_publish`
+--
+
+DROP TABLE IF EXISTS `cms_page_publish`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_page_publish` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `page_id` int(11) DEFAULT NULL,
+  `slug` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `url_title` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `forced_url` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `page_type` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `language` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `layout` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `data` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `zone_list` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `createdAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_C3D7D0AE989D9B62` (`slug`),
+  UNIQUE KEY `UNIQ_C3D7D0AE44505E8D` (`forced_url`),
+  UNIQUE KEY `UNIQ_C3D7D0AEC4663E4` (`page_id`),
+  CONSTRAINT `FK_C3D7D0AEC4663E4` FOREIGN KEY (`page_id`) REFERENCES `cms_page` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_page_publish`
+--
+
+LOCK TABLES `cms_page_publish` WRITE;
+/*!40000 ALTER TABLE `cms_page_publish` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_page_publish` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_page_zone`
+--
+
+DROP TABLE IF EXISTS `cms_page_zone`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_page_zone` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `zone_id` int(11) DEFAULT NULL,
+  `page_id` int(11) DEFAULT NULL,
+  `location_in_page` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_E449BCB09F2C3FAB` (`zone_id`),
+  KEY `IDX_E449BCB0C4663E4` (`page_id`),
+  CONSTRAINT `FK_E449BCB0C4663E4` FOREIGN KEY (`page_id`) REFERENCES `cms_page` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_E449BCB09F2C3FAB` FOREIGN KEY (`zone_id`) REFERENCES `cms_zone` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_page_zone`
+--
+
+LOCK TABLES `cms_page_zone` WRITE;
+/*!40000 ALTER TABLE `cms_page_zone` DISABLE KEYS */;
+INSERT INTO `cms_page_zone` VALUES (1,1,5,'column'),(2,2,9,'column'),(3,3,5,'main'),(4,4,9,'main');
+/*!40000 ALTER TABLE `cms_page_zone` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_site`
+--
+
+DROP TABLE IF EXISTS `cms_site`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_site` (
+  `label` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `value` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`label`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_site`
+--
+
+LOCK TABLES `cms_site` WRITE;
+/*!40000 ALTER TABLE `cms_site` DISABLE KEYS */;
+INSERT INTO `cms_site` VALUES ('IS_NAV_PUBLISHED','0');
+/*!40000 ALTER TABLE `cms_site` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_user_preference`
+--
+
+DROP TABLE IF EXISTS `cms_user_preference`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_user_preference` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_name` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `data_tree` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_5AF29DB024A232CF` (`user_name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_user_preference`
+--
+
+LOCK TABLES `cms_user_preference` WRITE;
+/*!40000 ALTER TABLE `cms_user_preference` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_user_preference` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_zone`
+--
+
+DROP TABLE IF EXISTS `cms_zone`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_zone` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `slug` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `canonical_url` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `is_published` tinyint(1) NOT NULL,
+  `published_at` datetime DEFAULT NULL,
+  `unpublished_at` datetime DEFAULT NULL,
+  `createdAt` datetime NOT NULL,
+  `updatedAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_677D6D7A989D9B62` (`slug`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_zone`
+--
+
+LOCK TABLES `cms_zone` WRITE;
+/*!40000 ALTER TABLE `cms_zone` DISABLE KEYS */;
+INSERT INTO `cms_zone` VALUES (1,'zone_1',NULL,NULL,0,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27'),(2,'zone_2',NULL,NULL,0,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27'),(3,'zone_3',NULL,NULL,0,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27'),(4,'zone_4',NULL,NULL,0,NULL,NULL,'2014-05-19 08:11:27','2014-05-19 08:11:27');
+/*!40000 ALTER TABLE `cms_zone` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_zone_block`
+--
+
+DROP TABLE IF EXISTS `cms_zone_block`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_zone_block` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `zone_id` int(11) DEFAULT NULL,
+  `block_id` int(11) DEFAULT NULL,
+  `position` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_16F543019F2C3FAB` (`zone_id`),
+  KEY `IDX_16F54301E9ED820C` (`block_id`),
+  CONSTRAINT `FK_16F54301E9ED820C` FOREIGN KEY (`block_id`) REFERENCES `cms_block` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `FK_16F543019F2C3FAB` FOREIGN KEY (`zone_id`) REFERENCES `cms_zone` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_zone_block`
+--
+
+LOCK TABLES `cms_zone_block` WRITE;
+/*!40000 ALTER TABLE `cms_zone_block` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_zone_block` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cms_zone_publish`
+--
+
+DROP TABLE IF EXISTS `cms_zone_publish`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `cms_zone_publish` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `zone_id` int(11) DEFAULT NULL,
+  `slug` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `title` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `canonical_url` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `data` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `createdAt` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UNIQ_87833803989D9B62` (`slug`),
+  UNIQUE KEY `UNIQ_878338039F2C3FAB` (`zone_id`),
+  CONSTRAINT `FK_878338039F2C3FAB` FOREIGN KEY (`zone_id`) REFERENCES `cms_zone` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cms_zone_publish`
+--
+
+LOCK TABLES `cms_zone_publish` WRITE;
+/*!40000 ALTER TABLE `cms_zone_publish` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cms_zone_publish` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -130,6 +496,44 @@ LOCK TABLES `groups` WRITE;
 /*!40000 ALTER TABLE `groups` DISABLE KEYS */;
 INSERT INTO `groups` VALUES (2,'Administrators','ROLE_ADMIN','0000-00-00 00:00:00','2013-06-01 20:16:58'),(3,'User','ROLE_USER','0000-00-00 00:00:00','0000-00-00 00:00:00'),(4,'Team role','ROLE_TEAM','0000-00-00 00:00:00','2013-08-04 21:28:34'),(5,'Club role','ROLE_CLUB','0000-00-00 00:00:00','2013-08-04 21:28:06'),(10,'Competition Manager','ROLE_COMP','0000-00-00 00:00:00','2013-08-04 21:29:18');
 /*!40000 ALTER TABLE `groups` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `kit_file`
+--
+
+DROP TABLE IF EXISTS `kit_file`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `kit_file` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parent_id` int(11) DEFAULT NULL,
+  `is_private` tinyint(1) NOT NULL,
+  `file_name` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `hasUploadFailed` tinyint(1) DEFAULT NULL,
+  `data` longtext COLLATE utf8_unicode_ci NOT NULL COMMENT '(DC2Type:array)',
+  `status` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `type` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `mime_type` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `item_category` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `item_class` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `item_id` varchar(250) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `publish_parent` tinyint(1) DEFAULT NULL,
+  `createdAt` datetime DEFAULT NULL,
+  `updatedAt` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `IDX_71A69473727ACA70` (`parent_id`),
+  CONSTRAINT `FK_71A69473727ACA70` FOREIGN KEY (`parent_id`) REFERENCES `kit_file` (`id`) ON DELETE SET NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `kit_file`
+--
+
+LOCK TABLES `kit_file` WRITE;
+/*!40000 ALTER TABLE `kit_file` DISABLE KEYS */;
+/*!40000 ALTER TABLE `kit_file` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -286,6 +690,32 @@ CREATE TABLE `notices` (
 LOCK TABLES `notices` WRITE;
 /*!40000 ALTER TABLE `notices` DISABLE KEYS */;
 /*!40000 ALTER TABLE `notices` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `simple_cache_backend`
+--
+
+DROP TABLE IF EXISTS `simple_cache_backend`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `simple_cache_backend` (
+  `id` varchar(250) COLLATE utf8_unicode_ci NOT NULL,
+  `data` longtext COLLATE utf8_unicode_ci COMMENT '(DC2Type:array)',
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  `expired_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `simple_cache_backend`
+--
+
+LOCK TABLES `simple_cache_backend` WRITE;
+/*!40000 ALTER TABLE `simple_cache_backend` DISABLE KEYS */;
+/*!40000 ALTER TABLE `simple_cache_backend` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -522,4 +952,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-01-12 16:36:04
+-- Dump completed on 2014-05-19  8:16:33

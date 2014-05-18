@@ -20,6 +20,12 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle(),
             new Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
+            new Kitpages\CmsBundle\KitpagesCmsBundle(),
+            new Kitpages\FileBundle\KitpagesFileBundle(),
+            new Kitpages\FileSystemBundle\KitpagesFileSystemBundle(),
+            new Kitpages\SimpleCacheBundle\KitpagesSimpleCacheBundle(),
+            new Kitpages\UtilBundle\KitpagesUtilBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new Nms\AdminBundle\NmsAdminBundle(),
             new Boheme\CafeBundle\BohemeCafeBundle(),
         );

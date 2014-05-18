@@ -10,7 +10,7 @@ security:
         ROLE_TEAM:   ROLE_USER
         ROLE_CLUB:   ROLE_TEAM
         ROLE_COMP:   ROLE_CLUB
-        ROLE_ADMIN:   ROLE_COMP
+        ROLE_ADMIN:   [ROLE_CMS_ADMIN, ROLE_COMP]
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:

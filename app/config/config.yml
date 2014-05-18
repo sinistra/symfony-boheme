@@ -31,6 +31,9 @@ twig:
     strict_variables: %kernel.debug%
     globals:
       app_version:    "%nms_version%"
+      cms:
+        type: service
+        id: kitpages.cms.model.cmsManager
 
 # Assetic Configuration
 assetic:
@@ -109,3 +112,65 @@ knp_paginator:
         pagination: NmsAdminBundle:Pagination:sliding.html.twig     # sliding pagination controls template
         sortable: NmsAdminBundle:Pagination:sortable_link.html.twig # sort link template
         filtration: NmsAdminBundle:Pagination:filtration.html.twig # filter template
+
+stof_doctrine_extensions:
+    default_locale: en_US
+    orm:
+        default:
+            timestampable: true # not needed: listeners are enabled by default
+            sortable: true
+            sluggable: true
+            tree: true
+
+kitpages_cms:
+    block:
+        template:
+            template_list:
+                standard:
+                    class: '\Kitpages\CmsBundle\Form\Block\StandardForm'
+                    name: "Standard"
+                    twig: "KitpagesCmsBundle:Block:form/standard.html.twig"
+        renderer:
+            standard:
+                default:
+                    type: "twig"
+                    twig: "KitpagesCmsBundle:Block:renderer/standard/default.html.twig"
+    page:
+        renderer_twig_main: "KitpagesCmsBundle:Page:layout.html.twig" # optional default:"KitpagesCmsBundle:Page:layout.html.twig"
+        layout_list:
+            default:
+                renderer_twig: "KitpagesCmsBundle:Page:template/default.html.twig"
+                data_form_class: '\Kitpages\CmsBundle\Form\Page\DefaultForm'
+                data_form_twig: "KitpagesCmsBundle:Page:form/default.html.twig"
+                zone_list:
+                    column:
+                        renderer: "default"
+                        authorized_block_template_list : ["standard"]
+                    main:
+                        renderer: "default"
+                        authorized_block_template_list : ["standard"]
+        default_twig: "::base.html.twig"
+
+kitpages_file:
+    tmp_dir: %kernel.root_dir%/data/tmp
+    type_list:
+        image:
+            resize:
+                form: 'kit_file.image.resize.form'
+                form_twig: 'KitpagesFileBundle:ActionOnFile:Image/Resize/form.html.twig'
+                handler_form: 'kit_file.image.resize.form.handler'
+                library: 'imagine.gd'
+
+kitpages_file_system:
+    file_system_list:
+        kitpagesFile:
+            local:
+                directory_public: %kernel.root_dir%/../web
+                directory_private: %kernel.root_dir%
+                base_url: %base_url%
+
+services:
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: twig.extension }

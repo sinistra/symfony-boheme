@@ -26,9 +26,11 @@
     <link rel="stylesheet" href="{{asset('theme/assets/css/themes/headers/header1-light.css')}}" id="style_color-header-1">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
 {% block stylesheets %}{% stylesheets 'css/*' %}{% endstylesheets %}{% endblock %}
+{% block kitpages_cms_stylesheets %}{% endblock %}
 </head>
 <body>
 {% set version = constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION')%}
+{% block kitpages_cms_toolbar %}{% endblock %}
 <!--=== Style Switcher ===-->
 <!--=== End Style Switcher ===-->
 <!--=== Top ===-->
@@ -238,6 +240,7 @@
         {% block jqueryinit %} {% endblock %}
     });
 </script>
+{% block kitpages_cms_javascripts %}{% endblock %}
 <!--[if lt IE 9]>
     <script src="{{asset('theme/assets/js/respond.js')}}"></script>
 <![endif]-->
