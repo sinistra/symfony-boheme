@@ -1,0 +1,412 @@
+<?php
+
+// src/Nms/AdminBundle/Entity/User.php
+
+/**
+ * Description of User
+ *
+ * @author paul taylor
+ * @copyright (c) 2013, Paul Taylor
+ */
+
+namespace Nms\AdminBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo; // gedmo annotations
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\AdvancedUserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+
+/**
+ * Nms\AdminBundle\Entity\User
+ *
+ * @ORM\Entity
+ * @ORM\Table(name="users")
+ * @ORM\Entity(repositoryClass="Nms\AdminBundle\Entity\UserRepository")
+ * @ORM\HasLifecycleCallbacks
+ *
+ */
+class User implements AdvancedUserInterface, \Serializable {
+
+    /**
+     * @ORM\Id
+     * @ORM\Column(type="integer")
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\Column(type="string", length=25, unique=true)
+     */
+    private $username;
+
+    /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=32)
+     */
+    private $salt;
+
+    /**
+     * @ORM\Column(type="string", length=40)
+     */
+    private $password;
+
+    /**
+     * @ORM\Column(type="string", length=60, unique=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Nms\ClubBundle\Entity\Club", inversedBy="users")
+     */
+    private $club;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="Group", inversedBy="users")
+     */
+    private $groups;
+
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $logins;
+
+    /**
+     * @Gedmo\Timestampable(on="create")
+     * @ORM\Column(name="created", type="datetime")
+     */
+    protected $created;
+
+    /**
+     * @var string $createdBy
+     *
+     * @Gedmo\Blameable(on="create")
+     * @ORM\Column(type="string")
+     */
+    private $createdBy;
+
+    /**
+     * @ORM\Column(name="updated", type="datetime")
+     * @Gedmo\Timestampable(on="update")
+     */
+    private $updated;
+
+    /**
+     * @var string $updatedBy
+     *
+     * @Gedmo\Blameable(on="update")
+     * @ORM\Column(type="string", nullable=true)
+     */
+    private $updatedBy;
+
+
+    public function __construct() {
+        $this->isActive = true;
+        $this->salt = md5(uniqid(null, true));
+//        $this->setCreated(new \DateTime());
+//        $this->setUpdated(new \DateTime());
+        $this->groups = new ArrayCollection();
+        $this->users = new ArrayCollection();
+    }
+
+    public function getId() {
+        return $this->id;
+    }
+
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function setUsername($value) {
+        $this->username = trim($value);
+        return;
+    }
+
+    public function getName() {
+        return $this->name;
+    }
+
+    public function setName($value) {
+        $this->name = trim($value);
+        return;
+    }
+
+    public function getSalt() {
+        return $this->salt;
+    }
+
+    public function setSalt($value) {
+        $this->salt = $value;
+        return;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function setPassword($value) {
+        $this->password = $value;
+        return;
+    }
+
+    public function getEmail() {
+        return $this->email;
+    }
+
+    public function setEmail($value) {
+        $this->email = $value;
+        return;
+    }
+
+    public function getClub_id() {
+        return $this->club_id;
+    }
+
+    public function setClub_id($value) {
+        $this->club_id = $value;
+        return;
+    }
+
+    public function getLogins() {
+        return $this->logins;
+    }
+
+    public function setLogins($value) {
+        $this->logins = $value;
+        return;
+    }
+
+    public function getRoles() {
+//        return array('ROLE_USER');
+        return $this->groups->toArray();
+    }
+
+    public function setRoles($value) {
+        $this->role = $value;
+        return;
+    }
+
+    public function getActive() {
+        return $this->isActive;
+    }
+
+    public function setActive($value) {
+        $this->isActive = $value;
+        return;
+    }
+
+    /**
+     * Get created
+     *
+     * @return \DateTime
+     */
+    public function getCreated() {
+        return $this->created;
+    }
+
+    /**
+     * Set created
+     *
+     * @param \DateTime $created
+     */
+    public function setCreated($created) {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * Get updated
+     * @return \DateTime
+     */
+    public function getUpdated() {
+        return $this->updated;
+    }
+
+    /**
+     * Set updated
+     *
+     * @param \DateTime $updated
+     */
+    public function setUpdated($updated) {
+        $this->updated = $updated;
+        return $this;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function eraseCredentials() {
+
+    }
+
+    /**
+     * @see \Serializable::serialize()
+     */
+    public function serialize() {
+        return serialize(array(
+            $this->id,
+        ));
+    }
+
+    /**
+     * @see \Serializable::unserialize()
+     */
+    public function unserialize($serialized) {
+        list ($this->id, ) = unserialize($serialized);
+    }
+
+    public function isAccountNonExpired() {
+        return true;
+    }
+
+    public function isAccountNonLocked() {
+        return true;
+    }
+
+    public function isCredentialsNonExpired() {
+        return true;
+    }
+
+    public function isEnabled() {
+        return $this->isActive;
+    }
+
+    public function __toString() {
+        return $this->username;
+    }
+
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     * @return User
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set club_id
+     *
+     * @param integer $clubId
+     * @return User
+     */
+    public function setClubId($clubId)
+    {
+        $this->club_id = $clubId;
+
+        return $this;
+    }
+
+    /**
+     * Get club_id
+     *
+     * @return integer
+     */
+    public function getClubId()
+    {
+        return $this->club_id;
+    }
+
+    /**
+     * Set createdBy
+     *
+     * @param string $createdBy
+     * @return User
+     */
+    public function setCreatedBy($createdBy)
+    {
+        $this->createdBy = $createdBy;
+
+        return $this;
+    }
+
+    /**
+     * Get createdBy
+     *
+     * @return string
+     */
+    public function getCreatedBy()
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * Set updatedBy
+     *
+     * @param string $updatedBy
+     * @return User
+     */
+    public function setUpdatedBy($updatedBy)
+    {
+        $this->updatedBy = $updatedBy;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedBy
+     *
+     * @return string
+     */
+    public function getUpdatedBy()
+    {
+        return $this->updatedBy;
+    }
+
+    /**
+     * Add groups
+     *
+     * @param \Nms\AdminBundle\Entity\Group $groups
+     * @return User
+     */
+    public function addGroup(\Nms\AdminBundle\Entity\Group $groups)
+    {
+        $this->groups[] = $groups;
+
+        return $this;
+    }
+
+    /**
+     * Remove groups
+     *
+     * @param \Nms\AdminBundle\Entity\Group $groups
+     */
+    public function removeGroup(\Nms\AdminBundle\Entity\Group $groups)
+    {
+        $this->groups->removeElement($groups);
+    }
+
+    /**
+     * Get groups
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGroups()
+    {
+        return $this->groups;
+    }
+}
